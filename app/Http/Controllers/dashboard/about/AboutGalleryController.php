@@ -17,7 +17,7 @@ class AboutGalleryController extends Controller
     {
         $items = About_gallery::all();
         $page_title = 'Gallery';
-        $page_description = 'Some description for the page';
+        $page_description = 'This gallery will be shown in the about page gallery';
         return view('dashboard.about.aboutgallery.index', compact('page_title', 'page_description', 'items'));
     }
 
@@ -28,7 +28,9 @@ class AboutGalleryController extends Controller
      */
     public function create()
     {
-        //
+        $page_title = 'Gallery';
+        $page_description = 'This gallery will be shown in the about page gallery';
+        return view('dashboard.about.aboutgallery.create', compact('page_title', 'page_description'));
     }
 
     /**
@@ -39,7 +41,20 @@ class AboutGalleryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $items = new About_gallery;
+        if ($request->file('imagePath')) {
+            $request->file('imagePath')->getClientOriginalName();
+            $ext = $request->file('imagePath')->getClientOriginalExtension();
+            $fileName = date('YmdHis') . rand(1, 99999) . '.' . $ext;
+            $request->file('imagePath')->storeAs('public/gallery', $fileName);
+            $items->imagePath = $fileName;
+        }
+        $rules = [
+            'imagePath' => 'required',
+        ];
+        $validated = $this->validate($request, $rules);
+        $items->save();
+        return redirect()->route('dashboard.about.gallery.index');
     }
 
     /**
@@ -84,6 +99,7 @@ class AboutGalleryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        About_Gallery::destroy($id);
+        return redirect()->Route('dashboard.about.gallery.index');
     }
 }

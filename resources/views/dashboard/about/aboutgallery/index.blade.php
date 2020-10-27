@@ -7,11 +7,11 @@
                                 <div class="card card-custom">
                                     <div class="card-header flex-wrap border-0 pt-6 pb-0">
                                         <div class="card-title">
-                                            <h3 class="card-label">Services Gallery 
-                                            <div class="text-muted pt-2 font-size-sm">Datatable initialized from HTML table</div></h3>
+                                            <h3 class="card-label">Gallery 
+                                            <div class="text-muted pt-2 font-size-sm">Create and delete Images. </div></h3>
                                         </div>
                                         <div class="d-flex align-items-center" >
-                                            <a href=" "class="btn btn-primary" style="font-weight:600">Create Service</a>
+                                            <a href=" {{route('dashboard.about.gallery.create')}} "class="btn btn-primary" style="font-weight:600">Create Service</a>
                                         </div>
                                     </div>
                                     <div class="card-body">
@@ -45,13 +45,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                               <tr>
-                                                    <td>m</td>
-                                                    <td>m</td>
-                                                    <td>m</td>
-                                                  
-                                                  
-                                               </tr>
+
                                                     @if(isset($items))
                                                     @foreach ($items as $value)
                                                             <tr>
@@ -59,7 +53,7 @@
                                                                 <td > @if($value->imagePath !="")<img style="width:70px; height:45px;" src="{{asset('/storage/gallery/'.$value->imagePath)}}" alt="" >@endif</td>
                                                                 <td>
                                                                     <a href="javaScript:void(0)"  style="margin-left:5px;" onclick="$(this).parent().find('form').submit()">
-                                                                        <form action="{{Route('dashboard.gallery.destroy',$value->id)}}" method="post" style="display: none">
+                                                                        <form action="{{Route('dashboard.about.gallery.destroy',$value->id)}}" method="post" style="display: none">
                                                                             @method('DELETE')
                                                                             <input type="hidden" name="_token" value="{{csrf_token()}}" >
                                                                         </form>
