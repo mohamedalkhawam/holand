@@ -77,7 +77,6 @@
                                     <h3 class="text-dark font-weight-bold mb-10">Costumize Slider </span> Image : </h3>   
                                     <div class="form-group row" >
                                         <label class="col-3">Old Image</label>
-     
                                         @if($items->imagePath == "")
                                             <div class="col-9">
                                             <blockquote>No image uploaded!, choose an image to Uploade</blockquote>
