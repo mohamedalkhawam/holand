@@ -65,7 +65,7 @@ return $firstFive;
                                                             <td>{{cutString($value->title_nl)}}...etc</td>
                                                             <td> {{cutString($value->description_en)}}...etc </td>
                                                             <td> {{cutString($value->description_nl)}}...etc </td>
-                                                            <td > @if($value->imagePath !="")<img style="width:70px; height:45px;" src="{{asset('/storage/public/home/'.$value->imagePath)}}" alt="" >@endif</td>
+                                                            <td > @if($value->imagePath !="")<img style="width:70px; height:45px;" src="{{asset('/storage/home/'.$value->imagePath)}}" alt="" >@endif</td>
                                                             
                                                             <td>
                                                                 <a href=" {{route('dashboard.home.edit',$value->id)}} " >
@@ -80,7 +80,6 @@ return $firstFive;
                                                                 </a>
                                                             </td>
                                                             <td>{{$value->updated_at}} </td>
-                                                       
                                                         </tr>
                                         
                                                     @endforeach
