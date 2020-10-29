@@ -28,7 +28,9 @@ class CertificatesController extends Controller
      */
     public function create()
     {
-        //
+        $page_title = 'Certificates';
+        $page_description = 'Add your Certificates here.';
+        return view('dashboard.certificates.create', compact('page_title', 'page_description'));
     }
 
     /**
@@ -39,7 +41,20 @@ class CertificatesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $items = new Certificates;
+        if ($request->file('imagePath')) {
+            $request->file('imagePath')->getClientOriginalName();
+            $ext = $request->file('imagePath')->getClientOriginalExtension();
+            $fileName = date('YmdHis') . rand(1, 99999) . '.' . $ext;
+            $request->file('imagePath')->storeAs('public/certificates', $fileName);
+            $items->imagePath = $fileName;
+        }
+        $rules = [
+            'imagePath' => 'required',
+        ];
+        $validated = $this->validate($request, $rules);
+        $items->save();
+        return redirect()->route('dashboard.certificates.index');
     }
 
     /**
@@ -84,6 +99,7 @@ class CertificatesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Certificates::destroy($id);
+        return redirect()->Route('dashboard.certificates.index');
     }
 }
