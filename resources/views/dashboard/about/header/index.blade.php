@@ -17,9 +17,7 @@ return $firstFive;
                                             <h3 class="card-label">About header
                                             <div class="text-muted pt-2 font-size-sm">Datatable initialized from HTML table</div></h3>
                                         </div>
-                                        <div class="d-flex align-items-center" >
-                                            <a href="  "class="btn btn-primary" style="font-weight:600">Create Service</a>
-                                        </div>
+                                
                                     </div>
                                     <div class="card-body">
                                         <!--begin: Search Form-->
@@ -52,48 +50,42 @@ return $firstFive;
                                                 <tr>
                                                     <th title="Field #1">Title En</th>
                                                     <th title="Field #2">Title Nl</th>
-                                                    <th title="Field #3">keywords En</th>
-                                                    <th title="Field #4">Keywords Nl</th>
-                                                     <th title="Field #5">Description En</th>
-                                                     <th title="Field #5">Description Nl</th>
-                                                    <th title="Field #8">Action</th>
-                                                    <th title="Field #9">Last Upadte </th>
                                                     <th title="Field #5">Description En</th>
-                                                     <th title="Field #5">Description Nl</th>
+                                                    <th title="Field #5">Description Nl</th>
+                                                    <th title="Field #3">Paragraph En</th>
+                                                    <th title="Field #4">Paragraph Nl</th>
+                                                    <th title="Field #8">Sentence 1 En</th>
+                                                    <th title="Field #9">Sentence 1 Nl </th>
+                                                    <th title="Field #8">Sentence 2 En</th>
+                                                    <th title="Field #9">Sentence 2 Nl </th>
+                                                    <th title="Field #8">Sentence 3 En</th>
+                                                    <th title="Field #9">Sentence 3 Nl </th>
                                                     <th title="Field #8">Action</th>
-                                                    <th title="Field #9">Last Upadte </th>
+                                                    <th title="Field #9">Last Upadted  </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                              <tr>
-                                                      <td>m</td>
-                                                  <td>m</td>
-                                                  <td>m</td>
-                                                  <td>m</td>
-                                                  <td>m</td>
-                                                  <td>m</td>
-                                                  <td>m</td>
-                                                  <td>m</td>
-                                                  <td>m</td>
-                                                  <td>m</td>
-                                                  <td>m</td>
-                                                  <td>m</td>
-                                              </tr>
+                                       
                                                 @if(isset($items))
                                                     @foreach ($items as $value)
                                                         <tr>
-                                                            <td >{{cutString("dfdsfsdf")}}</td>
-                                                            <td >{{cutString("dfdsfsdf")}}</td>
-                                                            <td >{{cutString("dfdsfsdf")}}...etc</td>
-                                                            <td>{{cutString("dfdsfsdf")}}...etc</td>
-                                                            <td> {{cutString("dfdsfsdf")}}...etc </td>
-                                                            <td> {{cutString("dfdsfsdf")}}...etc </td>
-                                                              <td >{{cutString("dfdsfsdf")}}</td>
-                                                            <td >{{cutString("dfdsfsdf")}}...etc</td>
-                                                            <td>{{cutString("dfdsfsdf")}}...etc</td>
-                                                            <td> {{cutString("dfdsfsdf")}}...etc </td>
-                                                            <td> {{cutString("dfdsfsdf")}}...etc </td>
-                                                            <td>m</td>
+                                                            <td >{{cutString($value->title_en)}}</td>
+                                                            <td >{{cutString($value->title_nl)}}</td>
+                                                            <td >{{cutString($value->description_en)}}...etc</td>
+                                                            <td>{{cutString($value->description_nl)}}...etc</td>
+                                                            <td> {{cutString($value->paragraph_en)}}...etc </td>
+                                                            <td> {{cutString($value->paragraph_nl)}}...etc </td>
+                                                            <td >{{cutString($value->first_sentence_en)}}</td>
+                                                            <td >{{cutString($value->first_sentence_nl)}}...etc</td>
+                                                            <td>{{cutString($value->second_sentence_en)}}...etc</td>
+                                                            <td> {{cutString($value->second_sentence_nl)}}...etc </td>
+                                                            <td> {{cutString($value->third_sentence_en)}}...etc </td>
+                                                            <td>{{cutString($value->third_sentence_nl)}}...etc</td>
+                                                            <td>
+                                                                <a href=" {{route('dashboard.about.header.edit',$value->id)}} " >
+                                                                    <i class="fas fa-edit" onMouseOut="this.style.color=''"  onMouseOver="this.style.color='#8950FC'"></i>
+                                                                </a>
+                                                            </td>
                                                    
                                                             <td>{{$value->updated_at}} </td>                           
                                                         </tr>   
