@@ -28,7 +28,7 @@ class AboutWhyUsController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -61,7 +61,10 @@ class AboutWhyUsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $items = About_why_us::find($id);
+        $page_title = 'Why Us Screen';
+        $page_description = 'Change why us screen Content';
+        return view('dashboard.about.whyus.edit', compact('page_title', 'page_description', 'items'));
     }
 
     /**
@@ -73,7 +76,21 @@ class AboutWhyUsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $items = About_why_us::find($id);
+        $rules= [
+           'title_en' =>'required',
+           'title_nl' =>'required',
+           'description_en' =>'required',
+           'description_nl' =>'required', 
+        ];
+        $validated=$this->validate($request, $rules);
+        $items->title_en = $validated['title_en'];
+        $items->title_nl=$validated['title_nl'];
+        $items->description_en = $validated['description_en'];
+        $items->description_nl= $validated['description_nl'];
+        $items->save();
+        return redirect()->route('dashboard.about.whyus.index');
+
     }
 
     /**

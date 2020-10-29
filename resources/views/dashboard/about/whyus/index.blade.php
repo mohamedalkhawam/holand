@@ -3,16 +3,21 @@
 
 {{-- Content --}}
 @section('content')
+<?php 
+function cutString($string){
+$exploded = explode(" ", $string);
+$firstFive = implode(" ", array_splice($exploded, 0, 3));
+return $firstFive;
 
+}
+?>
                                 <div class="card card-custom">
                                     <div class="card-header flex-wrap border-0 pt-6 pb-0">
                                         <div class="card-title">
-                                            <h3 class="card-label">Services Gallery 
-                                            <div class="text-muted pt-2 font-size-sm">Datatable initialized from HTML table</div></h3>
+                                            <h3 class="card-label">Why us 
+                                            <div class="text-muted pt-2 font-size-sm">Cusomize about page why us screen</div></h3>
                                         </div>
-                                        <div class="d-flex align-items-center" >
-                                            <a href=" "class="btn btn-primary" style="font-weight:600">Create Service</a>
-                                        </div>
+                                       
                                     </div>
                                     <div class="card-body">
                                         <!--begin: Search Form-->
@@ -40,36 +45,30 @@
                                             <thead>
                                                 <tr>
                                                     <th title="Field #2">Title En</th>
-                                                    <th title="Field #2">Title En</th>
+                                                    <th title="Field #2">Title Nl</th>
                                                     <th title="Field #2">Description En</th>
-                                                    <th title="Field #2">Description En</th>
+                                                    <th title="Field #2">Description Nl</th>
                                                     <th title="Field #4">Action</th>
-                                                    <th title="Field #3">last Upadte</th>
+                                                    <th title="Field #3">Last Upadte</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                               <tr>
-                                                  <td>m</td>
-                                                  <td>m</td>
-                                                  <td>m</td>
-                                                  <td>m</td>
-                                                  <td>m</td>
-                                                  <td>m</td>
-                                                
-                                               </tr>
-                                                    @if(isset($items))
+                                                   @if(isset($items))
                                                     @foreach ($items as $value)
-                                                            <tr>
-                                                                <td>ff</td>
-                                                                <td>ff</td>
-                                                                <td>ff</td>
-                                                                <td>ff</td>
-                                                                <td>ff</td>
-
-                                                                <td>{{$value->updated_at}} </td>
-                                                            </tr>
+                                                        <tr>
+                                                            <td >{{cutString($value->title_en)}}</td>
+                                                            <td >{{cutString($value->title_nl)}}</td>
+                                                            <td >{{cutString($value->description_en)}}...etc</td>
+                                                            <td>{{cutString($value->description_nl)}}...etc</td>
+                                                            <td>
+                                                                <a href=" {{route('dashboard.about.whyus.edit',$value->id)}} " >
+                                                                    <i class="fas fa-edit" onMouseOut="this.style.color=''"  onMouseOver="this.style.color='#8950FC'"></i>
+                                                                </a>
+                                                            </td>
+                                                            <td>{{$value->updated_at}} </td>                           
+                                                        </tr>   
                                                     @endforeach
-                                                    @endif
+                                                @endif
                                             </tbody>
                                         </table>
                                         <!--end: Datatable-->
