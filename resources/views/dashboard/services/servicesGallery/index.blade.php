@@ -49,10 +49,14 @@
                                                
                                               @if(isset($items))
                                                       @foreach ($items as $value)
-                                                        @if(isset($value->services))
+                                                       
                                                             <tr>
-                                                                <td>{{$value->services->title_en}}</td>
-                                                                <td > @if($value->imagePath !="")<img style="width:70px; height:45px;" src="{{asset('/storage/gallery/'.$value->imagePath)}}" alt="" >@endif</td>
+                                                                <td>
+                                                                    @if(isset($value->services))
+                                                                        {{$value->services->title_en}}
+                                                                    @endif
+                                                                </td>
+                                                                <td > @if($value->imagePath !="")<img style="width:70px; height:45px;" src="{{asset('/storage/services/gallery/'.$value->imagePath)}}" alt="" >@endif</td>
                                                                 <td>
                                                                     <a href="javaScript:void(0)"  style="margin-left:5px;" onclick="$(this).parent().find('form').submit()">
                                                                         <form action="{{Route('dashboard.services.gallery.destroy',$value->id)}}" method="post" style="display: none">
@@ -64,7 +68,7 @@
                                                                 </td>
                                                                 <td>{{$value->updated_at}} </td>
                                                             </tr>
-                                                        @endif
+                                                       
                                                     @endforeach
                                               @endif
                                             </tbody>

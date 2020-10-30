@@ -45,13 +45,13 @@ class ServiceCasesController extends Controller
      */
     public function store(Request $request)
     {
-        $items = new Services_page;
+        $items = new Service_cases;
         if ($request->file('imagePath_before')) {
             $request->file('imagePath_before')->getClientOriginalName();
             $ext = $request->file('imagePath_before')->getClientOriginalExtension();
             $fileName = date('YmdHis') . rand(1, 99999) . '.' . $ext;
-            $request->file('imagePath_before')->storeAs('public/home', $fileName);
-            $items->imagePath = $fileName;
+            $request->file('imagePath_before')->storeAs('public/cases', $fileName);
+            $items->imagePath_before = $fileName;
         } else {
             $fileName = '';
         }
@@ -60,8 +60,8 @@ class ServiceCasesController extends Controller
             $request->file('imagePath_after')->getClientOriginalName();
             $ext = $request->file('imagePath_after')->getClientOriginalExtension();
             $fileName = date('YmdHis') . rand(1, 99999) . '.' . $ext;
-            $request->file('imagePath_after')->storeAs('public/home', $fileName);
-            $items->imagePath = $fileName;
+            $request->file('imagePath_after')->storeAs('public/cases', $fileName);
+            $items->imagePath_after = $fileName;
         } else {
             $fileName = '';
         }
@@ -108,7 +108,10 @@ class ServiceCasesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $items = Service_cases::find($id);
+        $page_title = 'Edit service Case';
+        $page_description = 'Some description for the page';
+        return view('dashboard.services.servicescases.edit', compact('items', 'page_title', 'page_description'));
     }
 
     /**
@@ -120,7 +123,42 @@ class ServiceCasesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $items =  Service_case::all();
+        if ($request->file('imagePath_before')) {
+            $request->file('imagePath_before')->getClientOriginalName();
+            $ext = $request->file('imagePath_before')->getClientOriginalExtension();
+            $fileName = date('YmdHis') . rand(1, 99999) . '.' . $ext;
+            $request->file('imagePath_before')->storeAs('public/cases', $fileName);
+            $items->imagePath_before = $fileName;
+        } 
+
+        if ($request->file('imagePath_after')) {
+            $request->file('imagePath_after')->getClientOriginalName();
+            $ext = $request->file('imagePath_after')->getClientOriginalExtension();
+            $fileName = date('YmdHis') . rand(1, 99999) . '.' . $ext;
+            $request->file('imagePath_after')->storeAs('public/cases', $fileName);
+            $items->imagePath_after = $fileName;
+        } 
+        $rules = [
+            'services_id' => 'required',
+            'short_story_en' => 'required',
+            'short_story_nl' => 'required',
+            'initial_problem_en' => 'required',
+            'initial_problem_nl' => 'required',
+            'cost' => 'required',
+            'doctor_id' => 'required',
+        ];
+
+        $validated = $this->validate($request, $rules);
+        $items->services_id = $validated['services_id'];
+        $items->short_story_en = $validated['short_story_en'];
+        $items->short_story_nl = $validated['short_story_nl'];
+        $items->initial_problem_en = $validated['initial_problem_en'];
+        $items->initial_problem_nl = $validated['initial_problem_nl'];
+        $items->cost = $validated['cost'];
+        $items->doctor_id = $validated['doctor_id'];
+        $items->save();
+        return redirect()->route('dashboard.services.servicecases.index');
     }
 
     /**
@@ -131,6 +169,7 @@ class ServiceCasesController extends Controller
      */
     public function destroy($id)
     {
-        //
+         Service_cases::destroy($id);
+        return redirect()->route('dashboard.services.servicecases.index');
     }
 }

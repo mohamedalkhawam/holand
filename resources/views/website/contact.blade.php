@@ -18,6 +18,10 @@
                     <!-- Get in Touch -->
                     
                     <!-- Leave a Reply -->
+                
+                 
+            {{  app()->setLocale(app('lang'))}}
+             {{__('main.hey')}}
                     <h4>Leave a Reply</h4>
                     <p>Reach us with your questions. We are looking forward hearing form you!</p>
                     <div class="row form_row">

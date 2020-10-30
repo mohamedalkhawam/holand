@@ -105,7 +105,7 @@
                                             <option value="">Choose a Doctor</option>
                                         @if(isset($doctors))
                                             @foreach ($doctors as $value)
-                                                <option value="{{$value->id}}"> {{$value->title_en}} </option>
+                                                <option value="{{$value->id}}"> {{$value->name}} </option>
                                             @endforeach
                                         @endif
                                         </select>                                       

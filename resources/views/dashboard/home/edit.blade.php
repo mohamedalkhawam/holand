@@ -74,7 +74,7 @@
                                     
                                  {{-- Start image --}}
                                     
-                                    <h3 class="text-dark font-weight-bold mb-10">Costumize Slider </span> Image : </h3>   
+                                    <h3 class="text-dark font-weight-bold mb-10">Costumize Slider Image : </h3>   
                                     <div class="form-group row" >
                                         <label class="col-3">Old Image</label>
                                         @if($items->imagePath == "")

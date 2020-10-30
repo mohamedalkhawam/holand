@@ -23,6 +23,7 @@ class CreateServiceCasesTable extends Migration
             $table->string('initial_problem_nl', 1000);
             $table->float('cost');
             $table->integer('doctor_id');
+            $table->foreign('doctor_id')->references('id')->on('Doctors')->onDelete('set null');
             $table->string('imagePath_before');
             $table->string('imagePath_after');
             $table->timestamps();

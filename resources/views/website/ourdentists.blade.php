@@ -7,7 +7,8 @@
             <!-- Head physician start -->
             <div class="row head_physician">
                 <div class="container">
-                     <h1>Meet Our Dentists</h1>
+                     <h1>Meet Our Dentists      
+             {{__('main.hey')}}</h1>
                      <div class="row head_physician_row">
                         <div class="col-2 head_physician_left">
                             <img class="lozad" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="http://via.placeholder.com/550x700" alt="DiDent" />

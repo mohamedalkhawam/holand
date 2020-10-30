@@ -112,14 +112,14 @@ class PagesController extends Controller
     {
         if (session()->has("lang")) {
             if (session()->get('lang') == "en") {
-                app()->setLocale("en");
+                App::setLocale("en");
                 $lang = "en";
             } else {
-                app()->setLocale("nl");
+                App::setLocale("nl");
                 $lang = "nl";
             }
         } else {
-            app()->setLocale("en");
+            App::setLocale("en");
             $lang = "en";
         }
         return $lang;

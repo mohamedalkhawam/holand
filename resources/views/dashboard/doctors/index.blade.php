@@ -50,12 +50,21 @@ return $firstFive;
                                         <table class="datatable datatable-bordered  datatable-head-custom" id="kt_datatable">
                                             <thead>
                                                 <tr>
-                                                    <th title="Field #1">Title En</th>
+                                                    <th title="Field #1">Doctor Name</th>
                                                     <th title="Field #2">Title Nl</th>
-                                                    <th title="Field #3">keywords En</th>
-                                                    <th title="Field #4">Keywords Nl</th>
                                                      <th title="Field #5">Description En</th>
                                                      <th title="Field #5">Description Nl</th>
+                                                     <th title="Field #3">Bio En</th>
+                                                    <th title="Field #4">Bio Nl</th>
+                                                    <th title="Field #3">Membership En</th>
+                                                    <th title="Field #4">Membership Nl</th>
+                                                    <th title="Field #3">Languages</th>
+                                                    <th title="Field #3">Specialization En</th>
+                                                    <th title="Field #4">Specialization Nl</th>
+                                                    <th title="Field #3">Facebook </th>
+                                                    <th title="Field #4">Twitter </th>
+                                                    <th title="Field #3">G+</th>
+                                                    <th title="Field #4">Image</th>
                                                     <th title="Field #8">Action</th>
                                                     <th title="Field #9">Last Upadte </th>
                                                 </tr>
@@ -64,18 +73,28 @@ return $firstFive;
                                                     @if(isset($items))
                                                         @foreach ($items as $value)
                                                             <tr>
-                                                                <td >{{cutString($value->title_en)}}</td>
-                                                                <td >{{cutString($value->title_nl)}}</td>
-                                                                <td >{{cutString($value->keywords_en)}}...etc</td>
-                                                                <td>{{cutString($value->keywords_nl)}}...etc</td>
-                                                                <td> {{cutString($value->description_en)}}...etc </td>
-                                                                <td> {{cutString($value->description_nl)}}...etc </td>
+                                                                <td >{{cutString($value->name)}}</td>
+                                                                <td >{{cutString($value->description_en)}}</td>
+                                                                <td >{{cutString($value->description_nl)}}...etc</td>
+                                                                <td>{{cutString($value->bio_en)}}...etc</td>
+                                                                <td> {{cutString($value->bio_nl)}}...etc </td>
+                                                                <td >{{cutString($value->education_en)}}</td>
+                                                                <td >{{cutString($value->education_nl)}}</td>
+                                                                <td >{{cutString($value->membership_en)}}...etc</td>
+                                                                <td>{{cutString($value->membership_nl)}}...etc</td>
+                                                                <td> {{cutString($value->languages)}}...etc </td>
+                                                                <td >{{cutString($value->Specialization_en)}}</td>
+                                                                <td >{{cutString($value->Specialization_nl)}}</td>
+                                                                <td >{{cutString($value->twitter)}}...etc</td>
+                                                                <td>{{cutString($value->google)}}...etc</td>
+                                                                <td > @if($value->imagePath !="")<img style="width:70px; height:45px;" src="{{asset('/storage/doctors/'.$value->imagePath)}}" alt="" >@endif</td>
+
                                                                 <td>
-                                                                    <a href=" {{route('dashboard.services.servicecases.edit',$value->id)}} " >
+                                                                    <a href=" {{route('dashboard.doctors.edit',$value->id)}} " >
                                                                         <i class="fas fa-edit" onMouseOut="this.style.color=''"  onMouseOver="this.style.color='#8950FC'"></i>
                                                                     </a>
                                                                     <a href="javaScript:void(0)"  style="margin-left:5px;" onclick="$(this).parent().find('form').submit()">
-                                                                        <form action="{{Route('dashboard.services.servicecases.destroy',$value->id)}}" method="post" style="display: none">
+                                                                        <form action="{{Route('dashboard.doctors.destroy',$value->id)}}" method="post" style="display: none">
                                                                             @method('DELETE')
                                                                             <input type="hidden" name="_token" value="{{csrf_token()}}" >
                                                                         </form>

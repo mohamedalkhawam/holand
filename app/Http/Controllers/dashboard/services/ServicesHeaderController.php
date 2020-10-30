@@ -50,7 +50,7 @@ class ServicesHeaderController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -61,7 +61,10 @@ class ServicesHeaderController extends Controller
      */
     public function edit($id)
     {
-        //
+        $items = Services_Header::find($id);
+        $page_title = 'Edit';
+        $page_description = 'Services Header';       
+        return view('dashboard.services.servicesHeader.index', compact('page_title', 'page_description', 'items'));
     }
 
     /**

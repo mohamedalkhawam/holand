@@ -48,7 +48,7 @@ class ServicesGalleryController extends Controller
             $request->file('imagePath')->getClientOriginalName();
             $ext = $request->file('imagePath')->getClientOriginalExtension();
             $fileName = date('YmdHis') . rand(1, 99999) . '.' . $ext;
-            $request->file('imagePath')->storeAs('public/gallery', $fileName);
+            $request->file('imagePath')->storeAs('public/services/gallery', $fileName);
             $items->imagePath = $fileName;
         }
         $rules = [

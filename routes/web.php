@@ -49,8 +49,10 @@ Route::get('ourdentists', function () {
 Route::get('lang/{lang}', function ($lang) {
   if ($lang == "en") {
     session()->put('lang', 'en');
+    App::setLocale('en');
   } else {
     session()->put('lang', 'nl');
+    App::setLocale('nl');
   }
   return back();
   //
