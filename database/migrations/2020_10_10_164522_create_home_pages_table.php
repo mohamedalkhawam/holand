@@ -20,7 +20,6 @@ class CreateHomePagesTable extends Migration
             $table->string('title_nl');
             $table->string('description_en', 500)->nullable();
             $table->string('description_nl', 500)->nullable();
-            $table->string('category')->default('slider');
             $table->string('imagePath')->nullable()->default('---');
             $table->timestamps();
         });

@@ -78,7 +78,7 @@
                                                 <i class="flaticon2-chat-1"></i> Uploade Image                                                    
                                             </a>
                                             <div style="overflow:hidden; display:inline-block">
-                                                <input  id="file" type="file" style="margin-left: -90px;" name="imagePath" validate required >
+                                                <input  id="file" type="file" style="margin-left: -91px;" name="imagePath" validate required >
                                             </div>
                                         </div>
                                     </div>

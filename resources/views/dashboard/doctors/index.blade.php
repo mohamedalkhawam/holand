@@ -85,9 +85,9 @@ return $firstFive;
                                                                 <td> {{cutString($value->languages)}}...etc </td>
                                                                 <td >{{cutString($value->Specialization_en)}}</td>
                                                                 <td >{{cutString($value->Specialization_nl)}}</td>
-                                                                <td >{{cutString($value->twitter)}}...etc</td>
-                                                                <td>{{cutString($value->google)}}...etc</td>
-                                                                <td > @if($value->imagePath !="")<img style="width:70px; height:45px;" src="{{asset('/storage/doctors/'.$value->imagePath)}}" alt="" >@endif</td>
+                                                                <td >{{cutString($value->twitter)}}</td>
+                                                                <td>{{cutString($value->google)}} </td>
+                                                                <td > @if($value->imagePath !="")<img style="width:55px; height:55px;" src="{{asset('/storage/doctors/'.$value->imagePath)}}" alt="" >@endif</td>
 
                                                                 <td>
                                                                     <a href=" {{route('dashboard.doctors.edit',$value->id)}} " >

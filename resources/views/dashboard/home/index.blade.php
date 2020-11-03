@@ -8,8 +8,8 @@ function cutString($string){
 $exploded = explode(" ", $string);
 $firstFive = implode(" ", array_splice($exploded, 0, 3));
 return $firstFive;
-
 }
+
 ?>
                                 <div class="card card-custom">
                                     <div class="card-header flex-wrap border-0 pt-6 pb-0">
@@ -48,8 +48,8 @@ return $firstFive;
                                                 <tr>
                                                     <th title="Field #2">Title En</th>
                                                     <th title="Field #3">Title Nl</th>
-                                                     <th title="Field #4">Description En</th>
-                                                     <th title="Field #4">Description Nl</th>
+                                                    <th title="Field #4">Description En</th>
+                                                    <th title="Field #4">Description Nl</th>
                                                     <th title="Field #6">Image</th>
                                                     <th title="Field #7">Action</th>
                                                     <th title="Field #8">Last Upadte</th>
@@ -58,7 +58,6 @@ return $firstFive;
                                             <tbody>
 
                                                    @if (isset($items))
-
                                                     @foreach ($items as $value)
                                                         <tr>
                                                             <td >{{cutString($value->title_en)}}...etc</td>
@@ -66,7 +65,6 @@ return $firstFive;
                                                             <td> {{cutString($value->description_en)}}...etc </td>
                                                             <td> {{cutString($value->description_nl)}}...etc </td>
                                                             <td > @if($value->imagePath !="")<img style="width:70px; height:45px;" src="{{asset('/storage/home/'.$value->imagePath)}}" alt="" >@endif</td>
-                                                            
                                                             <td>
                                                                 <a href=" {{route('dashboard.home.edit',$value->id)}} " >
                                                                     <i class="fas fa-edit" onMouseOut="this.style.color=''"  onMouseOver="this.style.color='#8950FC'"></i>
@@ -81,9 +79,7 @@ return $firstFive;
                                                             </td>
                                                             <td>{{$value->updated_at}} </td>
                                                         </tr>
-                                        
                                                     @endforeach
-
                                                    @endif 
                                             </tbody>
                                         </table>

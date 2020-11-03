@@ -91,8 +91,8 @@ return $firstFive;
                                                             <td> {{cutString($value->first_sentence_nl)}} ...etc </td>
                                                             <td> {{cutString($value->second_sentence_en)}} ...etc </td>
                                                             <td> {{cutString($value->second_sentence_nl)}} ...etc </td>
-                                                            <td > @if($value->first_image_path !="")<img style="width:70px; height:45px;" src="{{asset('/storage/gallery/'.$value->first_image_path)}}" alt="" >@endif</td>
-                                                            <td > @if($value->second_image_path !="")<img style="width:70px; height:45px;" src="{{asset('/storage/gallery/'.$value->second_image_path)}}" alt="" >@endif</td>
+                                                            <td > @if($value->first_image_path !="")<img style="width:55px; height:55px;" src="{{asset('/storage/gallery/'.$value->first_image_path)}}" alt="" >@endif</td>
+                                                            <td > @if($value->second_image_path !="")<img style="width:55px; height:55px;" src="{{asset('/storage/gallery/'.$value->second_image_path)}}" alt="" >@endif</td>
                                                             <td>
                                                                 <a href=" {{route('dashboard.about.galleryscreen.edit',$value->id)}} " >
                                                                     <i class="fas fa-edit" onMouseOut="this.style.color=''"  onMouseOver="this.style.color='#8950FC'"></i>

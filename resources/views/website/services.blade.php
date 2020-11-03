@@ -1,5 +1,6 @@
 @extends('layout.website')
 @section('content')
+ 
      <!--  Main start -->
         <main> 
 

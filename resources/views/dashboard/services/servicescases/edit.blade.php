@@ -125,7 +125,7 @@
                                                     <i class="flaticon2-chat-1"></i> Uploade Image                                                    
                                                 </a>
                                             <div style="overflow:hidden; display:inline-block">
-                                                    <input  id="imageBefore" type="file" style="margin-left: -90px;" name="imagePath_before" validate required >
+                                                    <input  id="imageBefore" type="file" style="margin-left: -91px;" name="imagePath_before" validate required >
                                             </div>
 
                                         {{-- <span class="form-text text-muted">You can replace the old value with the new value.</span> --}}
@@ -141,7 +141,7 @@
                                                     Uploade Image                                                    
                                                 </a>
                                             <div style="overflow:hidden; display:inline-block">
-                                                    <input  id="imageAfter" type="file" style="margin-left: -90px;" name="imagePath_after" validate required >
+                                                    <input  id="imageAfter" type="file" style="margin-left: -91px;" name="imagePath_after" validate required >
                                             </div>
 
                                         {{-- <span class="form-text text-muted">You can replace the old value with the new value.</span> --}}

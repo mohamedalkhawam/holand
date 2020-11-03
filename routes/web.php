@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Home_page;
 use App\Services_page;
+use App\Config;
 use Illuminate\Support\Facades\View;
 use Illuminate\Auth\EloquentUserProvider;
 /*
@@ -23,7 +24,17 @@ view()->share("descriptionWithLanguage", "description_");
 app()->singleton('lang', function () {
   return App\Http\Controllers\dashboard\PagesController::lang();
 });
-Route::get('/', function () {
+// app()->singleton('layOutConfig',function(){
+// //  return $config=Config::take(1)->get();
+// return "mohamed";
+// });
+App::singleton('headerConfig', function () {
+  return $config=Config::all();
+});
+
+
+Route::middleware('language')->group(function(){
+  Route::get('/', function () {
   // return "Hello, User!!! \n The site will be available soon :) ";
   $items = Home_page::all();
   $services = Services_page::all();
@@ -38,14 +49,18 @@ Route::get('/services', function () {
 Route::get('contact', function () {
   return view('website.contact');
 })->name('contact');
-
-
 Route::get('/services/{serviceName}', function ($serviceName) {
   return view('website.servicePage', compact('serviceName'));
 })->name('servicePage');
 Route::get('ourdentists', function () {
   return view('website.ourdentists');
 })->name('dentists');
+
+
+});
+
+
+
 Route::get('lang/{lang}', function ($lang) {
   if ($lang == "en") {
     session()->put('lang', 'en');

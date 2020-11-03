@@ -61,7 +61,6 @@ License: You must have a valid license purchased only from themeforest(the above
         @foreach(config('layout.resources.js') as $script)
             <script src="{{ asset($script) }}" type="text/javascript"></script>
         @endforeach
-
         {{-- Includable JS --}}
         @yield('scripts')
 

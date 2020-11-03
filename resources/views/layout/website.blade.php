@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>DiDent Clinic HTML Template</title>
+        <title>Tandartsenpraktijk BoLo</title>
         <meta name="description" content="DiDent - Dental Clinic HTML Template"/>
         <meta name="author" content="http://owl-themes.net/"/>
         <meta name="theme-color" content="#1783D3">
@@ -28,8 +28,31 @@
         <link rel="stylesheet" href="{{asset('website/css/font-awesome.css')}}">
         <!-- Responsive style --> 
         <link rel="stylesheet" href="{{asset('website/css/responsive.css')}}">
-         
+        <?php
+            $config = app('headerConfig')->where('id',1)->first();
+            $lang = app('lang');
+            $normalDayFrom = 'open_day_from_'.$lang;
+            $normalDayTo='open_day_to_'.$lang;
+            $firstSpecialDay ='first_special_day_'.$lang;
+            $firstSpecialNote = 'first_special_day_note_'.$lang;
+            $secondSpecialDay ='second_special_day_'.$lang;
+            $secondSpecialNote = 'second_special_day_note_'.$lang;
+            $normalFrom='';
+            $normalTo='';
+            if( $lang == 'en'){
+                $normalFrom = substr($config->$normalDayFrom,0,3);
+                $normalTo = substr($config->$normalDayTo,0,3);
+            }else{
+                $normalFrom = substr($config->$normalDayFrom,0,2);
+                $normalTo = substr($config->$normalDayTo,0,2);
+            }
+
+           
+           
+         ?>
     </head> 
+    @if(isset($config))
+   {{-- {{ substr($config->$NormalDayFrom,0,3)}} --}}
 <body> 
     <div class="preloader">
         <div class="preloader_animation">
@@ -48,31 +71,35 @@
                             <!-- Start clock -->
                             <div class="header_clock"> 
                                  <i class="fa fa-clock-o"></i>
-                                 <span>Mon-Fri 10:00 am-6:00 pm</span> 
-                                 <span>Sat-Sun 11:00 am-4:00 pm</span>
+                                 <span style="text-transform: capitalize">
+                                    {{$normalFrom}} - {{$normalTo}}  {{$config->open_hour_from}} - {{$config->open_hour_to}}
+                                </span> 
+                                 <span style="text-transform: capitalize; ">
+                                    {{$config->$firstSpecialDay}} {{$config->$firstSpecialNote}}
+                                </span>
                             </div>
                             <!-- End clock -->
                             <!-- Start phone -->
-                            <a href="tel:16501234000" class="header_phone">
-                                <i class="fa fa-phone"></i>+ 1 650 123-4000
+                            <a href="tel:{{$config->phone}}" class="header_phone">
+                                <i class="fa fa-phone"></i>{{$config->phone}}
                             </a>
                             <!-- End phone -->
                             <!-- Start mail -->
-                            <a href="mailto:owlthemesnet@gmail.com" class="header_mail">
-                                <i class="fa fa-envelope"></i>owlthemesnet@gmail.com
+                            <a href="mailto:{{$config->email}}" class="header_mail">
+                                <i class="fa fa-envelope"></i>{{$config->email}}
                             </a>
                             <!-- End mail --> 
                             <!-- Start address -->
                             <div class="header_address">
-                                <i class="fa fa-map-marker"></i>27 Castro St, Mountain View, CA 94043
+                                <i class="fa fa-map-marker"></i>{{$config->address}}
                             </div>
                             <!-- End address -->
                             <!-- Start social button -->
                             <div class="header_social_button">
-        						<a href="#"><i class="fa fa-facebook"></i></a>
-        						<a href="#"><i class="fa fa-twitter"></i></a>
-        						<a href="#"><i class="fa fa-google-plus"></i></a>
-                                <a href="#"><i class="fa fa-youtube"></i></a>
+        						<a href="{{$config->facebook}}"><i class="fa fa-facebook"></i></a>
+        						<a href="{{$config->twitter}}"><i class="fa fa-twitter"></i></a>
+        						<a href="{{$config->google}}"><i class="fa fa-google-plus"></i></a>
+                                <a href="{{$config->youtube}}"><i class="fa fa-youtube"></i></a>
                                 @if (session()->get("lang") == 'en')
                                     <div style="width: 70px"> <img style="width: 18px;height:18px;margin-right:2px; " src="{{asset('media/svg/flags/237-netherlands.svg')}}" alt="">
                                     <a href="{{route('language',"nl")}}" style="font-weight:600;font-size:18">  Nederlands</a></div>
@@ -93,14 +120,17 @@
                     <div class="container_1336">
             			<div class="row"> 
             				<!-- LOGO start -->
-            				<div class="logo">
-                                <a href="/"><img class="lozad" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="http://via.placeholder.com/230x40" data-srcset="http://via.placeholder.com/230x40, http://via.placeholder.com/460x80 2x" alt="DiDent - Dental Clinic HTML Template" /></a>                                                                  
+            				<div class="logo ">
+                                <a href="/"style="color:#444; font-weight:500;text-decoration:none;">
+                                    <img class="lozad try" style="max-height:60px"  src="{{asset('media/logos/logo3.png')}}" alt="Tandartsenpraktijk BoLo" />
+                                <span > Tandartsenpraktijk BoLo </span>
+                                </a>                                                                  
             				</div> 
             				<!-- LOGO end -->
                             
                             <!-- Headr Button start -->
                             <div class="header_btn">
-                                <div class="popup"><a href="#step1" data-effect="mfp-zoom-in" class="step1 btn_white">Make an Appointment</a></div>
+                                <div class="popup"><a href="#step1" data-effect="mfp-zoom-in" class="step1 btn_white">{{__('main.make_an_appointment')}}</a></div>
                             </div>
                             <!-- Headr Button end -->
                             
@@ -109,18 +139,18 @@
                                 <nav>
                                     <ul>
                                         <li class="ul_sub">
-                                            <a href="{{route('home')}}">Home</a>
+                                            <a href="{{route('home')}}">{{__('main.home')}}</a>
                                         </li> 
                                          <li>
-                                            <a href="{{route('dentists')}}">Our Dentist</a> 
+                                            <a href="{{route('dentists')}}">{{__('main.our_dentist')}}</a> 
                                         </li> 
                                         <li class="ul_sub">
-                                            <a href="{{route('about')}}">About Us</a> 
+                                            <a href="{{route('about')}}">{{__('main.about_us')}}</a> 
                                         </li> 
                                         <li class="ul_sub">
-                                        <a href="{{route('services')}}">Services</a>                                     
+                                        <a href="{{route('services')}}">{{__('main.services')}}</a>                                     
                                         </li>                                                       
-                                        <li><a href="{{route('contact')}}">Contact Us</a></li>
+                                        <li><a href="{{route('contact')}}">{{__('main.contact_us')}}</a></li>
                                     </ul>
                                 </nav>
             				</div>
@@ -139,36 +169,34 @@
                                         <div id="dl-menu" class="dl-menuwrapper">
                                             <ul class="dl-menu dl-menuopen"> 
                                                 <li>
-                                                <a href="{{route('home')}}">Home</a>                                              
+                                                <a href="{{route('home')}}">{{__('main.home')}}</a>                                              
                                                 </li> 
                                                 <li>
-                                                <a href="{{route('dentists')}}">Our Dentist</a>                                              
+                                                <a href="{{route('dentists')}}">{{__('main.our_dentist')}}</a>                                              
                                                 </li>
                                                 <li>
-                                                    <a href="{{route('about')}}">About Us</a> 
+                                                    <a href="{{route('about')}}">{{__('main.about_us')}}</a> 
                                                 </li> 
                                                 <li>
-                                                <a href="{{route('services')}}">Services</a> 
+                                                <a href="{{route('services')}}">{{__('main.services')}}</a> 
                                                 </li> 
-                                                <li><a href="{{route('contact')}}">Contact Us</a></li> 
+                                                <li><a href="{{route('contact')}}">{{__('main.contact_us')}}</a></li> 
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="row footer_item_social">
-                						<a href="#"><i class="fa fa-facebook"></i></a>
-                						<a href="#"><i class="fa fa-twitter"></i></a>
-                						<a href="#"><i class="fa fa-google-plus"></i></a>
-                                        <a href="#"><i class="fa fa-youtube"></i></a>
-                                        <a href="#"><i class="fa fa-vk"></i></a>  
-                                        <a href="#"><i class="fa fa-yelp"></i></a>
+                						<a href="{{$config->facebook}}"><i class="fa fa-facebook"></i></a>
+                                        <a href="{{$config->twitter}}"><i class="fa fa-twitter"></i></a>
+                                        <a href="{{$config->google}}"><i class="fa fa-google-plus"></i></a>
+                                        <a href="{{$config->youtube}}"><i class="fa fa-youtube"></i></a>
                                     </div>
                                     <div class="row menu_contact">
                                         <ul>
-                                            <li><i class="fa fa-map-marker"></i> <address>27 Castro St, Mountain View, CA 94043</address></li>
-                                            <li><i class="fa fa-phone"></i> Phone: + 1 650 123-4000</li>
-                                            <li><i class="fa fa-envelope-o"></i>owlthemesnet@gmail.com</li>
-                                            <li><i class="fa fa-clock-o"></i> Mon-Fri 10:00 am-6:00 pm</li>
-                                            <li><i class="fa fa-clock-o"></i> Sat-Sun 11:00 am-4:00 pm</li>
+                                            <li><i class="fa fa-map-marker"></i> <address>{{$config->address}}</address></li>
+                                            <li><i class="fa fa-phone"></i> {{__('main.phone')}}: {{$config->phone}}</li>
+                                            <li><i class="fa fa-envelope-o"></i>{{$config->email}}</li>
+                                            <li style="text-transform: capitalize"><i class="fa fa-clock-o"></i> {{$normalFrom}} - {{$normalTo}}  {{$config->open_hour_from}} - {{$config->open_hour_to}}</li>
+                                            <li><i class="fa fa-clock-o"></i> {{$config->$firstSpecialDay}} {{$config->$firstSpecialNote}}</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -186,23 +214,23 @@
  <div class="contact_map">
         <div class="container">
             <div class="row">
-                <h4>Contact Us</h4>
+                <h4>{{__('main.contact_us')}}</h4>
                 <div class="contact_map_content">
                     <iframe class="lozad" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3333.967410377096!2d-111.89998968453055!3d33.31966746342457!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDE5JzEwLjgiTiAxMTHCsDUzJzUyLjEiVw!5e0!3m2!1sen!2sus!4v1516690469899" height="490" style="border:0" allowfullscreen></iframe>
                     <div class="contact_map_info row">
                         <div class="contact_map_info__inner">
-                            <div class="contact_map_info__title">Phone</div>
-                            <div class="contact_map_info__phone">+1 650 123-4000</div>
+                            <div class="contact_map_info__title">{{__('main.phone')}}</div>
+                            <div class="contact_map_info__phone">{{$config->phone}}</div>
                         </div>
                         <div class="contact_map_info__inner">
-                            <div class="contact_map_info__title">Email</div>
+                            <div class="contact_map_info__title">{{__('main.email')}}</div>
                             <div class="contact_map_info__email">
-                                <a href="mailto:dentalclinic@example.com">dentalclinic@example.com</a>
+                                <a href="mailto:dentalclinic@example.com">{{$config->email}}</a>
                             </div>
                         </div>
                         <div class="contact_map_info__inner">
-                            <div class="contact_map_info__title">Address</div>
-                            <div class="contact_map_info__address">27 Castro St, Mountain View, CA 94043</div>
+                            <div class="contact_map_info__title">{{__('main.address')}}</div>
+                            <div class="contact_map_info__address">{{$config->address}}</div>
                         </div>
                     </div>
                 </div>
@@ -227,10 +255,10 @@
                     <!-- End footer_logo -->
                     <!-- Start footer_social_button -->
                     <div class="footer_social_button">
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-google-plus"></i></a>
-                        <a href="#"><i class="fa fa-yelp"></i></a>
+                        <a href="{{$config->facebook}}"><i class="fa fa-facebook"></i></a>
+        				<a href="{{$config->twitter}}"><i class="fa fa-twitter"></i></a>
+        				<a href="{{$config->google}}"><i class="fa fa-google-plus"></i></a>
+                        <a href="{{$config->youtube}}"><i class="fa fa-youtube"></i></a>
                     </div>
                     <!-- End footer_social_button -->
                 </div>
@@ -243,16 +271,20 @@
                         <div class="work_time">
                             <i class="fa fa-clock-o"></i>
                             <div class="work_time_inner">
-                                <span>Mon-Fri 10:00 am-6:00 pm</span>
-                                <span>Sat-Sun 11:00 am-4:00 pm</span>
+                                  <span style="text-transform: capitalize">
+                                    {{$normalFrom}} - {{$normalTo}}  {{$config->open_hour_from}} - {{$config->open_hour_to}}
+                                </span> 
+                                 <span style="text-transform: capitalize; ">
+                                    {{$config->$firstSpecialDay}} {{$config->$firstSpecialNote}}
+                                </span>
                             </div>
                         </div>
-                        <a href="tel:16501234000"><i class="fa fa-phone"></i>+ 1 650 123-4000</a>
+                        <a href="tel:16501234000"><i class="fa fa-phone"></i>{{$config->phone}}</a>
                         <a href="mailto:owlthemesnet@gmail.com">
-                            <i class="fa fa-envelope"></i>owlthemesnet@gmail.com
+                            <i class="fa fa-envelope"></i>{{$config->email}}
                         </a>
                         <div class="footer_address">
-                            <i class="fa fa-map-marker"></i>27 Castro St, Mountain View, CA 94043
+                            <i class="fa fa-map-marker"></i>{{$config->address}}
                         </div>
                     </div>
                     <!-- End contact_info -->
@@ -264,24 +296,24 @@
                             <a class="footer_menu_close" title="Close"><i class="fa fa-times" aria-hidden="true"></i></a>  
                             <div class="col-4">
                                 <ul>
-                                    <li><a href="{{route('home')}}">Home</a></li>
+                                    <li><a href="{{route('home')}}">{{__('main.home')}}</a></li>
                                     
                                 </ul>
                             </div>
                             <div class="col-4">
                                 <li>
-                                    <a href="{{route('dentists')}}">Our Dentist</a> 
+                                    <a href="{{route('dentists')}}">{{__('main.our_dentist')}}</a> 
                                 </li>
                             </div>
                             <div class="col-4">
                                 <ul>
                                     
-                                    <li><a href="{{route('contact')}}">Contact Us</a></li> 
+                                    <li><a href="{{route('contact')}}">{{__('main.contact_us')}}</a></li> 
                                 </ul>
                             </div>
                             <div class="col-4">
                                 <ul>
-                                    <li><a href="{{route('about')}}">About Us Page</a></li>
+                                    <li><a href="{{route('about')}}">{{__('main.about_us')}}</a></li>
                             	
                                 </ul>
                             </div>
@@ -303,13 +335,13 @@
                 <!-- Start bottom_footer -->
                 <div class="bottom_footer">
                     <div class="bottom_footer_link popup">
-                        <a href="#step1" data-effect="mfp-zoom-in" class="step1">Make an Appointment</a>
-                        <a href="#">Leave Feedback</a>
-                        <a href="#">Write Us</a>
+                        <a href="#step1" data-effect="mfp-zoom-in" class="step1">{{__('main.make_an_appointment')}}</a>
+                        <a href="#">{{__('main.leave_feedback')}}</a>
+                        <a href="#">{{__('main.write_us')}}</a>
                     </div>
                     <!-- Start copyright -->
                     <div class="copyright">
-                         2019 DiDent. All Rights Reserved
+                         2019 DiDent. @lang('main.rights')
                     </div>
                     <!-- End copyright -->
                 </div>
@@ -331,14 +363,14 @@
                 <div class="row step1_row">
                     <div class="prod_checbox">
                         <div class="radio-toolbar">
-                            <h3>Choose a Dentist</h3>
+                            <h3>{{__('main.choose_a_dentist')}}</h3>
                             <div class="row">
                                 <!-- Any Dentist -->
                                 <input type="radio" id="radio9" class="radio_name" name="radio" value="Any Dentist">
                                 <label for="radio9">
                                     <span class="step_item_vn">
                                         <span class="row step_item align-items-center">
-                                            <span class="doctor_name">Any Dentist</span>
+                                            <span class="doctor_name"> {{__('main.any_dentist')}} </span>
                                         </span>
                                     </span>
                                 </label>
@@ -485,14 +517,14 @@
                     </div>
                     <!-- Prev and next step button -->
                     <div class="center btn_popup">
-                        <a href="#step2" class="btn step-next step2">Next</a>
+                        <a href="#step2" class="btn step-next step2">{{__('main.next')}}</a>
                     </div>
                     <!-- Prev and next step button -->
 
                     <!-- footer popup -->
                     <div class="footer_popup">
-                        If you need immediate assistance, please call us at + 1 650 123-4000
-                        <span> 2019 DiDent. All Rights Reserved</span>
+                        {{__('main.if_you_need_assistance')}} {{$config->phone}}
+                        <span> 2019 DiDent. {{__('main.rights')}}</span>
                     </div>
                     <!-- footer popup -->
                 </div>
@@ -508,14 +540,14 @@
                 <div class="row step2_row">
                     <div class="prod_checbox">
                         <div class="radio-toolbar">
-                            <h3>Please Provide a Visit Reason</h3>
+                            <h3>{{__('main.visit_reason')}}</h3>
                             <div class="row">
                                 <!-- Broken Tooth -->
                                 <input type="radio" id="radio10" class="radio_service" name="radio_service" value="Broken Tooth">
                                 <label for="radio10">
                                     <span class="step_item_vn">
                                         <span class="row step_item align-items-center">
-                                            Broken Tooth
+                                            {{__('main.broken_tooth')}}
                                         </span>
                                     </span>
                                 </label>
@@ -526,7 +558,7 @@
                                 <label for="radio11">
                                     <span class="step_item_vn">
                                         <span class="row step_item align-items-center">
-                                            Check-up and Cleaning
+                                            {{__('main.checkup_and_cleaning')}}
                                         </span>
                                     </span>
                                 </label>
@@ -537,7 +569,7 @@
                                 <label for="radio12">
                                     <span class="step_item_vn">
                                         <span class="row step_item align-items-center">
-                                            Dental Check-up and X-Rays
+                                            {{__('main.checkup_and_x_rays')}}
                                         </span>
                                     </span>
                                 </label>
@@ -548,7 +580,7 @@
                                 <label for="radio13">
                                     <span class="step_item_vn">
                                         <span class="row step_item align-items-center">
-                                            General Consultation
+                                            @lang('main.general_consultation')
                                         </span>
                                     </span>
                                 </label>
@@ -559,7 +591,7 @@
                                 <label for="radio14">
                                     <span class="step_item_vn">
                                         <span class="row step_item align-items-center">
-                                            Jaw Joint Pain
+                                            @lang('main.jaw_joint_pain')
                                         </span>
                                     </span>
                                 </label>
@@ -570,7 +602,7 @@
                                 <label for="radio15">
                                     <span class="step_item_vn">
                                         <span class="row step_item align-items-center">
-                                            Teeth Whitening
+                                            @lang('main.whitening')
                                         </span>
                                     </span>
                                 </label>
@@ -592,7 +624,7 @@
                                 <label for="radio17">
                                     <span class="step_item_vn">
                                         <span class="row step_item align-items-center">
-                                            Wisdom Teeth Extractions
+                                            @lang('main.teeth_extractions')
                                         </span>
                                     </span>
                                 </label>
@@ -603,7 +635,7 @@
                                 <label for="radio18">
                                     <span class="step_item_vn">
                                         <span class="row step_item align-items-center">
-                                            Other
+                                            @lang('main.others')
                                         </span>
                                     </span>
                                 </label>
@@ -613,14 +645,14 @@
                     </div>
                     <!-- Prev and next step button -->
                     <div class="center btn_popup">
-                        <a href="#step1" class="btn step1">Prev</a>
-                        <a href="#step3" class="btn step-next step3">Next</a>
+                        <a href="#step1" class="btn step1">@lang('main.previous')</a>
+                        <a href="#step3" class="btn step-next step3">@lang('main.next')</a>
                     </div>
                     <!-- Prev and next step button -->
                     <!-- footer popup -->
                     <div class="footer_popup">
-                        If you need immediate assistance, please call us at + 1 650 123-4000
-                        <span> 2019 DiDent. All Rights Reserved</span>
+                        @lang('main.if_you_need_assistance') {{$config->phone}}
+                        <span> 2019 DiDent. @lang('main.right')</span>
                     </div>
                     <!-- footer popup -->
                 </div>
@@ -635,8 +667,8 @@
                 <!-- Start input date -->
                 <div class="step3_row datepicker_row row">
                     <div class="datepicker_row_title">
-                        <h3>Choose a Date</h3>
-                        <div class="btn_white">First Available: Tomorrow at 10:00 am</div>
+                        <h3>@lang('main.choose_date')</h3>
+                        <div class="btn_white">@lang('main.first_available'): @lang('main.tomorrow') @lang('main.at') 10:00 am</div>
                     </div>
                     <div class="row datepicker">
                         <div id="datepicker"></div>
@@ -645,15 +677,15 @@
 
                     <!-- Prev and next step button -->
                     <div class="center btn_popup">
-                        <a href="#step2" class="btn step2">Prev</a>
-                        <a href="#step4" class="btn step-next step4">Next</a>
+                        <a href="#step2" class="btn step2">@lang('main.previous')</a>
+                        <a href="#step4" class="btn step-next step4">@lang('main.next')</a>
                     </div>
                     <!-- Prev and next step button -->
 
                     <!-- footer popup -->
                     <div class="footer_popup">
-                        If you need immediate assistance, please call us at + 1 650 123-4000
-                        <span> 2019 DiDent. All Rights Reserved</span>
+                        @lang('main.if_you_need_assistance'){{$config->phone}}
+                        <span> 2019 DiDent. @lang('main.rights')</span>
                     </div>
                     <!-- footer popup -->
                 </div>
@@ -669,7 +701,7 @@
                 <div class="row step4_row">
                     <div class="prod_checbox">
                         <div class="radio-toolbar">
-                            <h3>Choose a Time</h3>
+                            <h3>@lang('main.choose_time')</h3>
                             <div class="row">
                                 <!-- 10:00 am -->
                                 <input type="radio" id="radio_time1" class="radio_time" name="radio_time" value="10:00 am">
@@ -763,15 +795,15 @@
                     </div>
                     <!-- Prev and next step button -->
                     <div class="center btn_popup">
-                        <a href="#step3" class="btn step3">Prev</a>
-                        <a href="#step5" class="btn step-next step5">Next</a>
+                        <a href="#step3" class="btn step3">@lang('main.previous')</a>
+                        <a href="#step5" class="btn step-next step5">@lang('main.next')</a>
                     </div>
                     <!-- Prev and next step button -->
 
                     <!-- footer popup -->
                     <div class="footer_popup">
-                        If you need immediate assistance, please call us at + 1 650 123-4000
-                        <span> 2019 DiDent. All Rights Reserved</span>
+                        @lang('main.if_you_need_assistance') {{$config->phone}}
+                        <span> 2019 DiDent. @lang('main.rights')</span>
                     </div>
                     <!-- footer popup -->
                 </div>
@@ -785,7 +817,7 @@
             <div class="popup_content">
                 <!-- Almost There -->
                 <div class="row step5_row almost_there">
-                    <h3>Almost There!</h3>
+                    <h3>@lang('main.almost_there')</h3>
 
                     <div class="row almost_select">
                         <div class="col-3">
@@ -793,55 +825,55 @@
                                 <img class="lozad is-loaded" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="http://via.placeholder.com/85x95" data-srcset="http://via.placeholder.com/85x95, http://via.placeholder.com/170x190 2x" alt="DiDent">
                             </div>
                             <div class="almost_details">
-                                <div class="almost_doc_position">Dentist</div>
+                                <div class="almost_doc_position">@lang('main.dentist')</div>
                                 <div class="almost_doc_name">Dr. Jennifer Wilson</div>
                             </div>
                         </div>
                         <div class="col-3">
                             <div class="almost_details">
-                                <div class="almost_title">Reason</div>
+                                <div class="almost_title">@lang('main.reason')</div>
                                 <div class="almost_reason">Check-up and Cleaning</div>
                             </div>
                         </div>
                         <div class="col-3">
                             <div class="almost_details">
-                                <div class="almost_title">Date & Time</div>
+                                <div class="almost_title">@lang('main.date_time')</div>
                                 <div class="almost_date">April 19 at 10:00 am</div>
                             </div>
                         </div>
                     </div>
                     <!-- Contact Information -->
                     <div class="row contact_information_row">
-                        <h4>Contact Information</h4>
-                        <p>Reach us with your questions. We are looking forward hearing form you!</p>
+                        <h4>@lang('main.contact_info')</h4>
+                        <p>@lang('main.reach_us')</p>
 
                         <div class="row form_row">
                             <div class="row row-15">
                                 <div class="col-2">
-                                    <div class="leable">Full Name</div>
+                                    <div class="leable">@lang('main.full_name')</div>
                                     <input class="posName" type="text" name="posName">
                                 </div>
                                 <div class="col-2">
-                                    <div class="leable">Email</div>
+                                    <div class="leable">@lang('email')</div>
                                     <input class="posEmail" type="email" name="posEmail" />
                                 </div>
                             </div>
-                            <div class="leable">Phone (ex. 650 123-4000)</div>
+                            <div class="leable">@lang('main.phone') (ex. 650 123-4000)</div>
                             <input class="posTel" type="text" name="posTel"> 
                         </div>
 
                         <div class="process"></div>
                         <div class="center btn_popup">
-                           <a href="#step4" class="btn step4">Prev</a>
-                           <button type="button" class="button send">Submit</button>
+                           <a href="#step4" class="btn step4">@lang('main.previous')</a>
+                           <button type="button" class="button send">@lang('main.submit')</button>
                         </div> 
                     </div>
                     <!-- Contact Information -->
  
                     <!-- footer popup -->
                     <div class="footer_popup">
-                        If you need immediate assistance, please call us at + 1 650 123-4000
-                        <span> 2019 DiDent. All Rights Reserved</span>
+                        @lang('main.if_you_need_assistance') {{$config->phone}}
+                        <span> 2019 DiDent. @lang('main.rights')</span>
                     </div>
                     <!-- footer popup -->
                 </div>
@@ -869,7 +901,9 @@
     <script src="{{('website/js/jquery.twentytwenty.js')}}"></script>
 	<!-- Custom JS -->
 	<script async src="{{asset('website/js/custom.js')}}"></script> 
- 
+ @else
+ This page is empty because the table is empty, please contact the developer.
+ @endif
     </body>
 
 </html>  

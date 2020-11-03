@@ -20,7 +20,6 @@ class HomePageController extends Controller
         $items = Home_page::all();
         $page_title = 'Home';
         $page_description = 'Some description for the page';
-
         return view('dashboard.home.index', compact('page_title', 'page_description', 'items'));
     }
 
@@ -91,7 +90,6 @@ class HomePageController extends Controller
     {
         $page_title = 'Edit';
         $page_description = 'your home page content here!';
-
         $items = Home_page::find($id);
         return view('dashboard.home.edit', compact('page_title', 'page_description', 'items'));
     }

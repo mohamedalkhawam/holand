@@ -50,7 +50,7 @@
                                                     @foreach ($items as $value)
                                                             <tr>
                                                                 
-                                                                <td > @if($value->imagePath !="")<img style="width:70px; height:45px;" src="{{asset('/storage/gallery/'.$value->imagePath)}}" alt="" >@endif</td>
+                                                                <td > @if($value->imagePath !="")<img style="width:55px; height:55px;" src="{{asset('/storage/gallery/'.$value->imagePath)}}" alt="" >@endif</td>
                                                                 <td>
                                                                     <a href="javaScript:void(0)"  style="margin-left:5px;" onclick="$(this).parent().find('form').submit()">
                                                                         <form action="{{Route('dashboard.about.gallery.destroy',$value->id)}}" method="post" style="display: none">
@@ -81,6 +81,7 @@
 {{-- Scripts Section --}}
 @section('scripts')
 <script src="{{ asset('js/pages/crud/ktdatatable/base/html-table.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/pages/crud/file-upload/dropzonejs.js') }}" type="text/javascript"></script>
 <script src="{{asset('homePage.js')}}"></script>
 @endsection
 

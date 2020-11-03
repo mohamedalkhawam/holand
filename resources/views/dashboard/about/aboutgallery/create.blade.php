@@ -34,7 +34,7 @@
                                                     <i class="flaticon2-chat-1"></i> Uploade Image                                                    
                                                 </a>
                                             <div style="overflow:hidden; display:inline-block">
-                                                    <input  id="file" type="file" style="margin-left: -90px;" name="imagePath" class="@error('imagePath') is-invalid @enderror" required validate >
+                                                    <input  id="file" type="file" style="margin-left: -91px;" name="imagePath" class="@error('imagePath') is-invalid @enderror" required validate >
                                             </div>
 
                                         {{-- <span class="form-text text-muted">You can replace the old value with the new value.</span> --}}

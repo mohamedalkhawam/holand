@@ -86,13 +86,13 @@ return $firstFive;
                                                                 </td>
                                                                 <td> 
                                                                     @if($value->imagePath !="")
-                                                                        <img style="width:70px; height:45px;" src="{{asset('/storage/cases/'.$value->imagePath_before)}}" alt="" >
+                                                                        <img style="width:55px; height:55px;" src="{{asset('/storage/cases/'.$value->imagePath_before)}}" alt="" >
                                                                     @endif
 
                                                                 </td>
                                                                 <td> 
                                                                     @if($value->imagePath !="")
-                                                                        <img style="width:70px; height:45px;" src="{{asset('/storage/cases/'.$value->imagePath_after)}}" alt="" >
+                                                                        <img style="width:55px; height:55px;" src="{{asset('/storage/cases/'.$value->imagePath_after)}}" alt="" >
                                                                     @endif
 
                                                                 </td>

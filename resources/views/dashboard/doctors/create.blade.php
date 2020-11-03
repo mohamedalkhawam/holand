@@ -173,7 +173,7 @@
                                                     Uploade Image                                                    
                                                 </a>
                                             <div style="overflow:hidden; display:inline-block">
-                                                    <input  id="file" type="file" style="margin-left: -90px;" name="imagePath" validate required >
+                                                    <input  id="file" type="file" style="margin-left: -91px;" name="imagePath" validate required >
                                             </div>
 
                                         {{-- <span class="form-text text-muted">You can replace the old value with the new value.</span> --}}

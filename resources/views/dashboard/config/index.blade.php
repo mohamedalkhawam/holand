@@ -1,83 +1,194 @@
+{{-- Extends layout --}}
 @extends('layout.default')
+
+{{-- Content --}}
 @section('content')
-     <div class="card card-custom card-sticky" id="kt_page_sticky_card" style="align-item:center"> 
-        <div class="card-header" style="">
-	        <div class="card-title">
-				<h3 class="card-label">Add images to gallery
-			    <i class="mr-2"></i>
-		        <small class=""> you can replace the old value with the new value.</small></h3>
-			</div>									
-            <div class="card-toolbar">
-                <a href="{{route('dashboard.services.gallery.index')}}" class="btn btn-light-primary font-weight-bolder mr-2">
-                    <i class="ki ki-long-arrow-back icon-xs"></i>Back</a>
-                <div class="btn-group">
-                    <button type="button" type="submit" class="btn btn-primary font-weight-bolder" onclick="submitForm()">
-                    <i class="ki ki-check icon-xs"></i>Save Form</button>		
-                </div>
-            </div>
-		</div>
-        <div class="card-body">
-        <form class="form"action="{{route('dashboard.services.gallery.store')}}" method="post"  enctype="multipart/form-data" id="editForm">
-            <input type="hidden" name="_token" value="{{csrf_token()}}">               
-             {{-- <input type="hidden" name="_method" value="put">
-             {{ method_field('PUT') }} --}}
-                <div class="row">
-                    <div class="col-xl-2"></div>
-                        <div class="col-xl-8">
-                            <div class="my-5">
-                                {{-- Start Title --}}
+<?php 
+function cutString($string){
+$exploded = explode(" ", $string);
+$firstFive = implode(" ", array_splice($exploded, 0, 3));
+return $firstFive;
 
-                                    <h3 class="text-dark font-weight-bold mb-10">Services Category </span> : </h3>
-                                    <div class="form-group row">
-                                        <label class="col-3">Choose a service</label>
-                                        <div class="col-9">
-                                        <select name="service_id" id="" class="form-control @error('service_id') is-invalid @enderror" required validate>
-                                            <option value="">Choose category</option>
-                                            @foreach ($items as $value)
-                                                <option value="{{$value->id}}"> {{$value->title_en}} </option>
-                                            @endforeach
-                                        </select>
-                                        {{-- <span class="form-text text-muted">You can replace the old value with the new value.</span> --}}
+}
+?>
+@if(isset($items))
+ @foreach ($items as $value)
+                                <div class="card card-custom">
+                                    <div class="card-header flex-wrap border-0 pt-6 pb-0">
+                                        <div class="card-title">
+                                            <h3 class="card-label">Services Page Content
+                                            <div class="text-muted pt-2 font-size-sm">Datatable initialized from HTML table</div></h3>
+                                        </div>
+                                        <div class="d-flex align-items-center" >
+                                            <span class="text-muted pt-2 font-size-m " style="margin-right:15px"> <strong>Last Update:</strong> {{$value->updated_at}} </span>
+                                            <a href=" {{route('dashboard.config.edit',$value->id)}} "class="btn btn-primary" style="font-weight:600">Edit</a> 
                                         </div>
                                     </div>
-                                   
-                                {{-- End Title --}}
-                                  <div class="separator separator-dashed my-10"></div>
-                                    
-                                 {{-- Start image --}}
-                                    
-                                    <h3 class="text-dark font-weight-bold mb-10">Add Service's Image : </h3>   
-                                    <div class="form-group row">
-                                        <label class="col-3">Uploud an image  </label>
-                                        <div class="col-9">
-                                                <a href="javascript:void(0)" class="btn btn-light-dark" onclick="check()">                      
-                                                    <i class="flaticon2-chat-1"></i> Uploade Image                                                    
-                                                </a>
-                                            <div style="overflow:hidden; display:inline-block">
-                                                    <input  id="file" type="file" style="margin-left: -90px;" name="imagePath" class="@error('imagePath') is-invalid @enderror" required validate >
+                                    <div class="card-body">
+                                        {{--Start Clinic Details  --}}
+                                        <div class="row">
+                                            <div class="col-xl-2"></div>
+                                            <div class="col-xl-8">
+                                                <div class="my-5">
+                                                    <h3 class="text-dark font-weight-bold mb-10 h1">Clinic Details : </h3>
+                                                    {{-- Start Phone Number --}}
+                                                        <div class="form-group row">
+                                                            <label class="col-3 h6 font-weight-bolder">Phone:</label>
+                                                            <div class="col-9 h6 font-weight-lighter">
+                                                                 {{$value->phone}}
+                                                            </div>
+                                                        </div>
+                                                    {{-- End Phone Number --}}
+
+                                                    {{-- Start Email  --}}
+                                                        <div class="form-group row">
+                                                            <label class="col-3 h6 font-weight-bolder">Email:</label>
+                                                            <div class="col-9 h6 font-weight-lighter">
+                                                                {{$value->email}}
+                                                            </div>
+                                                        </div>
+                                                    {{-- End Email  --}}
+
+                                                    {{-- Start Email  --}}
+                                                        <div class="form-group row">
+                                                            <label class="col-3 h6 font-weight-bolder">Address:</label>
+                                                            <div class="col-9 h6 font-weight-lighter">
+                                                                  {{$value->address}}
+                                                            </div>
+                                                        </div>
+                                                    {{-- End Email  --}}
+
+                                                     {{-- Start Facebook  --}}
+                                                        <div class="form-group row">
+                                                            <label class="col-3 h6 font-weight-bolder">Facebook:</label>
+                                                            <div class="col-9 h6 font-weight-lighter">
+                                                                {{$value->facebook}}
+                                                            </div>
+                                                        </div>
+                                                    {{-- End Facebook  --}}
+
+                                                    {{-- Start Facebook  --}}
+                                                        <div class="form-group row">
+                                                            <label class="col-3 h6 font-weight-bolder">Twitter:</label>
+                                                            <div class="col-9 h6 font-weight-lighter">
+                                                               {{$value->twitter}}
+                                                            </div>
+                                                        </div>
+                                                    {{-- End Facebook  --}}
+
+
+
+                                                    {{-- Start Google+  --}}
+                                                        <div class="form-group row">
+                                                            <label class="col-3 h6 font-weight-bolder">Google+:</label>
+                                                            <div class="col-9 h6 font-weight-lighter">
+                                                                 {{$value->google}}
+                                                            </div>
+                                                        </div>
+                                                    {{-- End Google+  --}}
+
+                                                    {{-- Start Youtube  --}}
+                                                        <div class="form-group row">
+                                                            <label class="col-3 h6 font-weight-bolder">Youtube:</label>
+                                                            <div class="col-9 h6 font-weight-lighter">
+                                                                {{$value->youtube}}
+                                                            </div>
+                                                        </div>
+                                                    {{-- End Youtube  --}}
+
+                                                    {{-- Start Location  --}}
+                                                        <div class="form-group row">
+                                                            <label class="col-3 h6 font-weight-bolder">Location:</label>
+                                                            <div class="col-9 h6 font-weight-lighter">
+                                                            [ {{$value->lat}},  {{$value->lng}}]
+                                                            </div>
+                                                        </div>
+                                                    {{-- End Location  --}}
+
+                                                    {{-- Start Location  --}}
+                                                        <div class="form-group row">
+                                                            <label class="col-3 h6 font-weight-bolder">Video Link:</label>
+                                                            <div class="col-9 h6 font-weight-lighter">
+                                                              {{$value->youtube_video}}
+                                                            </div>
+                                                        </div>
+                                                    {{-- End Location  --}}
+                                                </div>
                                             </div>
-
-                                        {{-- <span class="form-text text-muted">You can replace the old value with the new value.</span> --}}
+                                           
                                         </div>
-                                    </div>
-                                    
-                                {{-- end Image --}}
-                                    <div class=" my-15"></div>    
-                            </div>
-                        </div>
-                    <div class="col-xl-2"></div>
-                </div>
-            </form>						
-        </div>
-    </div>
-<script> 
+                                        {{--End Clinic Details  --}}  
 
-function check (){
-    document.getElementById('file').click() 
-}
-function submitForm(){
-    document.getElementById('editForm').submit()
-}
-</script>
+                                        <div class="separator separator-dashed my-10"></div>
+                                        {{-- Start Clinic Open Hours  --}}
+                                            <div class="row">
+                                                <div class="col-xl-2"></div>
+                                                <div class="col-xl-8">
+                                                    <div class="my-5">
+                                                        <h3 class="text-dark font-weight-bold mb-10 h1">Open Days and Hours : </h3>
+
+                                                        {{-- Start Normal Days   --}}
+                                                            <div class="form-group row">
+                                                                <label class="col-3 h6 font-weight-bolder">Normal Days En:</label>
+                                                                <div class="col-9 h6 font-weight-lighter">
+                                                             {{$value->open_day_from_en}}-{{$value->open_day_to_en}}   From {{$value->open_hour_from}} To {{$value->open_hour_to}}
+                                                                </div>
+                                                            </div>
+                                                       
+                                                            <div class="form-group row">
+                                                                <label class="col-3 h6 font-weight-bolder">Normal Days Nl:</label>
+                                                                <div class="col-9 h6 font-weight-lighter">
+                                                            {{$value->open_day_from_nl}}-{{$value->open_day_to_nl}}   From {{$value->open_hour_from}} To {{$value->open_hour_to}}
+                                                                </div>
+                                                            </div>
+                                                        {{-- End Normal Days  --}}
+
+                                                        {{-- Start Special Day 1   --}}
+                                                            <div class="form-group row">
+                                                                <label class="col-3 h6 font-weight-bolder">Special Day 1 En:</label>
+                                                                <div class="col-9 h6 font-weight-lighter">
+                                                                {{$value->first_special_day_en}}   {{$value->first_special_day_note_en}}
+                                                                </div>
+                                                            </div>
+                                                       
+                                                            <div class="form-group row">
+                                                                <label class="col-3 h6 font-weight-bolder">Special Day 1 Nl:</label>
+                                                                <div class="col-9 h6 font-weight-lighter">
+                                                            {{$value->first_special_day_nl}}   {{$value->first_special_day_note_nl}}
+                                                                </div>
+                                                            </div>
+                                                        {{-- End Special Day 1  --}}
+
+                                                        {{-- Start Special Day 1   --}}
+                                                            <div class="form-group row">
+                                                                <label class="col-3 h6 font-weight-bolder">Special Day 2 En:</label>
+                                                                <div class="col-9 h6 font-weight-lighter">
+                                                                  {{$value->second_special_day_en}}  {{$value->second_special_day_note_en}}
+                                                                </div>
+                                                            </div>
+                                                       
+                                                            <div class="form-group row">
+                                                                <label class="col-3 h6 font-weight-bolder">Special Day 2 Nl:</label>
+                                                                <div class="col-9 h6 font-weight-lighter">
+                                                                   {{$value->second_special_day_nl}}   {{$value->second_special_day_note_nl}}
+                                                                </div>
+                                                            </div>
+                                                        {{-- End Special Day 1  --}}
+                                                        
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {{--End Clinic Open Hours  --}}
+
+                                        
+                                    </div>
+                                </div>
+                               
+                                    
+                                @endforeach
+                                
+ @endif
 @endsection
+
 

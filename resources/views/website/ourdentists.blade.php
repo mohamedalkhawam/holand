@@ -2,6 +2,7 @@
 
 
 @section('content')
+
       <!--  Main start -->
         <main>
             <!-- Head physician start -->

@@ -133,7 +133,7 @@
                                                     Uploade Image                                                    
                                                 </a>
                                             <div style="overflow:hidden; display:inline-block">
-                                                    <input  id="first_image_path" type="file" style="margin-left: -90px;" name="first_image_path"  required validate >
+                                                    <input  id="first_image_path" type="file" style="margin-left: -91px;" name="first_image_path"  required validate >
                                             </div>
 
                                         {{-- <span class="form-text text-muted">You can replace the old value with the new value.</span> --}}
@@ -151,7 +151,7 @@
                                                     Uploade Image                                                    
                                                 </a>
                                             <div style="overflow:hidden; display:inline-block">
-                                                    <input  id="second_image_path" type="file" style="margin-left: -90px;" name="second_image_path"  required validate>
+                                                    <input  id="second_image_path" type="file" style="margin-left: -91px;" name="second_image_path"  required validate>
                                             </div>
 
                                         {{-- <span class="form-text text-muted">You can replace the old value with the new value.</span> --}}
