@@ -1425,6 +1425,7 @@ header .menu {
     line-height: 36px;
 }
 
+
 /* 3.5 Header Page Title */
 .header_title {
     padding-bottom: 106px;
@@ -1433,6 +1434,7 @@ header .menu {
     background: white;
     text-align: left;
 }
+
 
 .header_title h1 {
     text-align: left;
@@ -1614,12 +1616,12 @@ header .menu {
     position: relative;
 }
 
-.services .services_item span {
+.services_item span {
     display: block;
     font-family: 'Source Sans Pro', sans-serif;
 }
 
-.services .services_item_title {
+.services_item_title {
     color: #201E20;
     font-size: 20px;
     line-height: 30px;
@@ -1629,14 +1631,14 @@ header .menu {
     padding-right: 25px;
 }
 
-.services .services_item_desc {
+.services_item_desc {
     color: #656565;
     font-size: 16px;
     line-height: 24px;
     max-width: 155px;
 }
 
-.services .services_item_title::before {
+.services_item_title::before {
     content: "\f105";
     display: inline-block;
     font: normal normal normal 14px/1 FontAwesome;
@@ -1650,20 +1652,20 @@ header .menu {
     top: 4px;
 }
 
-.services .services_item:hover {
+.services_item:hover {
     color: white;
     background-color: var(--theme_color);
     text-decoration: none;
 }
 
-.services .services_item:hover .services_item_desc,
+.services_item:hover .services_item_desc,
 .services_item:hover .services_item_title::before,
 .services_item:hover .services_item_title,
 .services_item:hover i {
     color: white !important;
 }
 
-.services .services_item i {
+.services_item i {
     font-size: 97px;
     color: #979797;
     position: absolute;
@@ -1671,60 +1673,60 @@ header .menu {
     bottom: 0;
 }
 
-.services .services_item .dentalic_combined {
+.services_item .dentalic_combined {
     font-size: 89px;
     right: 9px;
     bottom: 0px;
 }
 
-.services .services_item .dentalic_iorthodontics {
+.services_item .dentalic_iorthodontics {
     font-size: 65px;
     right: 0px;
     bottom: 22px;
 }
 
-.services .services_item .dentalic_general {
+.services_item .dentalic_general {
     font-size: 97px;
     right: 0px;
     bottom: 0px;
 }
 
-.services .services_item .dentalic_restorations {
+.services_item .dentalic_restorations {
     font-size: 88px;
     right: 13px;
     bottom: 0px;
 }
 
-.services .services_item .dentalic_pediatric {
+.services_item .dentalic_pediatric {
     font-size: 89px;
     right: 18px;
     bottom: 0px;
 }
 
-.services .services_item .dentalic_emergency {
+.services_item .dentalic_emergency {
     font-size: 89px;
     right: 18px;
     bottom: -3px;
 }
 
-.services .services_item .dentalic_preventative {
+.services_item .dentalic_preventative {
     font-size: 100px;
     right: 16px;
     bottom: -1px;
 }
 
-.services .services_item .dentalic_other_services {
+.services_item .dentalic_other_services {
     font-size: 92px;
     right: 18px;
     bottom: -3px;
 }
 
-.services .view_servises {
+.view_servises {
     text-align: center;
     margin-top: 40px;
 }
 
-.services .view_servises a {
+.view_servises a {
     display: inline-block;
 }
 
@@ -2034,7 +2036,7 @@ header .menu {
     width: 80%;
 }
 
-.certificates .owl_certificates .item {
+.owl_certificates .item {
     opacity: 0.5;
     padding: 30px 57px;
     border-radius: 4px;
@@ -2043,25 +2045,25 @@ header .menu {
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.05);
 }
 
-.certificates .owl_certificates .owl-item {
+.owl_certificates .owl-item {
     padding: 10px 0;
 }
 
-.certificates .owl_certificates .active .item {
+.owl_certificates .active .item {
     opacity: 1;
 }
 
-.certificates .owl_certificates .item a {
+.owl_certificates .item a {
     display: inline-block;
 }
 
-.certificates .navigation {
+.navigation {
     width: 124px;
     float: right;
     margin-top: 3px;
 }
 
-.certificates .navigation div {
+.navigation div {
     height: 44px;
     text-align: center;
     width: 50px;
@@ -2575,17 +2577,17 @@ header .menu {
 
 /* 5 About Us Page */
 /* 5.1 Why We Are */
-.aboutus .why_we_are {
+.why_we_are {
     padding: 107px 0 63px 0;
 }
 
-.aboutus .why_we_are_item {
+.why_we_are_item {
     padding: 0 15px;
     margin-bottom: 66px;
     text-align: center;
 }
 
-.aboutus .why_we_are_item_icon {
+.why_we_are_item_icon {
     margin: 0 auto 25px auto;
     border-radius: 50%;
     height: 100px;
@@ -2594,65 +2596,65 @@ header .menu {
     border: 1px solid #CCCBCB;
 }
 
-.aboutus .why_we_are_item_icon i {
+.why_we_are_item_icon i {
     font-size: 35px;
     color: #CCCBCB;
     display: block;
 }
 
-.aboutus .why_we_are_item_icon .dentalic_doctors {
+.why_we_are_item_icon .dentalic_doctors {
     margin-top: 28px;
     margin-left: 5px;
     font-size: 50px;
 }
 
-.aboutus .why_we_are_item_icon .dentalic_clinic {
+.why_we_are_item_icon .dentalic_clinic {
     margin-top: 29px;
     margin-left: 6px;
     font-size: 41px;
 }
 
-.aboutus .why_we_are_item_icon .dentalic_staff {
+.why_we_are_item_icon .dentalic_staff {
     margin-top: 30px;
     margin-left: 0px;
     font-size: 36px;
 }
 
-.aboutus .why_we_are_item_icon .dentalic_technologies {
+.why_we_are_item_icon .dentalic_technologies {
     margin-top: 28px;
     margin-left: 0px;
     font-size: 42px;
 }
 
-.aboutus .why_we_are_item_icon .dentalic_financials {
+.why_we_are_item_icon .dentalic_financials {
     margin-top: 22px;
     margin-left: 1px;
     font-size: 54px;
 }
 
-.aboutus .why_we_are_item_icon .dentalic_services {
+.why_we_are_item_icon .dentalic_services {
     margin-top: 28px;
     margin-left: 0px;
     font-size: 44px;
 }
 
-.aboutus .why_we_are_item_title {
+.why_we_are_item_title {
     color: #201E20;
     font-size: 20px;
     margin-bottom: 11px;
     font-family: 'Source Sans Pro', sans-serif;
 }
 
-.aboutus .why_we_are_item_text {
+.why_we_are_item_text {
     color: #656565;
 }
 
-.aboutus .why_we_are h4 {
+.why_we_are h4 {
     margin-bottom: 93px;
     text-align: center;
 }
 
-.aboutus .news {
+.news {
     padding: 117px 0 60px 0;
 }
 
@@ -2661,11 +2663,11 @@ header .menu {
 }
 
 /* 5.2 Gets Block */
-.aboutus .gets {
+.gets {
     padding: 155px 0 67px 0;
 }
 
-.aboutus .gets h4 {
+.gets h4 {
     position: relative;
     max-width: 615px;
     color: #201E20;
@@ -2679,7 +2681,7 @@ header .menu {
     text-align: center;
 }
 
-.aboutus .gets h4 i {
+.gets h4 i {
     position: absolute;
     top: -26px;
     color: var(--theme_color);
@@ -2689,22 +2691,22 @@ header .menu {
     transform: translateX(-50%);
 }
 
-.aboutus .gets .advantages {
+.gets .advantages {
     float: right;
     width: 40%;
     margin-top: 7px;
 }
 
-.aboutus .gets .gets_text {
+.gets .gets_text {
     line-height: 2;
     padding-right: 30px;
 }
 
-.aboutus .gets .advantages {
+.gets .advantages {
     padding-left: 127px;
 }
 
-.aboutus .gets .advantages .advantages_item:nth-child(2) {
+.gets .advantages .advantages_item:nth-child(2) {
     margin-left: 67px;
 }
 
@@ -2755,108 +2757,108 @@ header .menu {
 }
 
 /* 5.4 Costum Text */
-.aboutus .costum_text_content {
+.costum_text_content {
     line-height: 2;
     float: right;
     padding-top: 94px;
     padding-left: 16px;
 }
 
-.aboutus .costum_text {
+.costum_text {
     padding: 100px 0 156px 0;
 }
 
-.aboutus .costum_text_img img:nth-child(2) {
+.costum_text_img img:nth-child(2) {
     float: right;
     margin-top: 70px;
 }
 
-.aboutus .costum_text_img {
+.costum_text_img {
     padding-right: 59px;
 }
 
 /* 5.5 Certificates Carusel */
-.aboutus .owl_gallery {
+.owl_gallery {
     text-align: center;
 }
 
-.aboutus .owl_gallery {
+.owl_gallery {
     position: relative;
 }
 
-.aboutus .owl_gallery .owl-item {
+.owl_gallery .owl-item {
     opacity: 0.2;
 }
 
-.aboutus .owl_gallery .active {
+.owl_gallery .active {
     opacity: 1;
 }
 
 /* 5.6 Gallery */
-.aboutus .about .about_left h1 {
+.about .about_left h1 {
     font-size: 72px;
     line-height: 1.1;
     margin-bottom: 89px;
 }
 
-.aboutus .about .about_right .about_image_left {
+.about .about_right .about_image_left {
     padding: 246px 13px 0 0;
 }
 
-.aboutus .about .about_right .about_image_right {
+.about .about_right .about_image_right {
     padding: 126px 0 0 14px;
 }
 
-.aboutus .about {
+.about {
     margin: 0 auto 130px auto;
     padding: 0;
 }
 
-.aboutus .about .about_left .advantages {
+.about .about_left .advantages {
     padding-top: 26px;
 }
 
 /* 5.7 Video Block */
-.aboutus .video {
+.video {
     margin: 0px 0 0px 0;
     padding: 0;
 }
 
-.aboutus .video .container {
+.video .container {
     top: 0;
 }
 
 /* 5.8 Head physician */
-.ourdentists .head_physician {
+.head_physician {
     padding-bottom: 50px;
 }
 
-.ourdentists .head_physician h1 {
+.head_physician h1 {
     font-size: 72px;
     text-align: left;
     margin-bottom: 95px;
 }
 
-.ourdentists .head_physician .head_physician_right {
+.head_physician .head_physician_right {
     padding-top: 60px;
     padding-left: 15px;
 }
 
-.ourdentists .head_physician .head_physician_name {
+.head_physician .head_physician_name {
     color: #201E20;
     font-size: 34px;
     margin-bottom: 1px;
     font-family: 'Source Sans Pro', sans-serif;
 }
 
-.ourdentists .head_physician .head_physician_deck {
+.head_physician .head_physician_deck {
     color: #656565;
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
-.ourdentists .head_physician .head_physician_text {
+.head_physician .head_physician_text {
     margin-top: 113px;
     position: relative;
     padding-top: 35px;
@@ -2867,7 +2869,7 @@ header .menu {
     line-height: 30px;
 }
 
-.ourdentists .head_physician .head_physician_text .dentalic_quote {
+.head_physician .head_physician_text .dentalic_quote {
     position: absolute;
     top: -26px;
     color: var(--theme_color);
@@ -2876,19 +2878,19 @@ header .menu {
     display: inline-block;
 }
 
-.ourdentists .head_physician_sign {
+.head_physician_sign {
     margin-top: 48px;
     text-align: right;
     font-size: 100px;
     position: relative;
 }
 
-.ourdentists .head_physician_sign .dentalic_signature {
+.head_physician_sign .dentalic_signature {
     margin-right: 93px;
     font-size: 105px;
 }
 
-.ourdentists .head_physician_sign .dentalic_stamp {
+.head_physician_sign .dentalic_stamp {
     position: absolute;
     top: 55px;
     font-size: 120px;
@@ -2896,7 +2898,7 @@ header .menu {
     color: var(--theme_color);
 }
 
-.ourdentists .head_physician_row {
+.head_physician_row {
     border-bottom: 1px solid #CCCBCB;
 }
 
@@ -3286,13 +3288,13 @@ header .menu {
 }
 
 /* 6 Service Page */
-.service_page .header_title {
+.header_title {
     padding-bottom: 143px;
 }
 
 .service_page .services {}
 
-.service_page .services_row {
+.services_row {
     padding-top: 130px;
     padding-bottom: 335px;
 }

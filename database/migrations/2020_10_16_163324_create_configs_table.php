@@ -17,7 +17,8 @@ class CreateConfigsTable extends Migration
             $table->id();
             $table->string('phone');
             $table->string('email');
-            $table->string('address',300);
+            $table->string('address_en',300);
+            $table->string('address_nl',300);
             $table->string('facebook');
             $table->string('twitter');
             $table->string('google');

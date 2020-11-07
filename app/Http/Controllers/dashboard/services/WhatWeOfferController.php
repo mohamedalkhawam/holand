@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\dashboard;
+namespace App\Http\Controllers\dashboard\services;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Appointment_page;
-
-class AppointmentPageController extends Controller
+use App\What_we_offer;
+class WhatWeOfferController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,11 +14,10 @@ class AppointmentPageController extends Controller
      */
     public function index()
     {
-        $items = Appointment_page::all();
-        $page_title = 'appointment';
-        $page_description = 'Some description for the page';
-
-        return view('dashboard.services.index', compact('page_title', 'page_description', 'items'));
+        $items = What_we_offer::all();
+        $page_title = 'Services';
+        $page_description = 'what we can offer';
+        return view('dashboard.services.whatWeOffer.index', compact('page_title', 'page_description', 'items'));
     }
 
     /**
@@ -29,7 +27,7 @@ class AppointmentPageController extends Controller
      */
     public function create()
     {
-        //
+       
     }
 
     /**
@@ -62,7 +60,10 @@ class AppointmentPageController extends Controller
      */
     public function edit($id)
     {
-        //
+        $items = What_we_offer::find($id);
+        $page_title = 'Services';
+        $page_description = 'what we can offer';
+        return view('dashboard.services.whatWeOffer.edit', compact('page_title', 'page_description', 'items'));
     }
 
     /**
@@ -74,7 +75,16 @@ class AppointmentPageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $items = What_we_offer::find($id);
+        $rules = [
+            'paragraph_en'=>'required',
+            'paragraph_nl'=>'required',
+        ];
+        $validated = $this->validate($request,$rules);
+        $items->paragraph_en = $validated['paragraph_en'];
+        $items->paragraph_nl = $validated['paragraph_nl'];
+        $items->save();
+        return redirect()->route('dashboard.services.whatweoffer.index');
     }
 
     /**

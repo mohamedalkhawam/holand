@@ -449,36 +449,36 @@ jQuery(document).ready(function() {
     });
     
     // Order form       
-    var regVr22 = "<div class='process green'>Processing. Please wait.</div>";
-    jQuery(".contact_send").on('click', function(){
-        jQuery(".contact_process").html(regVr22).show(); 
-            var posName = jQuery(".posName").val();
-            var posText = jQuery(".posText").val();
-            var posTel = jQuery(".posTel").val();
-            var posEmail = jQuery(".posEmail").val(); 
-        jQuery.ajax({
-            type: "POST",
-            url: "send.php",
-            data: {"posText": posText, "posEmail": posEmail, "posName": posName, "posTel": posTel},
-            cache: false,
-            success: function(response){
-                var messageResp = '<div class="infobox infobox_success"><div class="close_button"><i class="fa fa-times"></i></div><i class="fa fa-check"></i><b class="h1">Thank you!</b><p>Dear ';
-                var resultStat = ', thank you for contacting DiDent Clinic. We will be in touch with you shortly!</p><a href="/" class="btn">Go to Home Page</a></div>';
-                var oll = (messageResp + posName + resultStat);
-                if(response === '1'){
-                    jQuery(".contact_process").html(oll).fadeIn(3000); 
-                    jQuery(".posName").val("");
-                    jQuery(".posTel").val("");
-                    jQuery(".posText").val(""); 
-                    jQuery(".posEmail").val(""); 
-                } else {
-                    jQuery(".contact_process").html(response).fadeIn(3000); }
-                    jQuery('.infobox .close_button').on('click', function(){
-                    jQuery(this).closest('.infobox').fadeOut(500);
-                });
-              }
-        });
-        return false;
-    });
+    // var regVr22 = "<div class='process green'>Processing. Please wait.</div>";
+    // jQuery(".contact_send").on('click', function(){
+    //     jQuery(".contact_process").html(regVr22).show(); 
+    //         var posName = jQuery(".posName").val();
+    //         var posText = jQuery(".posText").val();
+    //         var posTel = jQuery(".posTel").val();
+    //         var posEmail = jQuery(".posEmail").val(); 
+    //     jQuery.ajax({
+    //         type: "POST",
+    //         url: "send.php",
+    //         data: {"posText": posText, "posEmail": posEmail, "posName": posName, "posTel": posTel},
+    //         cache: false,
+    //         success: function(response){
+    //             var messageResp = '<div class="infobox infobox_success"><div class="close_button"><i class="fa fa-times"></i></div><i class="fa fa-check"></i><b class="h1">Thank you!</b><p>Dear ';
+    //             var resultStat = ', thank you for contacting DiDent Clinic. We will be in touch with you shortly!</p><a href="/" class="btn">Go to Home Page</a></div>';
+    //             var oll = (messageResp + posName + resultStat);
+    //             if(response === '1'){
+    //                 jQuery(".contact_process").html(oll).fadeIn(3000); 
+    //                 jQuery(".posName").val("");
+    //                 jQuery(".posTel").val("");
+    //                 jQuery(".posText").val(""); 
+    //                 jQuery(".posEmail").val(""); 
+    //             } else {
+    //                 jQuery(".contact_process").html(response).fadeIn(3000); }
+    //                 jQuery('.infobox .close_button').on('click', function(){
+    //                 jQuery(this).closest('.infobox').fadeOut(500);
+    //             });
+    //           }
+    //     });
+    //     return false;
+    // });
     
 });

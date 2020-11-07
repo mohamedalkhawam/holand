@@ -36,34 +36,32 @@
                                         <table class="datatable datatable-bordered  datatable-head-custom" id="kt_datatable">
                                             <thead>
                                                 <tr>
-                                                    <th title="Field #1">Title</th>
-                                                    <th title="Field #2">English</th>
-                                                    <th title="Field #3">Nederlands</th>
-                                                     <th title="Field #4">Description En</th>
-                                                     <th title="Field #4">Description Nl</th>
-                                                    <th title="Field #5">Category</th>
-                                                    <th title="Field #6">Image</th>
-                                                    <th title="Field #7">Action</th>
-                                                    <th title="Field #8">Last Upadte </th>
+                                                    <th title="Field #1">Sender Name</th>
+                                                    <th title="Field #2">Sender Email</th>
+                                                    <th title="Field #3">Sender phone</th>
+                                                     <th title="Field #4">Message</th>
+                                                    <th title="Field #5">Action</th>
+                                                    <th title="Field #6">Sent at </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
 
                                                     @foreach ($items as $value)
                                                         <tr>
-                                                            <td >{{$value->title}}</td>
-                                                            <td style="overflow-x: hidden;max-width:100px">{{$value->title_en}}</td>
-                                                            <td>{{$value->title_nl}}</td>
-                                                            <td> {{$value->description_en}} </td>
-                                                            <td> {{$value->description_nl}} </td>
-                                                            <td>{{$value->category}}</td>
-                                                            <td > @if($value->imagePath !="")<img style="width:70px; height:45px;" src="{{asset('/storage/home/'.$value->imagePath)}}" alt="" >@endif</td>
+                                                            <td >{{$value->name}}</td> 
+                                                            <td> {{$value->email}} </td>                                                         
+                                                            <td> {{$value->phone_number}} </td>
+                                                            <td>{{$value->message}}</td>
                                                             <td>
-                                                                <a href="{{route('dashboard.home.edit',$value->id)}}" class="btn btn-info">Edit</a>
-                                                            
+                                                                <a href="javaScript:void(0)"  style="margin-left:5px;" onclick="$(this).parent().find('form').submit()">
+                                                                        <form action="{{Route('destroy',$value->id)}}" method="post" style="display: none">
+                                                                            @method('DELETE')
+                                                                            <input type="hidden" name="_token" value="{{csrf_token()}}" >
+                                                                        </form>
+                                                                        <i class="fas fa-trash-alt"onMouseOut="this.style.color=''"  onMouseOver="this.style.color='#F64E60'"></i> 
+                                                                    </a>
                                                             </td>
-                                                            <td>{{$value->updated_at}} </td>
-                                                           
+                                                            <td>{{$value->created_at}}</td>
                                                         </tr>
                                         
                                                     @endforeach

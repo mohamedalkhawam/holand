@@ -61,6 +61,10 @@ return [
                     'title' => 'Services gallery',
                     'page' => 'dashboard/services/gallery',
                 ],
+                [
+                    'title' => 'What Offer',
+                    'page' => 'dashboard/services/whatweoffer',
+                ],
 
             ],
         ],
@@ -96,15 +100,30 @@ return [
         ],
 
 
-
-
-        [
+         [
             'title' => 'Appointment',
             'root' => true,
             'icon' => 'media/svg/icons/Home/Timer.svg', // or can be 'flaticon-home' or any flaticon-*
-            'page' => 'dashboard/appointment',
             'new-tab' => false,
+            'bullet' => 'dot',
+            'submenu' => [
+                [
+                    'title' => 'Appointments',
+                    'page' => 'dashboard/appointment',
+                ],
+                [
+                    'title' => 'Reasons',
+                    'page' => 'dashboard/appointment/reason',
+                ],
+                // [
+                //     'title' => 'Open hours',
+                //     'page' => 'dashboard/appointment/time'
+                // ],
+              
+            ],
         ],
+
+     
         [
             'title' => 'Contact',
             'root' => true,

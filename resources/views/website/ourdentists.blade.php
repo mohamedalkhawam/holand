@@ -2,100 +2,136 @@
 
 
 @section('content')
-
+<?php
+     		$doctors = app('doctors');
+            $lang = app('lang');
+            function cutString($string,$from,$two){
+                $exploded = explode(" ", $string);
+                $firstFive = implode(" ", array_splice($exploded, $from, $two));
+                return $firstFive;
+			}
+			function splitString($string){
+				$exploded = explode("@", $string);
+			}
+            $specialization='Specialization_'.$lang;
+            $title = "title_".$lang;
+			$description = "description_".$lang;
+			$bio="bio_".$lang;
+			$education="education_".$lang;
+			$membership ="membership_".$lang;
+			
+         ?>
       <!--  Main start -->
         <main>
-            <!-- Head physician start -->
-            <div class="row head_physician">
+			<div class="row head_physician">
                 <div class="container">
-                     <h1>Meet Our Dentists      
-             {{__('main.hey')}}</h1>
-                     <div class="row head_physician_row">
-                        <div class="col-2 head_physician_left">
-                            <img class="lozad" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="http://via.placeholder.com/550x700" alt="DiDent" />
-                        </div>
-                        <div class="col-2 head_physician_right">
-                            <div class="head_physician_name">Dr. George Wilson</div>
-                            <div class="head_physician_deck">General and cosmetic dentistry</div>
-                            <div class="head_physician_text">
-                                <i class="dental_icon dentalic_quote"></i>
-                                <div class="row">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dol magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisilut aliquip ex ea commo consequat. Duis aute irure dolor in labore ad reprehenderit in voluptate velit esse cillum.
-                                </div>
-                                <div class="head_physician_sign">
-                                    <i class="dental_icon dentalic_signature"></i>
-                                    <i class="dental_icon dentalic_stamp"></i> 
-                                </div>
-                            </div>
-                        </div>
-                     </div>
-                </div>
-            </div>
-            <!-- Head physician end -->
-           
-            <!-- Short Bio physician start -->
-            <div class="row short_bio">
-                <div class="container">
-                     <h4>Short Bio</h4>
-                     <div class="row short_bio_row">
-                        <div class="col-1-60 short_bio_left">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dol magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-                        </div>
-                        <div class="col-1-40 short_bio_right">
-                             <div class="popup"><a href="#step1" data-effect="mfp-zoom-in" class="step1 btn">Make an Appointment with This Dentist</a></div>
-                        </div>
-                     </div>
-					<div class="row short_bio_deck_row">
-							<!-- Short Bio Lidt Start -->
-							<div class="col-3 short_bio_deck_row_item">
-								<i class="dental_icon dentalic_education"></i> 
-								<div class="row list_row">
-									<div class="list_title"><h5>Education</h5></div> 
-									<ul>
-										<li>L. D. Pankey Institute</li>
-										<li>University of California, San Francisco</li>
-										<li>Bachelor of Dental Science</li>
-										<li>DDS/PhD</li>
-									</ul>
-								</div> 
-							</div>
-							<!-- Short Bio Lidt End -->
-							<!-- Short Bio Lidt Start -->
-							<div class="col-3 short_bio_deck_row_item">
-								<i class="dental_icon dentalic_membership"></i>
-								<div class="row list_row">
-									<div class="list_title"><h5>Membership</h5></div> 
-									<ul>
-										<li>American Dental Association</li>
-										<li>California Dental Association</li>
-										<li>International Congress of Oral Implantologists</li>
-										<li>Mid-Peninsula Dental Society</li>
-										<li>American Academy of Cranialfacial Pain</li>
-										<li>International Association for Orthodontics</li>
-									</ul>
-								</div> 
-							</div>
-							<!-- Short Bio Lidt End -->		 
-
-							<!-- Short Bio Lidt Start -->
-							<div class="col-3 short_bio_deck_row_item">
-								<i class="dental_icon dentalic_languages"></i>
-								<div class="row list_row">
-									<div class="list_title"><h5>Languages</h5></div>
-									<ul>
-										<li>English</li>
-										<li>French</li>
-										<li>Spanish</li>
-									</ul>
-								</div> 
-							</div> 
-							<!-- Short Bio Lidt End -->
-					</div>
+					<h1>
+						@lang('main.meet_our_dentists')      
+					</h1>
 				</div>
 			</div>
-            <!-- Short Bio physician end -->
+			<!-- Head physician start -->
 
-			<!-- Start Best Specialists Tabs -->
+			@if(isset($doctors))
+				@foreach ($doctors as $value)
+					
+				
+					<div class="row head_physician">
+						<div class="container">
+							<div class="row head_physician_row">
+								<div class="col-2 head_physician_left">
+									<img class="lozad" style="max-width:550px;max-height:700px" src="{{asset('/storage/doctors/'.$value->imagePath)}}" data-src="{{asset('/storage/doctors/'.$value->imagePath)}}" alt="{{$value->name}}" />
+								</div>
+								<div class="col-2 head_physician_right">
+									<div class="head_physician_name">Dr. {{$value->name}}</div>
+									<div class="head_physician_deck">{{$value->$specialization}} </div>
+									<div class="head_physician_text">
+										<i class="dental_icon dentalic_quote"></i>
+										<div class="row">
+											{{$value->$description}}			
+										</div>
+										<div class="head_physician_sign">
+											<i class="dental_icon dentalic_signature"></i>
+											<i class="dental_icon dentalic_stamp"></i> 
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Head physician end -->
+				
+					<!-- Short Bio physician start -->
+					<div class="row short_bio">
+						<div class="container">
+							<h4>@lang('main.bio')</h4>
+							<div class="row short_bio_row">
+								<div class="col-1-60 short_bio_left">
+									{{$value->$bio}}
+								</div>
+								<div class="col-1-40 short_bio_right">
+									<div class="popup"><a href="#step1" data-effect="mfp-zoom-in" class="step1 btn">Make an Appointment with This Dentist</a></div>
+								</div>
+							</div>
+							<div class="row short_bio_deck_row">
+									<!-- Short Bio Lidt Start -->
+									<div class="col-3 short_bio_deck_row_item">
+										<i class="dental_icon dentalic_education"></i> 
+										<div class="row list_row">
+											<div class="list_title">
+												<h5>@lang('main.education')</h5>
+											</div> 
+											<ul>
+												@foreach (explode("@", $value->$education) as $row)
+													<li>{{$row}}</li>
+												@endforeach
+											</ul>
+										</div> 
+									</div>
+									<!-- Short Bio Lidt End -->
+									<!-- Short Bio Lidt Start -->
+									<div class="col-3 short_bio_deck_row_item">
+										<i class="dental_icon dentalic_membership"></i>
+										<div class="row list_row">
+											<div class="list_title"><h5>@lang('main.membership')</h5></div> 
+											<ul>
+												@foreach (explode("@", $value->$membership) as $row)
+													<li>{{$row}}</li>
+												@endforeach
+											</ul>
+										</div> 
+									</div>
+									<!-- Short Bio Lidt End -->		 
+
+									<!-- Short Bio Lidt Start -->
+									<div class="col-3 short_bio_deck_row_item">
+										<i class="dental_icon dentalic_languages"></i>
+										<div class="row list_row">
+											<div class="list_title"><h5>@lang('main.languages')</h5></div>
+											<ul>
+												@foreach (explode(" ", $value->languages) as $row)
+													<li>{{$row}}</li>
+												@endforeach
+											</ul>
+										</div> 
+									</div> 
+									<!-- Short Bio Lidt End -->
+							</div>
+						</div>
+					</div>
+					<!-- Short Bio physician end -->
+
+			
+			@endforeach
+		@endif		
+        </main>
+        <!--  Main end -->
+@endsection
+
+
+
+<?php 
+/*<!-- Start Best Specialists Tabs -->
 			<div class="row specialists" id="specialists">
 				<!-- Start Best Specialists Tabs Container -->
 				<div class="container">
@@ -2050,8 +2086,12 @@
 				</div>
 				<!-- End Best Specialists Tabs Container -->
 			</div>
-			<!-- End Best Specialists Tabs -->
 
-        </main>
-        <!--  Main end -->
-@endsection
+
+
+
+*/
+
+
+
+?>

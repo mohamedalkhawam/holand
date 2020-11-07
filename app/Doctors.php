@@ -10,4 +10,8 @@ class Doctors extends Model
     {
         return  $this->hasMany('App\Services_cases');
     }
+    public function appointment()
+    {
+        return  $this->hasMany('App\Appointment_page');
+    }
 }

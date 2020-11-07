@@ -15,8 +15,9 @@ class CreateServicesGalleriesTable extends Migration
     {
         Schema::create('services__galleries', function (Blueprint $table) {
             $table->id();
-            $table->integer('services_id');
-            $table->foreign('services_id')->references('id')->on('Services_page')->onDelete('cascade');
+            // $table->integer('services_id');
+            $table->foreignId('services_id')->constrained('Services_page')->onDelete('cascade');
+            // $table->foreign('services_id')->references('id')->on('Services_page')->onDelete('cascade');
             $table->string('imagePath');
             $table->timestamps();
         });

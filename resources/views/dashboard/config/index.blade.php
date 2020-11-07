@@ -49,15 +49,6 @@ return $firstFive;
                                                         </div>
                                                     {{-- End Email  --}}
 
-                                                    {{-- Start Email  --}}
-                                                        <div class="form-group row">
-                                                            <label class="col-3 h6 font-weight-bolder">Address:</label>
-                                                            <div class="col-9 h6 font-weight-lighter">
-                                                                  {{$value->address}}
-                                                            </div>
-                                                        </div>
-                                                    {{-- End Email  --}}
-
                                                      {{-- Start Facebook  --}}
                                                         <div class="form-group row">
                                                             <label class="col-3 h6 font-weight-bolder">Facebook:</label>
@@ -113,6 +104,24 @@ return $firstFive;
                                                             </div>
                                                         </div>
                                                     {{-- End Location  --}}
+
+                                                    {{-- Start Email  --}}
+                                                   
+
+                                                        <div class="form-group row">
+                                                            <label class="col-3 h6 font-weight-bolder">Address En:</label>
+                                                            <div class="col-9 h6 font-weight-lighter">
+                                                                  {{$value->address_en}}
+                                                            </div>
+                                                        </div>
+                                                   
+                                                        <div class="form-group row">
+                                                            <label class="col-3 h6 font-weight-bolder">Address Nl:</label>
+                                                            <div class="col-9 h6 font-weight-lighter">
+                                                                  {{$value->address_nl}}
+                                                            </div>
+                                                        </div>
+                                                    {{-- End Email  --}}
                                                 </div>
                                             </div>
                                            

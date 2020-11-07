@@ -17,9 +17,9 @@ return $firstFive;
                                             <h3 class="card-label">Services Page Content
                                             <div class="text-muted pt-2 font-size-sm">Datatable initialized from HTML table</div></h3>
                                         </div>
-                                        {{-- <div class="d-flex align-items-center" >
+                                        <div class="d-flex align-items-center" >
                                             <a href=" {{route('dashboard.services.service.create')}} "class="btn btn-primary" style="font-weight:600">Create Service</a>
-                                        </div> --}}
+                                        </div>
                                     </div>
                                     <div class="card-body">
                                         <!--begin: Search Form-->

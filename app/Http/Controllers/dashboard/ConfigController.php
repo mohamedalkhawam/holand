@@ -80,7 +80,8 @@ class ConfigController extends Controller
         $rules = [
             'phone'=>'required',
             'email'=>'required',
-            'address'=>'required',
+            'address_en'=>'required',
+            'address_nl'=>'required',
             'facebook'=>'required',
             'twitter'=>'required',
             'google'=>'required',
@@ -106,7 +107,8 @@ class ConfigController extends Controller
         $validated = $this->validate($request,$rules);
         $items->phone = $validated['phone'];
         $items->email = $validated['email'];
-        $items->address = $validated['address'];
+        $items->address_en = $validated['address_en'];
+        $items->address_nl = $validated['address_nl'];
         $items->facebook = $validated['facebook'];
         $items->twitter = $validated['twitter'];
         $items->google = $validated['google'];

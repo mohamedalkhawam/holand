@@ -68,9 +68,9 @@
             <!--begin: Aside Container-->
             <div class="d-flex flex-column-fluid flex-column justify-content-between py-9 px-7 py-lg-13 px-lg-35">
                 <!--begin::Logo-->
-                <a href="#" class="text-center pt-2">
-                    <img src="{{asset('media/logos/logo.png')}}" class="max-h-75px" alt=""/>
-                </a>
+                {{-- <a href="#" class="text-center pt-2">
+                    <img src="{{asset('media/logos/logo10.png')}}"   alt=""/>
+                </a> --}}
                 <!--end::Logo-->
 
                 <!--begin::Aside body-->
@@ -86,19 +86,12 @@
         <!--begin::Aside-->
 
         <!--begin::Content-->
-        <div class="content order-1 order-lg-2 d-flex flex-column w-100 pb-0" style="background-color: #B1DCED;">
-            <!--begin::Title-->
-            <div class="d-flex flex-column justify-content-center text-center pt-lg-40 pt-md-5 pt-sm-5 px-lg-0 pt-5 px-7">
-                <h3 class="display4 font-weight-bolder my-7 text-dark" style="color: #986923;">Amazing Wireframes</h3>
-                <p class="font-weight-bolder font-size-h2-md font-size-lg text-dark opacity-70">
-                    User Experience & Interface Design, Product Strategy<br/>
-                    Web Application SaaS Solutions
-                </p>
-            </div>
-            <!--end::Title-->
-            <!--begin::Image-->
-            <div class="content-img d-flex flex-row-fluid bgi-no-repeat bgi-position-y-bottom bgi-position-x-center" style="background-image: url({{asset('media/svg/illustrations/login-visual-2.svg')}});"></div>
-            <!--end::Image-->
+        <div class="content order-1 order-lg-2 d-flex flex-column w-100 pb-0" style="background-color: rgba(243, 242, 242, 0.432);">
+          <div  style="display: flex; justify-content:center; align-item:center; margin-top:70px">
+                          <img src="{{asset('media/logos/login2.png')}}" alt="" style="max-width: 700px; max-height:700px;text-align:center;">
+
+          </div>
+        
         </div>
         <!--end::Content-->
     </div>

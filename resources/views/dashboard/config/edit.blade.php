@@ -45,14 +45,23 @@
                                     </div>
                                 {{-- End Email --}}
 
-                                {{-- Start Address--}}
+                                {{-- Start Address English--}}
                                     <div class="form-group row">
-                                        <label class="col-3">Address</label>
+                                        <label class="col-3">Address En</label>
                                         <div class="col-9">
-                                        <input class="form-control @error('address') is-invalid @enderror" name="address" value="{{$items->address}}" id="" required validate/>
+                                        <input class="form-control @error('address_en') is-invalid @enderror" name="address_en" value="{{$items->address_en}}" id="" required validate/>
                                         </div>
                                     </div>
-                                {{-- End Address --}}
+                                {{-- End Address English --}}
+
+                                {{-- Start Address NederLands--}}
+                                    <div class="form-group row">
+                                        <label class="col-3">Address En</label>
+                                        <div class="col-9">
+                                        <input class="form-control @error('address_nl') is-invalid @enderror" name="address_nl" value="{{$items->address_nl}}" id="" required validate/>
+                                        </div>
+                                    </div>
+                                {{-- End Address NederLands --}}
 
 
                                 {{-- Start facebook--}}

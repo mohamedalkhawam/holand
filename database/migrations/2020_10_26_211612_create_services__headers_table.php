@@ -17,8 +17,8 @@ class CreateServicesHeadersTable extends Migration
             $table->id();
             $table->string('title_en');
             $table->string('title_nl');
-            $table->string('description_en');
-            $table->string('description_nl');
+            $table->string('description_en',500);
+            $table->string('description_nl',500);
             $table->string('imagePath');
             $table->timestamps();
         });

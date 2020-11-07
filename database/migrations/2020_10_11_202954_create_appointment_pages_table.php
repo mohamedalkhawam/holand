@@ -15,6 +15,13 @@ class CreateAppointmentPagesTable extends Migration
     {
         Schema::create('appointment_pages', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('doctor_id')->constrained('doctors')->onDelete('cascade');
+            $table->foreignId('reason_id')->constrained('reason')->onDelete('cascade');
+            $table->string('hour');
+            $table->date('date');
+            $table->string('client_name');
+            $table->string('client_email');
+            $table->string('client_phone');
             $table->timestamps();
         });
     }

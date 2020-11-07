@@ -29,22 +29,31 @@
         <!-- Responsive style --> 
         <link rel="stylesheet" href="{{asset('website/css/responsive.css')}}">
         <?php
-            $config = app('headerConfig')->where('id',1)->first();
+            
             $lang = app('lang');
+            $reasons= app('reasons');
+            $doctors = app('doctors');
+            $services =app('services');
             $normalDayFrom = 'open_day_from_'.$lang;
             $normalDayTo='open_day_to_'.$lang;
             $firstSpecialDay ='first_special_day_'.$lang;
+            $specialization='Specialization_'.$lang;
             $firstSpecialNote = 'first_special_day_note_'.$lang;
             $secondSpecialDay ='second_special_day_'.$lang;
             $secondSpecialNote = 'second_special_day_note_'.$lang;
+            $address="address_".$lang;
             $normalFrom='';
             $normalTo='';
-            if( $lang == 'en'){
+            $title = "title_".$lang;
+            $config = app('headerConfig')->where('id',1)->first();
+            if (isset($config)) {
+                if( $lang == 'en'){
                 $normalFrom = substr($config->$normalDayFrom,0,3);
                 $normalTo = substr($config->$normalDayTo,0,3);
-            }else{
+                }else{
                 $normalFrom = substr($config->$normalDayFrom,0,2);
                 $normalTo = substr($config->$normalDayTo,0,2);
+                }
             }
 
            
@@ -91,7 +100,7 @@
                             <!-- End mail --> 
                             <!-- Start address -->
                             <div class="header_address">
-                                <i class="fa fa-map-marker"></i>{{$config->address}}
+                                <i class="fa fa-map-marker"></i>{{$config->$address}}
                             </div>
                             <!-- End address -->
                             <!-- Start social button -->
@@ -192,7 +201,7 @@
                                     </div>
                                     <div class="row menu_contact">
                                         <ul>
-                                            <li><i class="fa fa-map-marker"></i> <address>{{$config->address}}</address></li>
+                                            <li><i class="fa fa-map-marker"></i> <address>{{$config->$address}}</address></li>
                                             <li><i class="fa fa-phone"></i> {{__('main.phone')}}: {{$config->phone}}</li>
                                             <li><i class="fa fa-envelope-o"></i>{{$config->email}}</li>
                                             <li style="text-transform: capitalize"><i class="fa fa-clock-o"></i> {{$normalFrom}} - {{$normalTo}}  {{$config->open_hour_from}} - {{$config->open_hour_to}}</li>
@@ -216,7 +225,7 @@
             <div class="row">
                 <h4>{{__('main.contact_us')}}</h4>
                 <div class="contact_map_content">
-                    <iframe class="lozad" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3333.967410377096!2d-111.89998968453055!3d33.31966746342457!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDE5JzEwLjgiTiAxMTHCsDUzJzUyLjEiVw!5e0!3m2!1sen!2sus!4v1516690469899" height="490" style="border:0" allowfullscreen></iframe>
+                    <iframe class="lozad" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3333.967410377096!2d-111.89998968453055!3d33.31966746342457!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDE5JzEwLjgiTiAxMTHCsDUzJzUyLjEiVw!5e0!3m2!1sen!2sus!4v1516690469899" data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3333.967410377096!2d-111.89998968453055!3d33.31966746342457!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDE5JzEwLjgiTiAxMTHCsDUzJzUyLjEiVw!5e0!3m2!1sen!2sus!4v1516690469899" height="490" style="border:0" allowfullscreen></iframe>
                     <div class="contact_map_info row">
                         <div class="contact_map_info__inner">
                             <div class="contact_map_info__title">{{__('main.phone')}}</div>
@@ -230,7 +239,7 @@
                         </div>
                         <div class="contact_map_info__inner">
                             <div class="contact_map_info__title">{{__('main.address')}}</div>
-                            <div class="contact_map_info__address">{{$config->address}}</div>
+                            <div class="contact_map_info__address">{{$config->$address}}</div>
                         </div>
                     </div>
                 </div>
@@ -279,12 +288,12 @@
                                 </span>
                             </div>
                         </div>
-                        <a href="tel:16501234000"><i class="fa fa-phone"></i>{{$config->phone}}</a>
-                        <a href="mailto:owlthemesnet@gmail.com">
+                        <a href="tel:{{$config->phone}}"><i class="fa fa-phone"></i>{{$config->phone}}</a>
+                        <a href="mailto:{{$config->email}}">
                             <i class="fa fa-envelope"></i>{{$config->email}}
                         </a>
                         <div class="footer_address">
-                            <i class="fa fa-map-marker"></i>{{$config->address}}
+                            <i class="fa fa-map-marker"></i>{{$config->$address}}
                         </div>
                     </div>
                     <!-- End contact_info -->
@@ -301,14 +310,29 @@
                                 </ul>
                             </div>
                             <div class="col-4">
-                                <li>
+                                <ul>
+                                    <li>
                                     <a href="{{route('dentists')}}">{{__('main.our_dentist')}}</a> 
-                                </li>
+                                    </li>
+                                    @if(isset($doctors))
+                                        @foreach ($doctors as $value)
+                                             <li>
+                                                <a href="{{route('dentists')}}"> {{$value->name}}</a>
+                                            </li>
+                                        @endforeach
+                                   @endif
+                                </ul>
                             </div>
                             <div class="col-4">
                                 <ul>
-                                    
-                                    <li><a href="{{route('contact')}}">{{__('main.contact_us')}}</a></li> 
+                                    <li><a href="{{route('contact')}}">{{__('main.services')}}</a></li>
+                                   @if(isset($services))
+                                        @foreach ($services as $value)
+                                             <li>
+                                                <a href="{{route('servicePage',$value->id)}}"> {{$value->$title}}</a>
+                                            </li>
+                                        @endforeach
+                                   @endif
                                 </ul>
                             </div>
                             <div class="col-4">
@@ -317,15 +341,7 @@
                             	
                                 </ul>
                             </div>
-                            {{-- <div class="col-4">
-                                <ul>  
-                                    <li><a href="/blog.html">Blog Default</a></li>
-                                    <li><a href="/blog_full_width.html">Blog Full Width</a></li>
-                                    <li><a href="/blog_grid.html">Blog Grid</a></li>
-                                    <li><a href="/blog_list.html">Blog List</a></li>
-                                    <li><a href="/blog_post.html">Blog Post</a></li> 
-                                </ul>
-                            </div> --}}
+                        
                         </div>
                     </div>
                     <!-- End footer_menu -->
@@ -341,7 +357,7 @@
                     </div>
                     <!-- Start copyright -->
                     <div class="copyright">
-                         2019 DiDent. @lang('main.rights')
+                         2020 Tandartsenpraktijk BoLo. @lang('main.rights')
                     </div>
                     <!-- End copyright -->
                 </div>
@@ -376,142 +392,26 @@
                                 </label>
                                 <!-- Any Dentist -->
 
-                                <!-- Dr. Katherin Black -->
-                                <input type="radio" id="radio1" class="radio_name" name="radio" value="Dr. Katherin Black">
-                                <label for="radio1">
-                                    <span class="step_item_vn">
-                                        <span class="row step_item align-items-center">
-                                            <span class="step_item_img radius_right">
-                                                <img class="lozad is-loaded" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="http://via.placeholder.com/85x95" data-srcset="http://via.placeholder.com/85x95, http://via.placeholder.com/170x190 2x" alt="DiDent">
+                                <!-- Droctors -->
+                                @if(isset($doctors))
+                                    @foreach ($doctors as $value)
+                                        <input type="radio" id="radio1" class="radio_name" name="radio" value="{{$value->id}}">
+                                        <label for="radio1">
+                                            <span class="step_item_vn">
+                                                <span class="row step_item align-items-center">
+                                                    <span class="step_item_img radius_right">
+                                                        <img style="max-width:85px;max-height:95px;" class="lozad is-loaded" src="{{asset('/storage/doctors/'.$value->imagePath)}}" data-src="{{asset('/storage/doctors/'.$value->imagePath)}}" data-srcset="{{asset('/storage/doctors/'.$value->imagePath)}}, {{asset('/storage/doctors/'.$value->imagePath)}}" alt="DiDent">
+                                                    </span>
+                                                    <span class="step_item_desk">
+                                                        <span class="doctor_name">{{$value->name}}</span>
+                                                        <span class="doctor_position">{{$value->$specialization}}</span>
+                                                    </span>
+                                                </span>
                                             </span>
-                                            <span class="step_item_desk">
-                                                <span class="doctor_name">Dr. Katherin Black</span>
-                                                <span class="doctor_position">Orthodontist</span>
-                                            </span>
-                                        </span>
-                                    </span>
-                                </label>
-                                <!-- Dr. Katherin Black -->
-
-                                <!-- Dr. Helen Bristen -->
-                                <input type="radio" id="radio2" class="radio_name" name="radio" value="Dr. Helen Bristen">
-                                <label for="radio2">
-                                    <span class="step_item_vn">
-                                        <span class="row step_item align-items-center">
-                                            <span class="step_item_img radius_right">
-                                                <img class="lozad is-loaded" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="http://via.placeholder.com/85x95" data-srcset="http://via.placeholder.com/85x95, http://via.placeholder.com/170x190 2x" alt="DiDent">
-                                            </span>
-                                            <span class="step_item_desk">
-                                                <span class="doctor_name">Dr. Helen Bristen</span>
-                                                <span class="doctor_position">General Dentist</span>
-                                            </span>
-                                        </span>
-                                    </span>
-                                </label>
-                                <!-- Dr. Helen Bristen -->
-
-                                <!-- Dr. Michael Johnson -->
-                                <input type="radio" id="radio3" class="radio_name" name="radio" value="Dr. Michael Johnson">
-                                <label for="radio3">
-                                    <span class="step_item_vn">
-                                        <span class="row step_item align-items-center">
-                                            <span class="step_item_img radius_right">
-                                                <img class="lozad is-loaded" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="http://via.placeholder.com/85x95" data-srcset="http://via.placeholder.com/85x95, http://via.placeholder.com/170x190 2x" alt="DiDent">
-                                            </span>
-                                            <span class="step_item_desk">
-                                                <span class="doctor_name">Dr. Michael Johnson</span>
-                                                <span class="doctor_position">General and Cosmetic Dentist</span>
-                                            </span>
-                                        </span>
-                                    </span>
-                                </label>
-                                <!-- Dr. Michael Johnson -->
-
-
-                                <!-- Dr. Brett Armstrong -->
-                                <input type="radio" id="radio4" class="radio_name" name="radio" value="Dr. Brett Armstrong">
-                                <label for="radio4">
-                                    <span class="step_item_vn">
-                                        <span class="row step_item align-items-center">
-                                            <span class="step_item_img radius_right">
-                                                <img class="lozad is-loaded" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="http://via.placeholder.com/85x95" data-srcset="http://via.placeholder.com/85x95, http://via.placeholder.com/170x190 2x" alt="DiDent">
-                                            </span>
-                                            <span class="step_item_desk">
-                                                <span class="doctor_name">Dr. Brett Armstrong</span>
-                                                <span class="doctor_position">Periodontist</span>
-                                            </span>
-                                        </span>
-                                    </span>
-                                </label>
-                                <!-- Dr. Brett Armstrong -->
-
-                                <!--  Dr. Jennifer Wilson -->
-                                <input type="radio" id="radio5" class="radio_name" name="radio" value=" Dr. Jennifer Wilson">
-                                <label for="radio5">
-                                    <span class="step_item_vn">
-                                        <span class="row step_item align-items-center">
-                                            <span class="step_item_img radius_right">
-                                                <img class="lozad is-loaded" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="http://via.placeholder.com/85x95" data-srcset="http://via.placeholder.com/85x95, http://via.placeholder.com/170x190 2x" alt="DiDent">
-                                            </span>
-                                            <span class="step_item_desk">
-                                                <span class="doctor_name">Dr. Jennifer Wilson</span>
-                                                <span class="doctor_position">Endodontist</span>
-                                            </span>
-                                        </span>
-                                    </span>
-                                </label>
-                                <!--  Dr. Jennifer Wilson -->
-
-                                <!-- Dr. George Wilson -->
-                                <input type="radio" id="radio6" class="radio_name" name="radio" value="Dr. George Wilson">
-                                <label for="radio6">
-                                    <span class="step_item_vn">
-                                        <span class="row step_item align-items-center">
-                                            <span class="step_item_img radius_right">
-                                                <img class="lozad is-loaded" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="http://via.placeholder.com/85x95" data-srcset="http://via.placeholder.com/85x95, http://via.placeholder.com/170x190 2x" alt="DiDent">
-                                            </span>
-                                            <span class="step_item_desk">
-                                                <span class="doctor_name">Dr. George Wilson</span>
-                                                <span class="doctor_position">Dental Surgeon</span>
-                                            </span>
-                                        </span>
-                                    </span>
-                                </label>
-                                <!-- Dr. George Wilson -->
-
-                                <!-- Dr. Nicole Green -->
-                                <input type="radio" id="radio7" class="radio_name" name="radio" value="Dr. Nicole Green">
-                                <label for="radio7">
-                                    <span class="step_item_vn">
-                                        <span class="row step_item align-items-center">
-                                            <span class="step_item_img radius_right">
-                                                <img class="lozad is-loaded" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="http://via.placeholder.com/85x95" data-srcset="http://via.placeholder.com/85x95, http://via.placeholder.com/170x190 2x" alt="DiDent">
-                                            </span>
-                                            <span class="step_item_desk">
-                                                <span class="doctor_name">Dr. Nicole Green</span>
-                                                <span class="doctor_position">Orthodontist</span>
-                                            </span>
-                                        </span>
-                                    </span>
-                                </label>
-                                <!-- Dr. Nicole Green -->
-
-                                <!-- Dr. John Ridwell -->
-                                <input type="radio" id="radio8" class="radio_name" name="radio" value="Dr. John Ridwell">
-                                <label for="radio8">
-                                    <span class="step_item_vn">
-                                        <span class="row step_item align-items-center">
-                                            <span class="step_item_img radius_right">
-                                                <img class="lozad is-loaded" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="http://via.placeholder.com/85x95" data-srcset="http://via.placeholder.com/85x95, http://via.placeholder.com/170x190 2x" alt="DiDent">
-                                            </span>
-                                            <span class="step_item_desk">
-                                                <span class="doctor_name">Dr. John Ridwell</span>
-                                                <span class="doctor_position">General and Cosmetic Dentist</span>
-                                            </span>
-                                        </span>
-                                    </span>
-                                </label>
-                                <!-- Dr. John Ridwell -->
+                                        </label>
+                                    @endforeach
+                                @endif
+                               <!-- Droctors -->
                             </div>
                         </div>
                     </div>
@@ -524,7 +424,7 @@
                     <!-- footer popup -->
                     <div class="footer_popup">
                         {{__('main.if_you_need_assistance')}} {{$config->phone}}
-                        <span> 2019 DiDent. {{__('main.rights')}}</span>
+                        <span> 2020 Tandartsenpraktijk BoLo. {{__('main.rights')}}</span>
                     </div>
                     <!-- footer popup -->
                 </div>
@@ -542,100 +442,27 @@
                         <div class="radio-toolbar">
                             <h3>{{__('main.visit_reason')}}</h3>
                             <div class="row">
-                                <!-- Broken Tooth -->
-                                <input type="radio" id="radio10" class="radio_service" name="radio_service" value="Broken Tooth">
-                                <label for="radio10">
-                                    <span class="step_item_vn">
-                                        <span class="row step_item align-items-center">
-                                            {{__('main.broken_tooth')}}
+                                <!-- reason-->
+                                @if(isset($reasons))
+                                    @foreach ($reasons as $value)
+                                    <input type="radio" id="radio10" class="radio_service" name="radio_service" value="{{$value->id}}">
+                                    <label for="radio10">
+                                        <span class="step_item_vn">
+                                            <span class="row step_item align-items-center">
+                                                {{$value->$title}}
+                                            </span>
                                         </span>
-                                    </span>
-                                </label>
-                                <!-- Broken Tooth -->
-
-                                <!-- Check-up and Cleaning -->
-                                <input type="radio" id="radio11" class="radio_service" name="radio_service" value="Check-up and Cleaning">
-                                <label for="radio11">
-                                    <span class="step_item_vn">
-                                        <span class="row step_item align-items-center">
-                                            {{__('main.checkup_and_cleaning')}}
-                                        </span>
-                                    </span>
-                                </label>
-                                <!-- Check-up and Cleaning -->
-
-                                <!-- Dental Check-up and X-Rays -->
-                                <input type="radio" id="radio12" class="radio_service" name="radio_service" value="Dental Check-up and X-Rays">
-                                <label for="radio12">
-                                    <span class="step_item_vn">
-                                        <span class="row step_item align-items-center">
-                                            {{__('main.checkup_and_x_rays')}}
-                                        </span>
-                                    </span>
-                                </label>
-                                <!-- Dental Check-up and X-Rays -->
-
-                                <!-- General Consultation -->
-                                <input type="radio" id="radio13" class="radio_service" name="radio_service" value="General Consultation">
-                                <label for="radio13">
-                                    <span class="step_item_vn">
-                                        <span class="row step_item align-items-center">
-                                            @lang('main.general_consultation')
-                                        </span>
-                                    </span>
-                                </label>
-                                <!-- General Consultation -->
-
-                                <!-- Jaw Joint Pain -->
-                                <input type="radio" id="radio14" class="radio_service" name="radio_service" value="Jaw Joint Pain">
-                                <label for="radio14">
-                                    <span class="step_item_vn">
-                                        <span class="row step_item align-items-center">
-                                            @lang('main.jaw_joint_pain')
-                                        </span>
-                                    </span>
-                                </label>
-                                <!-- Jaw Joint Pain -->
-
-                                <!-- Teeth Whitening -->
-                                <input type="radio" id="radio15" class="radio_service" name="radio_service" value="Teeth Whitening">
-                                <label for="radio15">
-                                    <span class="step_item_vn">
-                                        <span class="row step_item align-items-center">
-                                            @lang('main.whitening')
-                                        </span>
-                                    </span>
-                                </label>
-                                <!-- Teeth Whitening -->
-
-                                <!-- Veneers -->
-                                <input type="radio" id="radio16" class="radio_service" name="radio_service" value="Veneers">
-                                <label for="radio16">
-                                    <span class="step_item_vn">
-                                        <span class="row step_item align-items-center">
-                                            Veneers
-                                        </span>
-                                    </span>
-                                </label>
-                                <!-- Veneers -->
-
-                                <!-- Wisdom Teeth Extractions -->
-                                <input type="radio" id="radio17" class="radio_service" name="radio_service" value="Wisdom Teeth Extractions">
-                                <label for="radio17">
-                                    <span class="step_item_vn">
-                                        <span class="row step_item align-items-center">
-                                            @lang('main.teeth_extractions')
-                                        </span>
-                                    </span>
-                                </label>
-                                <!-- Wisdom Teeth Extractions -->
+                                    </label>
+                                    @endforeach
+                                @endif
+                                <!-- reason -->
 
                                 <!-- Other -->
                                 <input type="radio" id="radio18" class="radio_service" name="radio_service" value="Other">
                                 <label for="radio18">
                                     <span class="step_item_vn">
                                         <span class="row step_item align-items-center">
-                                            @lang('main.others')
+                                            @lang('main.other')
                                         </span>
                                     </span>
                                 </label>
@@ -652,7 +479,7 @@
                     <!-- footer popup -->
                     <div class="footer_popup">
                         @lang('main.if_you_need_assistance') {{$config->phone}}
-                        <span> 2019 DiDent. @lang('main.right')</span>
+                        <span>2020 Tandartsenpraktijk BoLo. @lang('main.right')</span>
                     </div>
                     <!-- footer popup -->
                 </div>
@@ -685,7 +512,7 @@
                     <!-- footer popup -->
                     <div class="footer_popup">
                         @lang('main.if_you_need_assistance'){{$config->phone}}
-                        <span> 2019 DiDent. @lang('main.rights')</span>
+                        <span> 2020 Tandartsenpraktijk BoLo. @lang('main.rights')</span>
                     </div>
                     <!-- footer popup -->
                 </div>
@@ -715,7 +542,7 @@
                                 <!-- 10:00 am -->
 
                                 <!-- 11:00 am -->
-                                <input type="radio" id="radio_time2" class="radio_time" name="radio_time" value="11:00 am">
+                                <input type="radio" id="radio_time2" class="radio_time" name="radio_time" value="11:00 am" >
                                 <label for="radio_time2">
                                     <span class="step_item_vn">
                                         <span class="row step_item align-items-center">
@@ -803,7 +630,7 @@
                     <!-- footer popup -->
                     <div class="footer_popup">
                         @lang('main.if_you_need_assistance') {{$config->phone}}
-                        <span> 2019 DiDent. @lang('main.rights')</span>
+                        <span> 2020 Tandartsenpraktijk BoLo. @lang('main.rights')</span>
                     </div>
                     <!-- footer popup -->
                 </div>
@@ -873,7 +700,7 @@
                     <!-- footer popup -->
                     <div class="footer_popup">
                         @lang('main.if_you_need_assistance') {{$config->phone}}
-                        <span> 2019 DiDent. @lang('main.rights')</span>
+                        <span> 2020 Tandartsenpraktijk BoLo. @lang('main.rights')</span>
                     </div>
                     <!-- footer popup -->
                 </div>
