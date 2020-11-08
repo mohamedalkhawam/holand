@@ -64,14 +64,10 @@
     <!--begin::Login-->
     <div class="login login-2 login-signin-on d-flex flex-column flex-lg-row flex-column-fluid bg-white" id="kt_login">
         <!--begin::Aside-->
-        <div class="login-aside order-2 order-lg-1 d-flex flex-row-auto position-relative overflow-hidden">
+        <div class="login-aside order-2 order-lg-1 d-flex flex-row-auto position-relative overflow-hidden"  >
             <!--begin: Aside Container-->
-            <div class="d-flex flex-column-fluid flex-column justify-content-between py-9 px-7 py-lg-13 px-lg-35">
-                <!--begin::Logo-->
-                {{-- <a href="#" class="text-center pt-2">
-                    <img src="{{asset('media/logos/logo10.png')}}"   alt=""/>
-                </a> --}}
-                <!--end::Logo-->
+            <div class="d-flex flex-column-fluid flex-column justify-content-between py-9 px-7 py-lg-13 px-lg-35" >
+                
 
                 <!--begin::Aside body-->
                 <div class="d-flex flex-column-fluid flex-column flex-center">
@@ -86,13 +82,13 @@
         <!--begin::Aside-->
 
         <!--begin::Content-->
-        <div class="content order-1 order-lg-2 d-flex flex-column w-100 pb-0" style="background-color: rgba(243, 242, 242, 0.432);">
-          <div  style="display: flex; justify-content:center; align-item:center; margin-top:70px">
-                          <img src="{{asset('media/logos/login2.png')}}" alt="" style="max-width: 700px; max-height:700px;text-align:center;">
+        <div class="content order-1 order-lg-2 d-flex flex-column w-100 pb-0" style="background-color: rgba(0, 0, 0, 0.014);overflow:hidden;">
+          <div  style="display: flex; justify-content:center; align-item:center; margin-top:70px; overflow:hidden">
+                          <img src="{{asset('media/logos/login2.png')}}" alt="" style="max-width: 500px; max-height:500px;text-align:center;">
 
           </div>
-        
-        </div>
+
+          
         <!--end::Content-->
     </div>
     <!--end::Login-->

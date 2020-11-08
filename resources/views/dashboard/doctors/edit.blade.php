@@ -129,18 +129,17 @@
                                 <div class="separator separator-dashed my-10"></div>
                                  <h3 class="text-dark font-weight-bold mb-10">Costumize Doctor Specialization : </h3>
 
-                                     <div class="form-group row">
-                                        <label class="col-3">English</label>
-                                        <div class="col-9">
-                                        <input class="form-control @error('Specialization_en') is-invalid @enderror" value="{{$items->Specialization_en}}"  name="Specialization_en" id="" required validate/>
-                                        </div>
-                                    </div>
                                     <div class="form-group row">
-                                        <label class="col-3">Nederlands</label>
+                                        <label class="col-3">Choose Specialization</label>
                                         <div class="col-9">
-                                        <input class="form-control @error('Specialization_nl') is-invalid @enderror" value="{{$items->Specialization_nl}}"  name="Specialization_nl" id="" required validate/>
+                                        <select name="services_id" id="" class="form-control @error('services_id') is-invalid @enderror" required validate>
+                                            <option value="">Choose category</option>
+                                            @foreach ($services as $value)
+                                                <option value="{{$value->id}}"> {{$value->title_en}} </option>
+                                            @endforeach
+                                        </select>
+                                        {{-- <span class="form-text text-muted">You can replace the old value with the new value.</span> --}}
                                         </div>
-                                
                                     </div>
                                       <h3 class="text-dark font-weight-bold mb-10">Costumize Doctor Social Media : </h3>
 

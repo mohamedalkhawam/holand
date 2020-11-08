@@ -51,6 +51,7 @@ return $firstFive;
                                             <thead>
                                                 <tr>
                                                     <th title="Field #1">Doctor Name</th>
+                                                    <th title="Field #2">Title en</th>
                                                     <th title="Field #2">Title Nl</th>
                                                      <th title="Field #5">Description En</th>
                                                      <th title="Field #5">Description Nl</th>
@@ -59,8 +60,7 @@ return $firstFive;
                                                     <th title="Field #3">Membership En</th>
                                                     <th title="Field #4">Membership Nl</th>
                                                     <th title="Field #3">Languages</th>
-                                                    <th title="Field #3">Specialization En</th>
-                                                    <th title="Field #4">Specialization Nl</th>
+                                                    <th title="Field #3">Specialization </th>
                                                     <th title="Field #3">Facebook </th>
                                                     <th title="Field #4">Twitter </th>
                                                     <th title="Field #3">G+</th>
@@ -83,8 +83,14 @@ return $firstFive;
                                                                 <td >{{cutString($value->membership_en)}}...etc</td>
                                                                 <td>{{cutString($value->membership_nl)}}...etc</td>
                                                                 <td> {{cutString($value->languages)}}...etc </td>
-                                                                <td >{{cutString($value->Specialization_en)}}</td>
-                                                                <td >{{cutString($value->Specialization_nl)}}</td>
+                                                                <td >
+                                                                        @if(isset($services))
+                                                                            @foreach ($services->where('id',$value->services_id) as $service)
+                                                                                {{$service->title_en}}
+                                                                            @endforeach
+                                                                        @endif
+
+                                                                </td>
                                                                 <td >{{cutString($value->twitter)}}</td>
                                                                 <td>{{cutString($value->google)}} </td>
                                                                 <td > @if($value->imagePath !="")<img style="width:55px; height:55px;" src="{{asset('/storage/doctors/'.$value->imagePath)}}" alt="" >@endif</td>

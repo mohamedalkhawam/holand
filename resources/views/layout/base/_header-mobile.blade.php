@@ -4,12 +4,12 @@
         <a href="{{ url('/') }}">
 
             @php
-                $kt_logo_image = 'logo-light.png'
+                $kt_logo_image = 'logo230.png';
             @endphp
 
-            @if (config('layout.aside.self.display') == false)
+            {{-- @if (config('layout.aside.self.display') == false) --}}
 
-                @if (config('layout.header.self.theme') === 'light')
+                {{-- @if (config('layout.header.self.theme') === 'light')
                     @php $kt_logo_image = 'logo-dark.png' @endphp
                 @elseif (config('layout.header.self.theme') === 'dark')
                     @php $kt_logo_image = 'logo-light.png' @endphp
@@ -23,7 +23,7 @@
                     @php $kt_logo_image = 'logo-light.png' @endphp
                 @endif
 
-            @endif
+            @endif --}}
 
             <img alt="{{ config('app.name') }}" src="{{ asset('media/logos/'.$kt_logo_image) }}"/>
         </a>

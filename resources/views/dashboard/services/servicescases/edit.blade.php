@@ -86,6 +86,26 @@
 
 
                                   <div class="separator separator-dashed my-10"></div>
+                                   {{-- Start Initial problem --}}
+                                    <h3 class="text-dark font-weight-bold mb-10">Costumize what have done : </h3>
+                                    <div class="form-group row">
+                                        <label class="col-3">English</label>
+                                        <div class="col-9">
+                                        <textarea class="form-control @error('what_we_have_done_en') is-invalid @enderror"  cols="20" rows="10" name="what_we_have_done_en" required validate>{{$items->what_we_have_done_en}}</textarea>
+                                        {{-- <span class="form-text text-muted" style="position: absolute;">You can replace the old value with the new value.</span>                                  --}}
+                                       </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-3">Nederlands</label>
+                                        <div class="col-9">
+                                        <textarea class="form-control @error('what_we_have_done_nl') is-invalid @enderror"  cols="20" rows="10" name="what_we_have_done_nl" required validate>{{$items->what_we_have_done_nl}}</textarea>
+                                            <span class="form-text text-muted"style="position: absolute;" >Please remember to seperate keywords by a space. </span>
+                                        </div>
+                                    </div>
+                                {{-- end Initial problem --}}
+
+
+                                  <div class="separator separator-dashed my-10"></div>
 
 
                                 {{-- Start Details --}}

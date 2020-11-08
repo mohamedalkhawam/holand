@@ -120,13 +120,14 @@
                                 <div class="row">
                                     <div class="col-1-60 posts_item_img">
                                         <div class="radius">
-                                           {{-- {{dd($value->gallery())}} --}}
-                                           {{-- @foreach ($value->gallery->id as $item)
-                                               {{dd($item)}}
-                                           @endforeach --}}
-                                            {{-- @if(isset($value->gallery)) --}}
-                                                <img class="lozad" src="{{asset('/storage/services/')}}" data-src="http://via.placeholder.com/655x355" data-srcset="http://via.placeholder.com/655x355, http://via.placeholder.com/1310x710 2x" alt="DiDent"> 
-                                            {{-- @endif --}}
+                                          @if(isset($servicesGallery))
+
+                                        @foreach ($servicesGallery->where('services_id',$value->id)->take(1) as $item)
+                                        
+                                            <img style="max-width:655px;max-height:355px;" class="lozad" src="{{asset('/storage/services/gallery/'.$item->imagePath)}}" data-src="{{asset('/storage/services/gallery/'.$item->imagePath)}}" data-srcset=", http://via.placeholder.com/1310x710 2x" alt="DiDent"> 
+
+                                        @endforeach
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-1-40 posts_item_desk">

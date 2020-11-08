@@ -93,12 +93,10 @@
         </div>
     </div>
 <script> 
-function checkBefore (){
-    document.getElementById('imageBefore').click() 
+function check (){
+    document.getElementById('file').click() 
 }
-function checkAfter (){
-    document.getElementById('imageAfter').click() 
-}
+
 function submitForm(){
     document.getElementById('createForm').submit()
 }

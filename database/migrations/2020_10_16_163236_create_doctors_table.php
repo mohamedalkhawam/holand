@@ -25,8 +25,7 @@ class CreateDoctorsTable extends Migration
             $table->string('membership_en');
             $table->string('membership_nl');
             $table->string('languages');
-            $table->string('Specialization_en');
-            $table->string('Specialization_nl');
+            $table->foreignId('services_id')->constrained('Services_page')->onDelete('set null');
             $table->string('facebook');
             $table->string('twitter');
             $table->string('google');

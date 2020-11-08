@@ -40,7 +40,8 @@
                 
                  
                 <form action="{{route('save')}}" method="post">
-                    <input type="hidden" name="_token" value="{{csrf_token()}}">                    <h4>
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">               
+                         <h4>
                         {{__('main.leave_a_replay')}}
                     </h4>
                     <p>
@@ -77,11 +78,11 @@
                     <!-- Send button -->
                     <div class="contact_process"></div>
                     <div class="center">
-                       	<button type="submit" class="button contact_send">
+                       	<button type="submit" class="button contact_send" >
                                {{__('main.send_a_message')}}
                         </button>  
                     </div> 
-                </form>
+                {{-- </form> --}}
                     <!-- Send button -->
                     
                     <!-- Open Hours -->
@@ -108,7 +109,14 @@
                             <div class="col-3 open_hours_c">
                                 <div class="day"> {{$value->$firstSpecialDay}} </div>
                                 <div class="row open_hours_block">
-                                    {{$value->$firstSpecialNote}}
+                                    <div class="hours">
+                                        {{cutString($value->first_special_from,0,1)}}
+                                        <span>{{cutString($value->first_special_from,1,2)}}</span>
+                                    </div>
+                                    <div class="minute">
+                                           {{cutString($value->first_special_to,0,1)}}
+                                        <span>{{cutString($value->first_special_to,1,2)}}</span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-3 open_hours_r">

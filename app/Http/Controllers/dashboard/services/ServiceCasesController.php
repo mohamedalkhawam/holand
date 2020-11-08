@@ -72,6 +72,8 @@ class ServiceCasesController extends Controller
             'short_story_nl' => 'required',
             'initial_problem_en' => 'required',
             'initial_problem_nl' => 'required',
+            'what_we_have_done_en' => 'required',
+            'what_we_have_done_nl' => 'required',
             'cost' => 'required',
             'doctor_id' => 'required',
             'imagePath_before' => 'required',
@@ -83,6 +85,8 @@ class ServiceCasesController extends Controller
         $items->short_story_nl = $validated['short_story_nl'];
         $items->initial_problem_en = $validated['initial_problem_en'];
         $items->initial_problem_nl = $validated['initial_problem_nl'];
+        $items->what_we_have_done_en = $validated['what_we_have_done_en'];
+        $items->what_we_have_done_nl = $validated['what_we_have_done_nl'];
         $items->cost = $validated['cost'];
         $items->doctor_id = $validated['doctor_id'];
         $items->save();

@@ -33,8 +33,8 @@ class CreateConfigsTable extends Migration
             $table->string('open_hour_to');
             $table->string('first_special_day_en');
             $table->string('first_special_day_nl');
-            $table->string('first_special_day_note_en');
-            $table->string('first_special_day_note_nl');
+            $table->string('first_special_from');
+            $table->string('first_special_to');
             $table->string('second_special_day_en');
             $table->string('second_special_day_nl');
             $table->string('second_special_day_note_en');

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\dashboard;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Doctors;
-
+use App\Services_page;
 class DoctorsController extends Controller
 {
     /**
@@ -16,9 +16,10 @@ class DoctorsController extends Controller
     public function index()
     {
         $items = Doctors::all();
+        $services=Services_page::all();
         $page_title = 'Doctors';
         $page_description = 'Some description for the page';
-        return view('dashboard.doctors.index', compact('page_title', 'page_description', 'items'));
+        return view('dashboard.doctors.index', compact('page_title', 'page_description', 'items','services'));
     }
 
     /**
@@ -28,9 +29,10 @@ class DoctorsController extends Controller
      */
     public function create()
     {
+        $items=Services_page::all();
         $page_title = 'Doctors';
         $page_description = 'Some description for the page';
-        return view('dashboard.doctors.create', compact('page_title', 'page_description'));
+        return view('dashboard.doctors.create', compact('page_title', 'page_description','items'));
     }
 
     /**
@@ -61,8 +63,7 @@ class DoctorsController extends Controller
             'membership_en' => 'required',
             'membership_nl' => 'required',
             'languages' => 'required',
-            'Specialization_en' => 'required',
-            'Specialization_nl' => 'required',
+            'services_id' => 'required',
             'facebook' => 'required',
             'twitter' => 'required',
             'google' => 'required',
@@ -80,8 +81,7 @@ class DoctorsController extends Controller
         $items->membership_en = $validated['membership_en'];
         $items->membership_nl = $validated['membership_nl'];
         $items->languages = $validated['languages'];
-        $items->Specialization_en = $validated['Specialization_en'];
-        $items->Specialization_nl = $validated['Specialization_nl'];
+        $items->services_id = $validated['services_id'];
         $items->facebook = $validated['facebook'];
         $items->twitter = $validated['twitter'];
         $items->google = $validated['google'];
@@ -109,9 +109,10 @@ class DoctorsController extends Controller
     public function edit($id)
     {
         $items = Doctors::find($id);
+        $services=Services_page::all();
         $page_title = 'Doctors';
         $page_description = 'Some description for the page';
-        return view('dashboard.doctors.edit', compact('page_title', 'page_description', 'items'));
+        return view('dashboard.doctors.edit', compact('page_title', 'page_description', 'items','services'));
 
     }
 
@@ -145,8 +146,7 @@ class DoctorsController extends Controller
             'membership_en' => 'required',
             'membership_nl' => 'required',
             'languages' => 'required',
-            'Specialization_en' => 'required',
-            'Specialization_nl' => 'required',
+            'services_id' => 'required',
             'facebook' => 'required',
             'twitter' => 'required',
             'google' => 'required',
@@ -166,8 +166,7 @@ class DoctorsController extends Controller
             'membership_en' => 'required',
             'membership_nl' => 'required',
             'languages' => 'required',
-            'Specialization_en' => 'required',
-            'Specialization_nl' => 'required',
+            'services_id' => 'required',
             'facebook' => 'required',
             'twitter' => 'required',
             'google' => 'required',
@@ -187,8 +186,7 @@ class DoctorsController extends Controller
         $items->membership_en = $validated['membership_en'];
         $items->membership_nl = $validated['membership_nl'];
         $items->languages = $validated['languages'];
-        $items->Specialization_en = $validated['Specialization_en'];
-        $items->Specialization_nl = $validated['Specialization_nl'];
+        $items->services_id = $validated['services_id'];
         $items->facebook = $validated['facebook'];
         $items->twitter = $validated['twitter'];
         $items->google = $validated['google'];

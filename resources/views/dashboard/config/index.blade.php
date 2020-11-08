@@ -156,14 +156,14 @@ return $firstFive;
                                                             <div class="form-group row">
                                                                 <label class="col-3 h6 font-weight-bolder">Special Day 1 En:</label>
                                                                 <div class="col-9 h6 font-weight-lighter">
-                                                                {{$value->first_special_day_en}}   {{$value->first_special_day_note_en}}
+                                                                {{$value->first_special_day_en}} From  {{$value->first_special_from}} To  {{$value->first_special_to}}
                                                                 </div>
                                                             </div>
                                                        
                                                             <div class="form-group row">
                                                                 <label class="col-3 h6 font-weight-bolder">Special Day 1 Nl:</label>
                                                                 <div class="col-9 h6 font-weight-lighter">
-                                                            {{$value->first_special_day_nl}}   {{$value->first_special_day_note_nl}}
+                                                            {{$value->first_special_day_nl}} From  {{$value->first_special_from}} To  {{$value->first_special_to}}
                                                                 </div>
                                                             </div>
                                                         {{-- End Special Day 1  --}}

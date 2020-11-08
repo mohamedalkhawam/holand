@@ -143,14 +143,13 @@
                                 <div class="row hours_block">
                                     <div class="open_hours_title">{{$value->$firstSpecialDay}}</div>
                                     <div class="row open_hours_block">
-                                        {{-- <div class="hours">
-                                            11:00
-                                            <span>am</span>
-                                        </div> --}}
+                                         <div class="hours">
+                                            {{cutString($value->first_special_from,0,1)}}
+                                            <span>{{cutString($value->first_special_from,1,2)}}</span>
+                                        </div>
                                         <div class="minute">
-                                               {{-- - 4:00
-                                            <span>pm</span> --}}
-                                            {{$value->$firstSpecialNote}}
+                                               - {{cutString($value->first_special_to,0,1)}}
+                                            <span>{{cutString($value->first_special_to,1,2)}}</span>
                                         </div>
                                         
                                     </div>
@@ -345,7 +344,13 @@
                                     <div class="row">
                                         <div class="tab_content_l col-2">
                                             <a href="#" class="tab_content_name" style="text-transform: capitalize">Dr. {{$value->name}}</a>
-                                            <div class="tab_content_profession">{{$value->Specialization_en}}</div>
+                                            <div class="tab_content_profession">
+                                                {{-- {{$value->service->$title}} --}}
+                                                @foreach ($services->where('id',$value->services_id) as $service)
+                                                    {{$service->$titleWithLanguage}}
+                                                @endforeach
+                                                
+                                            </div>
                                             <div class="tab_content_desk">
                                                 {{$value->description_en}}
                                             </div>

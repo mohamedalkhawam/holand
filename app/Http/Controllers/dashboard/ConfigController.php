@@ -96,8 +96,8 @@ class ConfigController extends Controller
             'open_hour_to'=>'required',
             'first_special_day_en'=>'required',
             'first_special_day_nl'=>'required',
-            'first_special_day_note_en'=>'required',
-            'first_special_day_note_nl'=>'required',
+            'first_special_from'=>'required',
+            'first_special_to'=>'required',
             'second_special_day_en'=>'required',
             'second_special_day_nl'=>'required',
             'second_special_day_note_en'=>'required',
@@ -124,8 +124,8 @@ class ConfigController extends Controller
         $items->open_hour_to = $validated['open_hour_to'];
         $items->first_special_day_en = $validated['first_special_day_en'];
         $items->first_special_day_nl = $validated['first_special_day_nl'];
-        $items->first_special_day_note_en = $validated['first_special_day_note_en'];
-        $items->first_special_day_note_nl = $validated['first_special_day_note_nl'];
+        $items->first_special_from = $validated['first_special_from'];
+        $items->first_special_to = $validated['first_special_to'];
         $items->second_special_day_en = $validated['second_special_day_en'];
         $items->second_special_day_nl = $validated['second_special_day_nl'];
         $items->second_special_day_note_en = $validated['second_special_day_note_en'];

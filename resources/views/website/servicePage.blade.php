@@ -5,6 +5,7 @@
 <?php
             $config = app('headerConfig');
             $lang = app('lang');
+            $doctors=app('doctors');
             function cutString($string,$from,$two){
                 $exploded = explode(" ", $string);
                 $firstFive = implode(" ", array_splice($exploded, $from, $two));
@@ -19,6 +20,10 @@
             $specialization='Specialization_'.$lang;
             $paragraph= "paragraph_".$lang;
             $keywords = "keywords_".$lang;
+            $shortStory="short_story_".$lang;
+            $initialProblem="initial_problem_".$lang;
+            $whatWeHaveDone="what_we_have_done_".$lang;
+            
          ?>
          @if(isset($items))
             <!-- Service block top start -->
@@ -30,7 +35,8 @@
     					<h1>{{$items->$title}}</h1>
     					<p> {{$items->$description}} </p>
                             <div class="header_tag">
-                                @foreach (explode(" ", $items->keywords) as $keyword)
+                                
+                                @foreach (explode(" ",$items->$keywords) as $keyword)
                                 <a href="#prices" class="skrolurl">{{$keyword}}</a>
                                  @endforeach
                             </div>
@@ -50,26 +56,40 @@
                 <div class="row presentation_gallery">
                     <div class="container">
                         <div class="row presentation_gallery_row">
-                            <h4>Presentation</h4> 
+                            <h4>@lang('main.presentation')</h4> 
                             <div class="navigation"></div>
                         </div>
                         <div class="presentation_carusel">
-                            <div class="presentation_title"> {{$items->title}} of New Generation</div>
+                            <div class="presentation_title"> {{$items->title}}  @lang('main.new_generation')  </div>
                             <div class="row presentation_carusel_vn"> 
                                 <div class="owl_presentation owl-carousel owl-theme">
                                     <div class="item">
-                                    {{-- {{dd($items->gallery()->id)}} --}}
+                                    @if(isset($servicesGallery))
+                                        @foreach ($servicesGallery as $value)
+                                            <img class="owl-lazy" src="{{asset('/storage/services/gallery/'.$value->imagePath)}}" data-src="{{asset('/storage/services/gallery/'.$value->imagePath)}}" alt="DiDent" />    
+                                        @endforeach
+                                    @endif
+                                    </div> 
+                                 </div>
+                                 <div class="carousel_counter"></div>
+                             </div>
+                         </div>
+                    </div>
                  </div>
             </div> 
 			<!-- Presentation End -->
              
-			<!-- Live Stories Start -->
+            <!-- Live Stories Start -->
+            @if(isset($serviceCases))
+                @foreach ($serviceCases as $value)
+                    
+                
             <div class="row stories">
     			<div class="container">
     			     <div class="row stories_title">
-                        <h4>Live Stories</h4>
+                        <h4>@lang('main.live_stories')</h4>
                         <div class="stories_desk">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dol magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commo consequat. Duis aute irure dolor in repre velit esse cillum dolore.
+                        {{$value->$shortStory}}                     
                         </div> 
                      </div>
                     <!-- Stories Item Start -->
@@ -84,9 +104,9 @@
                             <div class="col-2 stories_deck_row_item">
                                 <i class="dental_icon dentalic_problem"></i> 
                                 <div class="row stories_list_row">
-                                    <div class="stories_list_title"><h5>Initial problem</h5></div> 
+                                    <div class="stories_list_title"><h5>@lang('main.initial_problem')</h5></div> 
                                     <div class="row stories_deck_row_item_desk">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea enim ad minim commodo consequat. </p>
+                                        <p> {{$value->$initialProblem}}  </p>
                                     </div>
                                     <div class="line_arrow_bottom">
                                         <div class="lihe_heading"></div>
@@ -97,9 +117,9 @@
                             <div class="col-2 stories_deck_row_item">
                                 <i class="dental_icon dentalic_solution"></i>
                                 <div class="row stories_list_row">
-                                    <div class="stories_list_title"><h5>What we've done</h5></div> 
+                                    <div class="stories_list_title"><h5>@lang('main.what_have_done')</h5></div> 
                                     <div class="row stories_deck_row_item_desk">
-                                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum nostrud exercitation ullamco laboris nisi ut aliquip ex consequat.</p>
+                                        <p> {{$value->$whatWeHaveDone}} </p>
                                     </div> 
                                 </div> 
                             </div>  
@@ -107,13 +127,14 @@
                         <!-- Stories Item Descriptions End --> 
                         <!-- Stories Item After Before Start --> 
                         <div class="after_before_row overflow_hidden">
-                            <h4>Results</h4>
+                            <h4>@lang('main.results')</h4>
                             <div class="radius_mini">
                                 <div class="twentytwenty-container">
                                      <!-- The before image is first -->
-                                     <img src="http://via.placeholder.com/1140x625" alt="DiDent" />
+                                
+                                    <img src="{{asset('/storage/cases/'.$value->imagePath_before)}}" alt="DiDent" />
                                      <!-- The after image is last -->
-                                     <img src="http://via.placeholder.com/1140x625" alt="DiDent" />
+                                    <img src="{{asset('/storage/cases/'.$value->imagePath_after)}}"  alt="DiDent" />
                                 </div>
                             </div>
                         </div>
@@ -122,6 +143,8 @@
                     <!-- Stories Item End --> 
     			</div>
             </div>
+                @endforeach
+            @endif
 			<!-- Live Stories End -->           
 
 			<!-- Start Specialists -->
@@ -130,16 +153,18 @@
 				<div class="container">
                     <h4>Our Specialists in Cosmetic Dentistry</h4>
                     <div class="row">
-							<!-- Start doctor item -->
+                            <!-- Start doctor item -->
+                            @if(isset($doctors))
+                                @foreach ($doctors->where('services_id',$items->id) as $value)
 							<div class="row specialists_row">
 								<div class="special_img col-2">
-									<a class="radius_right" href="#"><img class="lozad" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="http://via.placeholder.com/360x400" data-srcset="http://via.placeholder.com/360x400, http://via.placeholder.com/720x800 2x" alt="DiDent" /></a>
+									<a class="radius_right" href="#"><img class="lozad" src="{{asset('/storage/doctors/'.$value->imagePath)}}" data-src="{{asset('/storage/doctors/'.$value->imagePath)}}" data-srcset="{{asset('/storage/doctors/'.$value->imagePath)}}, http://via.placeholder.com/720x800 2x" alt="DiDent" /></a>
 								</div> 
 								<div class="special_desk col-2">
 									<div class="special_desk_title_row row">
 										<div class="special_desk_title">
-											<a href="#" class="special_desk_name">Dr. Michael Johnson</a>
-											<div class="special_desk_profession">Periodontists</div>
+											<a href="#" class="special_desk_name">Dr. {{$value->name}}</a>
+											<div class="special_desk_profession">{{$items->$title}}</div>
 										</div>
 										<div class="special_desk_soc">
 											<a href="#"><i class="fa fa-facebook"></i></a>
@@ -156,9 +181,9 @@
 											<div class="special_desk_service_title">Education</div>
 											<div class="row special_desk_service_list">
 												<ul>
-													<li>University of Iowa</li>
-													<li>CAD/CAM Certified</li>
-													<li>Invisalign Certified</li>
+													@foreach (explode("@", $value->$education) as $row)
+													<li>{{$row}}</li>
+												@endforeach
 												</ul>
 											</div>
 										</div>
@@ -170,11 +195,12 @@
 											<i class="dental_icon dentalic_membership"></i>
 										</div>
 										<div class="special_desk_service_r">
-											<div class="special_desk_service_title">Membership</div>
+											<div class="special_desk_service_title">@lang('main.membership')</div>
 											<div class="row special_desk_service_list">
 												<ul>
-													<li>American Dental Association</li>
-													<li>California Dental Association</li>
+													@foreach (explode("@", $value->$membership) as $row)
+													<li>{{$row}}</li>
+												@endforeach
 												</ul>
 											</div>
 										</div>
@@ -186,12 +212,12 @@
 											<i class="dental_icon dentalic_languages"></i>
 										</div>
 										<div class="special_desk_service_r">
-											<div class="special_desk_service_title">Languages</div>
+											<div class="special_desk_service_title">@lang('main.languages')</div>
 											<div class="row special_desk_service_list">
 												<ul>
-													<li>English</li>
-													<li>German</li>
-													<li>Italian</li>
+													@foreach (explode(" ", $value->languages) as $row)
+													<li>{{$row}}</li>
+												@endforeach
 												</ul>
 											</div>
 										</div>
@@ -199,12 +225,15 @@
 									<!-- End doctor list -->
 									<!-- Start doctor text -->
 									<div class="special_desk_desk row">
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco lab oris nisi ut aliquip ex ea comdo consequat. Duis aute irure dolor in reprehenderit in volupt ate velit esse cillum dolore eu fugiat nulla pariatur. Duis aute irure dolor in reprehenderit.
-									</div>
-									<!-- End doctor text -->
-									<div class="popup"><a href="#step1" data-effect="mfp-zoom-in" class="step1 btn">Make an Appointment with This Dentist</a></div>
+
+                                    {{$value->$bio}}								
+                                        </div>
+                                    <!-- End doctor text -->
+									<div class="popup"><a href="#step1" data-effect="mfp-zoom-in" class="step1 btn">@lang('main.make_appointment_with_dentist')</a></div>
 								</div>
-							</div>
+                            </div>
+                            @endforeach
+                            @endif
 							<!-- End doctor item -->
 						</div>
 				</div>
@@ -220,8 +249,13 @@
                         <div class="can_offer_title_lite"></div>
                     </div>
                     <div class="row can_offer_text">
-                        <h4>What We Can Offer</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dol magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dol magna aliqua.</p>
+                        <h4>@lang('main.what_we_offer')</h4>
+                         @if(asset($whatWeOffer))
+                            @foreach ($whatWeOffer as $value)
+                                <p> {{$value->$paragraphWithLanguage}} </p>
+                             @endforeach  
+                        @endif
+                        
                     </div>
                 </div>
             </div>

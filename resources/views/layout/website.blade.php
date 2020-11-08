@@ -62,6 +62,7 @@
     </head> 
     @if(isset($config))
    {{-- {{ substr($config->$NormalDayFrom,0,3)}} --}}
+   
 <body> 
     <div class="preloader">
         <div class="preloader_animation">
@@ -81,10 +82,10 @@
                             <div class="header_clock"> 
                                  <i class="fa fa-clock-o"></i>
                                  <span style="text-transform: capitalize">
-                                    {{$normalFrom}} - {{$normalTo}}  {{$config->open_hour_from}} - {{$config->open_hour_to}}
+                                    {{$normalFrom}}-{{$normalTo}}  {{$config->open_hour_from}}-{{$config->open_hour_to}}
                                 </span> 
                                  <span style="text-transform: capitalize; ">
-                                    {{$config->$firstSpecialDay}} {{$config->$firstSpecialNote}}
+                                    {{$config->$firstSpecialDay}} {{$config->first_special_from}} - {{$config->first_special_to}}
                                 </span>
                             </div>
                             <!-- End clock -->
@@ -131,8 +132,11 @@
             				<!-- LOGO start -->
             				<div class="logo ">
                                 <a href="/"style="color:#444; font-weight:500;text-decoration:none;">
-                                    <img class="lozad try" style="max-height:60px"  src="{{asset('media/logos/logo3.png')}}" alt="Tandartsenpraktijk BoLo" />
-                                <span > Tandartsenpraktijk BoLo </span>
+                                    <div style="min-height:148px;background-image: url('/media/logos/logoc230.png');width: 240px;margin: -90px auto 0;">
+
+                                    </div>
+                                    {{-- <img class="lozad try"   src="{{asset('media/logos/logoc230.png')}}" alt="Tandartsenpraktijk BoLo" /> --}}
+                                {{-- <span > Tandartsenpraktijk BoLo </span> --}}
                                 </a>                                                                  
             				</div> 
             				<!-- LOGO end -->
@@ -172,8 +176,10 @@
                                     <span class="close-button"><i class="fa fa-times"></i></span>
                                     <div class="row header_menu"> 
                                         <div class="row logotype_light">
-                                           
-                                            <img class="lozad" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="http://via.placeholder.com/230x40" data-srcset="http://via.placeholder.com/230x40, http://via.placeholder.com/460x80 2x" alt="DiDent - Dental Clinic HTML Template" />
+                                           <div style="min-height:148px;background-image: url('/media/logos/logoc230.png');width: 240px;margin: -90px auto 0;">
+
+                                    </div>
+                                            {{-- <img class="lozad" src="{{asset('media/logos/logo3.png')}}" data-src="{{asset('media/logos/logo3.png')}}" data-srcset="{{asset('media/logos/logo3.png')}}, http://via.placeholder.com/460x80 2x" alt="Tandartsenpraktijk BoLo" />Tandartsenpraktijk BoLo --}}
                                         </div>
                                         <div id="dl-menu" class="dl-menuwrapper">
                                             <ul class="dl-menu dl-menuopen"> 
@@ -205,7 +211,10 @@
                                             <li><i class="fa fa-phone"></i> {{__('main.phone')}}: {{$config->phone}}</li>
                                             <li><i class="fa fa-envelope-o"></i>{{$config->email}}</li>
                                             <li style="text-transform: capitalize"><i class="fa fa-clock-o"></i> {{$normalFrom}} - {{$normalTo}}  {{$config->open_hour_from}} - {{$config->open_hour_to}}</li>
-                                            <li><i class="fa fa-clock-o"></i> {{$config->$firstSpecialDay}} {{$config->$firstSpecialNote}}</li>
+                                            <li style="text-transform: capitalize">
+                                                <i class="fa fa-clock-o"></i>
+                                                 {{$config->$firstSpecialDay}} {{$config->first_special_from}} - {{$config->first_special_to}}
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -256,10 +265,13 @@
         <div class="footer_row background_blue row">
     	    <div class="container">
                 <!-- Start top_footer -->
-                <div class="top_footer">
+                <div class="top_footer" style="padding: 50px 0 50px;">
                     <!-- Start footer_logo -->
                     <a href="/" class="footer_logo">
-                        <img class="lozad" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="http://via.placeholder.com/230x40" data-srcset="http://via.placeholder.com/230x40, http://via.placeholder.com/460x80 2x" alt="DiDent - Dental Clinic HTML Template" />
+                        <div style="min-height:148px;background-image: url('/media/logos/logo230.png');width: 240px;margin: -90px auto 0;">
+
+                                    </div>
+                        {{-- <img class="lozad" src="{{asset('media/logos/logo230.png')}}" data-src="{{asset('media/logos/logo230.png')}}" data-srcset="{{asset('media/logos/logo230.png')}}, http://via.placeholder.com/460x80 2x" alt="Tandartsenpraktijk BoLo" /> --}}
                     </a>
                     <!-- End footer_logo -->
                     <!-- Start footer_social_button -->
@@ -283,9 +295,9 @@
                                   <span style="text-transform: capitalize">
                                     {{$normalFrom}} - {{$normalTo}}  {{$config->open_hour_from}} - {{$config->open_hour_to}}
                                 </span> 
-                                 <span style="text-transform: capitalize; ">
-                                    {{$config->$firstSpecialDay}} {{$config->$firstSpecialNote}}
-                                </span>
+                                 <div style="text-transform: capitalize; ">
+                                    {{$config->$firstSpecialDay}} {{$config->first_special_from}} - {{$config->first_special_to}}
+                                 </div>
                             </div>
                         </div>
                         <a href="tel:{{$config->phone}}"><i class="fa fa-phone"></i>{{$config->phone}}</a>

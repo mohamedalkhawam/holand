@@ -14,6 +14,7 @@ use App\Services_Gallery;
 use App\About_gallery_screen;
 use App\What_we_offer;
 use App\Reason;
+use App\Service_cases;
 use Illuminate\Support\Facades\View;
 use Illuminate\Auth\EloquentUserProvider;
 /*
@@ -95,7 +96,10 @@ Route::post('contact', 'sendEmailController@saveContact')->name('save');
 Route::delete('contact', 'sendEmailController@destroy')->name('destroy');
 Route::get('/services/{serviceID}', function ($serviceID) {
   $items= Services_page::where('id',$serviceID)->first();
-  return view('website.servicePage', compact('serviceID','items'));
+  $servicesGallery= Services_Gallery::where('services_id',$serviceID)->get();
+  $serviceCases= Service_cases::where('services_id',$serviceID)->get();
+  $whatWeOffer = What_we_offer::all();
+  return view('website.servicePage', compact('serviceID','items','servicesGallery','serviceCases','whatWeOffer'));
 })->name('servicePage');
 Route::get('ourdentists', function () {
   return view('website.ourdentists');

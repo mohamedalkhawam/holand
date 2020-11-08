@@ -1,7 +1,7 @@
 {{-- Aside --}}
 
 @php
-    $kt_logo_image = 'logo-white.png';
+    $kt_logo_image = 'logo230.png';
 @endphp
 {{-- 
 @if (config('layout.brand.self.theme') === 'light')
@@ -14,7 +14,7 @@
 
     {{-- Brand --}}
     <div class="brand flex-column-auto {{ Metronic::printClasses('brand', false) }}" id="kt_brand">
-        <div class="brand-logo">
+        <div class="brand-logo" style="margin-left: -25px; max-width:170px; max-height:170px; margin-top:-40px">
             <a href="{{ url('/') }}">
                 <img alt="{{ config('app.name') }}" src="{{ asset('media/logos/'.$kt_logo_image) }}"/>
             </a>

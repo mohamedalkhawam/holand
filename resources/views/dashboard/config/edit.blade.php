@@ -191,16 +191,16 @@
                                     </div>
                                     
                                     <div class="form-group row">
-                                        <label class="col-3">Note English</label>
+                                        <label class="col-3">from</label>
                                         <div class="col-9">
-                                        <input class="form-control @error('first_special_day_note_en') is-invalid @enderror" name="first_special_day_note_en" value="{{$items->first_special_day_note_en}}" id="" required validate/>
+                                        <input class="form-control @error('first_special_from') is-invalid @enderror" name="first_special_from" value="{{$items->first_special_from}}" id="" required validate/>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
-                                        <label class="col-3">Note Nederlands</label>
+                                        <label class="col-3">to</label>
                                         <div class="col-9">
-                                        <input class="form-control @error('first_special_day_note_nl') is-invalid @enderror" name="first_special_day_note_nl" value="{{$items->first_special_day_note_nl}}" id="" required validate/>
+                                        <input class="form-control @error('first_special_to') is-invalid @enderror" name="first_special_to" value="{{$items->first_special_to}}" id="" required validate/>
                                         </div>
                                     </div>
                                 {{-- End First Specail Day  --}}

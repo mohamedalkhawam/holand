@@ -21,6 +21,8 @@ class CreateServiceCasesTable extends Migration
             $table->string('short_story_nl', 1000);
             $table->string('initial_problem_en', 1000);
             $table->string('initial_problem_nl', 1000);
+            $table->string('what_we_have_done_en', 1000);
+            $table->string('what_we_have_done_nl', 1000);
             $table->float('cost');
             $table->integer('doctor_id');
             $table->foreign('doctor_id')->references('id')->on('Doctors')->onDelete('set null');

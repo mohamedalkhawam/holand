@@ -12,6 +12,10 @@ class Services_page extends Model
     }
     public function cases()
     {
-        return  $this->hasMany('App\Services_cases','service_id');
+        return  $this->hasMany('App\Services_cases','services_id');
+    }
+    public function doctor()
+    {
+        return  $this->hasMany('App\Doctors');
     }
 }

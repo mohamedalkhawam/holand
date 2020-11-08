@@ -14,4 +14,8 @@ class Doctors extends Model
     {
         return  $this->hasMany('App\Appointment_page');
     }
+     public function service()
+    {
+        return  $this->belongsTo('App\Services_page');
+    }
 }

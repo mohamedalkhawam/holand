@@ -55,6 +55,8 @@ return $firstFive;
                                                     <th title="Field #3">Short Story Nl</th>
                                                     <th title="Field #5">Initial problem En</th>
                                                     <th title="Field #5">Initial problem Nl</th>
+                                                    <th title="Field #5">What is done En</th>
+                                                    <th title="Field #5">What is done Nl</th>
                                                     <th title="Field #5">Cost</th>
                                                     <th title="Field #5">Doctor</th>
                                                     <th title="Field #5">Image Before</th>
@@ -78,6 +80,8 @@ return $firstFive;
                                                                 <td> {{cutString($value->short_story_nl)}} ...etc</td>
                                                                 <td> {{cutString($value->initial_problem_en)}} ...etc </td>
                                                                 <td> {{cutString($value->initial_problem_nl)}} ...etc </td>
+                                                                <td> {{cutString($value->what_we_have_done_en)}} ...etc </td>
+                                                                <td> {{cutString($value->what_we_have_done_nl)}} ...etc </td>
                                                                 <td> {{cutString($value->cost)}}</td>
                                                                 <td>
                                                                     @if($value->doctor)
@@ -85,13 +89,13 @@ return $firstFive;
                                                                     @endif
                                                                 </td>
                                                                 <td> 
-                                                                    @if($value->imagePath !="")
+                                                                    @if($value->imagePath_before !="")
                                                                         <img style="width:55px; height:55px;" src="{{asset('/storage/cases/'.$value->imagePath_before)}}" alt="" >
                                                                     @endif
 
                                                                 </td>
                                                                 <td> 
-                                                                    @if($value->imagePath !="")
+                                                                    @if($value->imagePath_after !="")
                                                                         <img style="width:55px; height:55px;" src="{{asset('/storage/cases/'.$value->imagePath_after)}}" alt="" >
                                                                     @endif
 
