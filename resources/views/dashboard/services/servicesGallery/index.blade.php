@@ -8,10 +8,10 @@
                                     <div class="card-header flex-wrap border-0 pt-6 pb-0">
                                         <div class="card-title">
                                             <h3 class="card-label">Services Gallery 
-                                            <div class="text-muted pt-2 font-size-sm">Datatable initialized from HTML table</div></h3>
+                                            <div class="text-muted pt-2 font-size-sm">Add, and delete images</div></h3>
                                         </div>
                                         <div class="d-flex align-items-center" >
-                                            <a href=" {{route('dashboard.services.gallery.create')}} "class="btn btn-primary" style="font-weight:600">Create Service</a>
+                                            <a href=" {{route('dashboard.services.gallery.create')}} "class="btn btn-primary" style="font-weight:600">Add an Image</a>
                                         </div>
                                     </div>
                                     <div class="card-body">

@@ -102,17 +102,7 @@
             @endif
             <!-- About end -->
 
-            <!-- Video start -->
-            @if(isset($config))
-                @foreach ($config as $value)
-                    <div class="row video">
-                        <div class="container">
-                            <iframe style="border:0;" height="535" class="lozad" src="{{$value->youtube_video}}" data-src="{{$value->youtube_video}}"  allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                @endforeach
-            @endif
-            <!-- Video end -->
+           
  
             <!-- Why We Are start -->
             <div class="row why_we_are">
@@ -138,30 +128,12 @@
             </div>
             <!-- Why We Are end -->  
 
-            <!-- Certificates start -->
-            <div class="row certificates">
-                <div class="container row">
-                    <h4>@lang('main.certificates') & @lang('main.associations')</h4>
-                    <div class="navigation"></div>
-                </div>
-                <div class="owl_certificates owl-carousel owl-theme gallery">          
-                    @if(app('certificates') !== '')
-                        @foreach (app('certificates') as $value)
-                            <div class="item">
-                                <a href="{{asset('/storage/certificates/'.$value->imagePath)}}">
-                                    <img class="owl-lazy" src="{{asset('/storage/certificates/'.$value->imagePath)}} "  alt="DiDent" />
-                                </a>
-                            </div>
-                        @endforeach
-                    @endif
-                </div>
-            </div>
-            <!-- Certificates end -->
             
      
             <!-- Gets start -->
             @if(isset($aboutgalleryScreen))
                 @foreach ($aboutgalleryScreen as $value)
+               
                     <div class="row gets">
                         <div class="container">
                             <h4>
@@ -199,11 +171,11 @@
                         </div>
                         <div class="owl_gallery owl-carousel owl-theme">
                             @if(isset($gallery))
-                                @foreach ($gallery as $value)
+                                @foreach ($gallery as $image)
                                     <div class="item">
                                         <div class="overflow_hidden row">
                                             <div class="radius_mini">
-                                                <img class="owl-lazy" src="{{asset('/storage/gallery/'.$value->imagePath)}}" data-src="{{asset('/storage/gallery/'.$value->imagePath)}}" alt="DiDent" />
+                                                <img class="owl-lazy" src="{{asset('/storage/gallery/'.$image->imagePath)}}" data-src="{{asset('/storage/gallery/'.$image->imagePath)}}" alt="DiDent" />
                                             </div>
                                         </div>
                                     </div>
@@ -218,12 +190,13 @@
                             <div class="container">
                                 <!-- Costum text img end -->
                                 <div class="col-2 costum_text_img">
-                                    <img class="lozad" src="{{asset('/storage/gallery/'.$value->first_image_path)}}" data-src="{{asset('/storage/gallery/'.$value->first_image_path)}}" data-srcset="http://via.placeholder.com/240x240, http://via.placeholder.com/480x480 2x" alt="DiDent" />
-                                    <img class="lozad" src="{{asset('/storage/gallery/'.$value->second_image_path)}}" data-src="{{asset('/storage/gallery/'.$value->second_image_path)}}" data-srcset="http://via.placeholder.com/240x240, http://via.placeholder.com/480x480 2x" alt="DiDent" />
+                                    <img class="lozad" src="{{asset('/storage/gallery/'.$value->first_image_path)}}" data-src="{{asset('/storage/gallery/'.$value->first_image_path)}}" data-srcset="{{asset('/storage/gallery/'.$value->first_image_path)}}, http://via.placeholder.com/480x480 2x" alt="DiDent" />
+                                    <img class="lozad" src="{{asset('/storage/gallery/'.$value->second_image_path)}}" data-src="{{asset('/storage/gallery/'.$value->second_image_path)}}" data-srcset="{{asset('/storage/gallery/'.$value->second_image_path)}}, http://via.placeholder.com/480x480 2x" alt="DiDent" />
                                 </div>
                                 <!-- Costum text img end -->
                                 <!-- Costum text start -->
                                 <div class="col-2 costum_text_content">
+                                    
                                     {{$value->$secondParagraph}}
                                 </div>
                                 <!-- Costum text end --> 
@@ -233,12 +206,12 @@
                     @endforeach
                 @endif
                 <!-- Start Get Service -->
-                <div class="row get_service">
+                {{-- <div class="row get_service">
                     <div class="container">
                         <h4>@lang('main.best_service')</h4>
                         <div class="popup"><a href="#step1" data-effect="mfp-zoom-in" class="step1 btn">@lang('main.make_an_appointment')</a></div>
                     </div>
-                </div>
+                </div> --}}
                  <!-- End Get Service -->
 
             </div>

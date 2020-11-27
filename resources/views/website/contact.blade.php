@@ -1,6 +1,8 @@
 @extends('layout.website')
 @section('content')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!--  Main start -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <?php 
         $config= app('headerConfig');
         $lang = app('lang');
@@ -39,7 +41,7 @@
                     <!-- Leave a Reply -->
                 
                  
-                <form action="{{route('save')}}" method="post">
+                <form action="{{route('save')}}" method="post" >
                     <input type="hidden" name="_token" value="{{csrf_token()}}">               
                          <h4>
                         {{__('main.leave_a_replay')}}
@@ -78,7 +80,7 @@
                     <!-- Send button -->
                     <div class="contact_process"></div>
                     <div class="center">
-                       	<button type="submit" class="button contact_send" >
+                       	<button  class="button contact_send" >
                                {{__('main.send_a_message')}}
                         </button>  
                     </div> 
@@ -142,9 +144,14 @@
             var posText = jQuery(".posText").val();
             var posTel = jQuery(".posTel").val();
             var posEmail = jQuery(".posEmail").val(); 
+            $.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+});
         jQuery.ajax({
             type: "POST",
-            url: "send.php",
+            url: "contact",
             data: {"posText": posText, "posEmail": posEmail, "posName": posName, "posTel": posTel},
             cache: false,
             success: function(response){

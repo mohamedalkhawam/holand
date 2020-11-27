@@ -17,7 +17,7 @@ class AboutWhyUsController extends Controller
     {
         $items = About_why_us::all();
         $page_title = 'Why Us Screen';
-        $page_description = 'Some description for the page';
+        $page_description = '';
         return view('dashboard.about.whyus.index', compact('page_title', 'page_description', 'items'));
     }
 

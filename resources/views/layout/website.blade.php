@@ -10,10 +10,10 @@
         <!-- Mobile Metas -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Favicon -->
-        <link rel="icon" href="{{asset('website/img/favicon.ico')}}" sizes="32x32" />
-    <link rel="icon" href="{{asset('website/img/favicon_192x192.png')}}" sizes="192x192" />
-        <link rel="{{asset('website/apple-touch-icon-precomposed')}}" href="img/favicon_180x180.png" />
-        <meta name="msapplication-TileImage" content="{{asset('website/img/favicon_270x270.png')}}" /> 
+        <link rel="icon" href="{{asset('media/logos/fav.png')}}" sizes="32x32" />
+    <link rel="icon" href="{{asset('media/logos/fav.png')}}" sizes="192x192" />
+        <link rel="{{asset('website/apple-touch-icon-precomposed')}}" href="{{asset('media/logos/fav.png')}}" />
+        <meta name="msapplication-TileImage" content="{{asset('media/logos/fav.png')}}" /> 
         <style type="text/css">.preloader{position: fixed;top: 0;left: 0;width: 100%;height: 100%;z-index: 9999;background-color: #FFF;text-align: center;}.preloader_animation{width: 100px;position: absolute;top: 50%;left: 50%; transform: translate(-50%, -50%); text-align: center;}.preloader_animation svg {animation: heartbeat 1s infinite; fill: var(--theme_color);}@keyframes heartbeat{0%{transform: scale( .75 );}20%{transform: scale( 1 );}40%{transform: scale( .75 );}60%{transform: scale( 1 );}80%{transform: scale( .75 );}100%{transform: scale( .75 );}}</style>
         <!-- Google fonts --> 
         <link href="https://fonts.googleapis.com/css?family=Hind:400,600%7CSource+Sans+Pro:300,400,600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet';this.display='swap'">
@@ -101,7 +101,7 @@
                             <!-- End mail --> 
                             <!-- Start address -->
                             <div class="header_address">
-                                <i class="fa fa-map-marker"></i>{{$config->$address}}
+                                <a href="{{$config->address_link}}" style="text-decoration: none;"><i class="fa fa-map-marker"></i>{{$config->$address}}</a>
                             </div>
                             <!-- End address -->
                             <!-- Start social button -->
@@ -110,12 +110,15 @@
         						<a href="{{$config->twitter}}"><i class="fa fa-twitter"></i></a>
         						<a href="{{$config->google}}"><i class="fa fa-google-plus"></i></a>
                                 <a href="{{$config->youtube}}"><i class="fa fa-youtube"></i></a>
+                                <a href="{{'https://wa.me/'.$config->phone}}"><i class="fa fa-whatsapp"></i></a>
                                 @if (session()->get("lang") == 'en')
-                                    <div style="width: 70px"> <img style="width: 18px;height:18px;margin-right:2px; " src="{{asset('media/svg/flags/237-netherlands.svg')}}" alt="">
+                                    <div style="width: 70px;"> <img style="width: 18px;height:18px;margin-right:2px; " src="{{asset('media/svg/flags/237-netherlands.svg')}}" alt="">
                                     <a href="{{route('language',"nl")}}" style="font-weight:600;font-size:18">  Nederlands</a></div>
                                 @else 
-                                    <div style="width: 70px"> <img style="width: 18px;height:18px;margin-right:2px; " src="{{asset('media/svg/flags/260-united-kingdom.svg')}}" alt="">
-                                    <a href="{{route('language','en')}}" style="font-weight:600;font-size:18">  English</a></div>
+                                    <div style="width: 70px; ">
+                                        <img style="width: 18px;height:18px;margin-right:2px; " src="{{asset('media/svg/flags/260-united-kingdom.svg')}}" alt="">
+                                        <a href="{{route('language','en')}}" style="font-weight:600;font-size:18">  English</a>
+                                    </div>
                                 @endif
         					</div>
                             <!-- End social button -->
@@ -131,11 +134,11 @@
             			<div class="row"> 
             				<!-- LOGO start -->
             				<div class="logo ">
-                                <a href="/"style="color:#444; font-weight:500;text-decoration:none;">
-                                    <div style="min-height:148px;background-image: url('/media/logos/logoc230.png');width: 240px;margin: -90px auto 0;">
+                                <a href="/" style="color:#444; font-weight:500;text-decoration:none;">
+                                    {{-- <div style="min-height:148px;background-image: url('/media/logos/logoc230.png');width: 240px;margin: -90px auto 0;">
 
-                                    </div>
-                                    {{-- <img class="lozad try"   src="{{asset('media/logos/logoc230.png')}}" alt="Tandartsenpraktijk BoLo" /> --}}
+                                    </div> --}}
+                                    <img class="lozad " src="{{asset('media/logos/230@40.png')}}" alt="Tandartsenpraktijk BoLo" />
                                 {{-- <span > Tandartsenpraktijk BoLo </span> --}}
                                 </a>                                                                  
             				</div> 
@@ -164,9 +167,11 @@
                                         <a href="{{route('services')}}">{{__('main.services')}}</a>                                     
                                         </li>                                                       
                                         <li><a href="{{route('contact')}}">{{__('main.contact_us')}}</a></li>
+                                        <li><a href="#step2" class="step-next step2 ul_sub ">@lang('main.registration')</a></li>
                                     </ul>
                                 </nav>
-            				</div>
+                            </div>
+                           
             				<!-- NAVIGATION end -->
                             
                             <!-- Mobile Menu start -->
@@ -176,9 +181,7 @@
                                     <span class="close-button"><i class="fa fa-times"></i></span>
                                     <div class="row header_menu"> 
                                         <div class="row logotype_light">
-                                           <div style="min-height:148px;background-image: url('/media/logos/logoc230.png');width: 240px;margin: -90px auto 0;">
-
-                                    </div>
+                                           <img class="lozad " src="{{asset('media/logos/230@40.png')}}" alt="Tandartsenpraktijk BoLo" />
                                             {{-- <img class="lozad" src="{{asset('media/logos/logo3.png')}}" data-src="{{asset('media/logos/logo3.png')}}" data-srcset="{{asset('media/logos/logo3.png')}}, http://via.placeholder.com/460x80 2x" alt="Tandartsenpraktijk BoLo" />Tandartsenpraktijk BoLo --}}
                                         </div>
                                         <div id="dl-menu" class="dl-menuwrapper">
@@ -196,6 +199,7 @@
                                                 <a href="{{route('services')}}">{{__('main.services')}}</a> 
                                                 </li> 
                                                 <li><a href="{{route('contact')}}">{{__('main.contact_us')}}</a></li> 
+                                                <li><a href="#step2" class="step-next step2 ul_sub ">@lang('main.registration')</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -204,6 +208,7 @@
                                         <a href="{{$config->twitter}}"><i class="fa fa-twitter"></i></a>
                                         <a href="{{$config->google}}"><i class="fa fa-google-plus"></i></a>
                                         <a href="{{$config->youtube}}"><i class="fa fa-youtube"></i></a>
+                                        <a href="{{'https://wa.me/'.$config->phone}}"><i class="fa fa-whatsapp"></i></a>
                                     </div>
                                     <div class="row menu_contact">
                                         <ul>
@@ -234,8 +239,9 @@
             <div class="row">
                 <h4>{{__('main.contact_us')}}</h4>
                 <div class="contact_map_content">
-                    <iframe class="lozad" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3333.967410377096!2d-111.89998968453055!3d33.31966746342457!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDE5JzEwLjgiTiAxMTHCsDUzJzUyLjEiVw!5e0!3m2!1sen!2sus!4v1516690469899" data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3333.967410377096!2d-111.89998968453055!3d33.31966746342457!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDE5JzEwLjgiTiAxMTHCsDUzJzUyLjEiVw!5e0!3m2!1sen!2sus!4v1516690469899" height="490" style="border:0" allowfullscreen></iframe>
-                    <div class="contact_map_info row">
+                    <iframe src=" {{$config->map_src}} " height="490" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="true" tabindex="10"></iframe>
+              
+                    <div class="contact_map_info row" >
                         <div class="contact_map_info__inner">
                             <div class="contact_map_info__title">{{__('main.phone')}}</div>
                             <div class="contact_map_info__phone">{{$config->phone}}</div>
@@ -280,6 +286,7 @@
         				<a href="{{$config->twitter}}"><i class="fa fa-twitter"></i></a>
         				<a href="{{$config->google}}"><i class="fa fa-google-plus"></i></a>
                         <a href="{{$config->youtube}}"><i class="fa fa-youtube"></i></a>
+                        <a href="{{'https://wa.me/'.$config->phone}}"><i class="fa fa-whatsapp"></i></a>
                     </div>
                     <!-- End footer_social_button -->
                 </div>
@@ -300,7 +307,7 @@
                                  </div>
                             </div>
                         </div>
-                        <a href="tel:{{$config->phone}}"><i class="fa fa-phone"></i>{{$config->phone}}</a>
+                        <a href="tel:{{$config->phone}}" style="font-family: system-ui;"><i class="fa fa-phone"></i>{{$config->phone}}</a>
                         <a href="mailto:{{$config->email}}">
                             <i class="fa fa-envelope"></i>{{$config->email}}
                         </a>
@@ -349,7 +356,7 @@
                             </div>
                             <div class="col-4">
                                 <ul>
-                                    <li><a href="{{route('about')}}">{{__('main.about_us')}}</a></li>
+                                    <li><a href="#step2" class="step-next step2 ul_sub ">@lang('main.registration')</a></li>
                             	
                                 </ul>
                             </div>
@@ -382,9 +389,16 @@
     <!-- Back to top -->
     <div id="back-to-top" title="Back to top"><i class="fa fa-angle-up" aria-hidden="true"></i></div>
     <!-- Back to top end-->
- 
-    <form class="fofm">
-        <!-- Popup Step 1 -->
+    
+     <div id="step1" class="white-popup mfp-with-anim mfp-hide order_popup" style="height: 350px;overflow:hidden; width:350px;" >
+           <iframe src="https://internetagenda.vertimart.nl/?id=291" height="100%" width=""  frameborder="0" scrolling="no"></iframe>
+     </div>
+     <div id="step2" class="white-popup mfp-with-anim mfp-hide order_popup" style="height: 600px; width:90%; max-width:600px;" >
+           <iframe src="https://internetagenda.vertimart.nl/inschrijven?id=291" height="100%" width=""  frameborder="0" ></iframe>
+     </div>
+
+    {{-- <form class="fofm">
+            <!-- Popup Step 1 -->
         <div id="step1" class="white-popup mfp-with-anim mfp-hide order_popup">
             <div class="popup_content">
                 <!-- Choose a Dentist -->
@@ -398,7 +412,7 @@
                                 <label for="radio9">
                                     <span class="step_item_vn">
                                         <span class="row step_item align-items-center">
-                                            <span class="doctor_name"> {{__('main.any_dentist')}} </span>
+                                        <span class="doctor_name"> {{__('main.any_dentist')}} </span>
                                         </span>
                                     </span>
                                 </label>
@@ -720,7 +734,7 @@
             </div> 
         </div>
         <!-- Popup Step 5 -->
-    </form> 
+    </form>  --}}
     <!-- JS -->
     <script src="{{asset('website/js/modernizr.custom.js')}}"></script>
 	<!-- Jquery -->

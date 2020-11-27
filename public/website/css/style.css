@@ -1395,7 +1395,7 @@ header .menu {
 
 .header_address {
     float: left;
-    width: 280px;
+    width: 265px;
     margin-top: 4px;
 }
 
@@ -2521,7 +2521,7 @@ header .menu {
     background-color: #FFFFFF;
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.05);
     padding: 35px 47px 35px;
-    left: 62px;
+    right: 62px;
     top: 50%;
     transform: translateY(-50%);
 }
@@ -5462,9 +5462,7 @@ header .menu {
     transform: scale(1);
 }
 
-.mfp-zoom-in.mfp-ready.mfp-bg {
-    /
-}
+.mfp-zoom-in.mfp-ready.mfp-bg {}
 
 .mfp-zoom-in.mfp-removing .mfp-with-anim {
     transform: scale(0.5);
@@ -5533,7 +5531,7 @@ header .menu {
     z-index: 9999999999;
     overflow: hidden;
     position: fixed;
-    background: rgb(255, 255, 255);
+    background: rgba(0, 0, 0, 0.4);
     opacity: 1;
     animation: open 0.5s;
 }

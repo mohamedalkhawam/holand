@@ -17,7 +17,7 @@ class ConfigController extends Controller
     {
         $items = Config::all();
         $page_title = 'Config';
-        $page_description = 'Some description for the page';
+        $page_description = '';
         return view('dashboard.config.index', compact('page_title', 'page_description', 'items'));
     }
 
@@ -63,7 +63,7 @@ class ConfigController extends Controller
     {
         $items = Config::find($id);
         $page_title = 'Config';
-        $page_description = 'Some description for the page';
+        $page_description = '';
         return view('dashboard.config.edit', compact('page_title', 'page_description', 'items'));
     }
 
@@ -86,8 +86,7 @@ class ConfigController extends Controller
             'twitter'=>'required',
             'google'=>'required',
             'youtube'=>'required',
-            'lat'=>'required',
-            'lng'=>'required',
+            'map_src'=>'required',
             'open_day_from_en'=>'required',
             'open_day_to_en'=>'required',
             'open_day_from_nl'=>'required',
@@ -102,7 +101,7 @@ class ConfigController extends Controller
             'second_special_day_nl'=>'required',
             'second_special_day_note_en'=>'required',
             'second_special_day_note_nl'=>'required',
-            'youtube_video'=>'required',
+            'address_link'=>'required'
         ];
         $validated = $this->validate($request,$rules);
         $items->phone = $validated['phone'];
@@ -113,9 +112,8 @@ class ConfigController extends Controller
         $items->twitter = $validated['twitter'];
         $items->google = $validated['google'];
         $items->youtube = $validated['youtube'];
-        $items->youtube_video = $validated['youtube_video'];
-        $items->lat = $validated['lat'];
-        $items->lng = $validated['lng'];
+        $items->map_src = $validated['map_src'];
+        $items->address_link = $validated['address_link'];
         $items->open_day_from_en = $validated['open_day_from_en'];
         $items->open_day_to_en = $validated['open_day_to_en'];
         $items->open_day_from_nl = $validated['open_day_from_nl'];

@@ -3,7 +3,7 @@
      <div class="card card-custom card-sticky" id="kt_page_sticky_card" style="align-item:center"> 
         <div class="card-header" style="">
 	        <div class="card-title">
-				<h3 class="card-label">Edit 
+				<h3 class="card-label">Create 
 			    <i class="mr-2"></i>
 		        <small class="">Services page header screen.</small></h3>
 			</div>									

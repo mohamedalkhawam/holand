@@ -31,7 +31,7 @@
                                     <div class="form-group row">
                                         <label class="col-3">Doctor Name</label>
                                         <div class="col-9">
-                                        <input class="form-control @error('name') is-invalid @enderror" name="name" value="{{$items->name}}" id="" required validate/>
+                                        <input class="form-control @error('name') is-invalid @enderror" name="name" value="{{$items->name}}" id="" />
                                         </div>
                                     </div>
                                 {{-- End Service Category --}}
@@ -44,14 +44,14 @@
                                     <div class="form-group row">
                                         <label class="col-3">English</label>
                                         <div class="col-9">
-                                        <textarea class="form-control @error('description_en') is-invalid @enderror"  cols="20" rows="10" name="description_en" required validate>{{$items->description_en}}</textarea>
+                                        <textarea class="form-control @error('description_en') is-invalid @enderror"  cols="20" rows="10" name="description_en" >{{$items->description_en}}</textarea>
                                         {{-- <span class="form-text text-muted">You can replace the old value with the new value.</span> --}}
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-3">Nederlands</label>
                                         <div class="col-9">
-                                        <textarea class="form-control @error('description_nl') is-invalid @enderror"  cols="20" rows="10" name="description_nl" required validate>{{$items->description_nl}}</textarea>
+                                        <textarea class="form-control @error('description_nl') is-invalid @enderror"  cols="20" rows="10" name="description_nl" >{{$items->description_nl}}</textarea>
                                         <span class="form-text text-muted">Please remember that the "Title" should not be more than 2 or three words.</span>
                                         </div>
                                     </div>
@@ -66,14 +66,14 @@
                                     <div class="form-group row">
                                         <label class="col-3">English</label>
                                         <div class="col-9">
-                                        <textarea class="form-control @error('bio_en') is-invalid @enderror"  cols="20" rows="10" name="bio_en" required validate>{{$items->bio_en}}</textarea>
+                                        <textarea class="form-control @error('bio_en') is-invalid @enderror"  cols="20" rows="10" name="bio_en" >{{$items->bio_en}}</textarea>
                                         {{-- <span class="form-text text-muted" style="position: absolute;">You can replace the old value with the new value.</span>                                  --}}
                                        </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-3">Nederlands</label>
                                         <div class="col-9">
-                                        <textarea class="form-control @error('bio_nl') is-invalid @enderror"  cols="20" rows="10" name="bio_nl" required validate>{{$items->bio_nl}}</textarea>
+                                        <textarea class="form-control @error('bio_nl') is-invalid @enderror"  cols="20" rows="10" name="bio_nl" >{{$items->bio_nl}}</textarea>
                                             <span class="form-text text-muted"style="position: absolute;" >Please remember to seperate keywords by a space. </span>
                                         </div>
                                     </div>
@@ -88,13 +88,13 @@
                                     <div class="form-group row">
                                         <label class="col-3">English</label>
                                         <div class="col-9">
-                                        <input class="form-control @error('education_en') is-invalid @enderror" value="{{$items->education_en}}" name="education_en" id="" required validate/>
+                                        <input class="form-control @error('education_en') is-invalid @enderror" value="{{$items->education_en}}" name="education_en" id="" />
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-3">Nederlands</label>
                                         <div class="col-9">
-                                        <input class="form-control @error('education_nl') is-invalid @enderror" value="{{$items->education_nl}}" name="education_nl" id="" required validate/>
+                                        <input class="form-control @error('education_nl') is-invalid @enderror" value="{{$items->education_nl}}" name="education_nl" id="" />
                                         </div>
                                 
                                     </div>
@@ -105,13 +105,13 @@
                                      <div class="form-group row">
                                         <label class="col-3">English</label>
                                         <div class="col-9">
-                                        <input class="form-control @error('membership_en') is-invalid @enderror" value="{{$items->membership_en}}" name="membership_en" id="" required validate/>
+                                        <input class="form-control @error('membership_en') is-invalid @enderror" value="{{$items->membership_en}}" name="membership_en" id=""/>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-3">Nederlands</label>
                                         <div class="col-9">
-                                        <input class="form-control @error('membership_nl') is-invalid @enderror" value="{{$items->membership_nl}}" name="membership_nl" id="" required validate/>
+                                        <input class="form-control @error('membership_nl') is-invalid @enderror" value="{{$items->membership_nl}}" name="membership_nl" id="" />
                                         </div>
                                 
                                     </div>
@@ -121,7 +121,7 @@
                                     <div class="form-group row">
                                         <label class="col-3">Languages</label>
                                         <div class="col-9">
-                                        <input class="form-control @error('languages') is-invalid @enderror" value="{{$items->languages}}" name="languages" id="" required validate/>
+                                        <input class="form-control @error('languages') is-invalid @enderror" value="{{$items->languages}}" name="languages" id="" />
                                         </div>
                                     </div>
 
@@ -132,7 +132,7 @@
                                     <div class="form-group row">
                                         <label class="col-3">Choose Specialization</label>
                                         <div class="col-9">
-                                        <select name="services_id" id="" class="form-control @error('services_id') is-invalid @enderror" required validate>
+                                        <select name="services_id" id="" class="form-control @error('services_id') is-invalid @enderror">
                                             <option value="">Choose category</option>
                                             @foreach ($services as $value)
                                                 <option value="{{$value->id}}"> {{$value->title_en}} </option>
@@ -146,23 +146,17 @@
                                      <div class="form-group row">
                                         <label class="col-3">Facebook</label>
                                         <div class="col-9">
-                                        <input class="form-control @error('facebook') is-invalid @enderror" value="{{$items->facebook}}" name="facebook" id="" required validate/>
+                                        <input class="form-control @error('facebook') is-invalid @enderror" value="{{$items->facebook}}" name="facebook" id="" />
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-3">Twitter</label>
+                                        <label class="col-3">Instagram</label>
                                         <div class="col-9">
-                                        <input class="form-control @error('twitter') is-invalid @enderror" value="{{$items->twitter}}" name="twitter" id="" required validate/>
+                                        <input class="form-control @error('instagram') is-invalid @enderror" value="{{$items->instagram}}" name="instagram" id="" />
                                         </div>
                                 
                                     </div>
-                                    <div class="form-group row">
-                                        <label class="col-3">G+</label>
-                                        <div class="col-9">
-                                        <input class="form-control @error('google') is-invalid @enderror" value="{{$items->google}}" name="google" id="" required validate/>
-                                        </div>
-                                
-                                    </div>
+                                   
                                      <h3 class="text-dark font-weight-bold mb-10">Costumize Images : </h3>
                            
                                  {{-- Start image Before--}}
@@ -174,7 +168,7 @@
                                                     Uploade Image                                                    
                                                 </a>
                                             <div style="overflow:hidden; display:inline-block">
-                                                    <input  id="file" type="file" style="margin-left: -91px;" name="imagePath" validate required >
+                                                    <input  id="file" type="file" style="margin-left: -91px;" name="imagePath"  >
                                             </div>
 
                                         {{-- <span class="form-text text-muted">You can replace the old value with the new value.</span> --}}

@@ -14,12 +14,12 @@ return $firstFive;
                                 <div class="card card-custom">
                                     <div class="card-header flex-wrap border-0 pt-6 pb-0">
                                         <div class="card-title">
-                                            <h3 class="card-label">Home Page Content
-                                            <div class="text-muted pt-2 font-size-sm">Datatable initialized from HTML table</div></h3>
+                                            <h3 class="card-label">Services Header Page
+                                            <div class="text-muted pt-2 font-size-sm">Edit the header of services page</div></h3>
                                         </div>
-                                        <div class="d-flex align-items-center" >
+                                        {{-- <div class="d-flex align-items-center" >
                                             <a href=" {{route('dashboard.services.header.create')}} "class="btn btn-primary" style="font-weight:600">Create Service</a>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     <div class="card-body">
                                         <!--begin: Search Form-->

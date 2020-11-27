@@ -15,10 +15,10 @@ return $firstFive;
                                     <div class="card-header flex-wrap border-0 pt-6 pb-0">
                                         <div class="card-title">
                                             <h3 class="card-label">Home Page Content
-                                            <div class="text-muted pt-2 font-size-sm">Datatable initialized from HTML table</div></h3>
+                                            <div class="text-muted pt-2 font-size-sm">Change Slider, title, and description</div></h3>
                                         </div>
                                         <div class="d-flex align-items-center" >
-                                            <a href=" {{route('dashboard.home.create')}} "class="btn btn-primary" style="font-weight:600">Create Service</a>
+                                            <a href=" {{route('dashboard.home.create')}} "class="btn btn-primary" style="font-weight:600">Create Slider</a>
                                         </div>
                                     </div>
                                     <div class="card-body">
@@ -98,6 +98,5 @@ return $firstFive;
 {{-- Scripts Section --}}
 @section('scripts')
 <script src="{{ asset('js/pages/crud/ktdatatable/base/html-table.js') }}" type="text/javascript"></script>
-<script src="{{asset('homePage.js')}}"></script>
 @endsection
 

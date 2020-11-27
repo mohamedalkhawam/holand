@@ -16,8 +16,8 @@ return $firstFive;
                                 <div class="card card-custom">
                                     <div class="card-header flex-wrap border-0 pt-6 pb-0">
                                         <div class="card-title">
-                                            <h3 class="card-label">Services Page Content
-                                            <div class="text-muted pt-2 font-size-sm">Datatable initialized from HTML table</div></h3>
+                                            <h3 class="card-label">Configuration
+                                            <div class="text-muted pt-2 font-size-sm">Costumize your settings here.</div></h3>
                                         </div>
                                         <div class="d-flex align-items-center" >
                                             <span class="text-muted pt-2 font-size-m " style="margin-right:15px"> <strong>Last Update:</strong> {{$value->updated_at}} </span>
@@ -87,22 +87,23 @@ return $firstFive;
                                                         </div>
                                                     {{-- End Youtube  --}}
 
-                                                    {{-- Start Location  --}}
-                                                        <div class="form-group row">
-                                                            <label class="col-3 h6 font-weight-bolder">Location:</label>
-                                                            <div class="col-9 h6 font-weight-lighter">
-                                                            [ {{$value->lat}},  {{$value->lng}}]
-                                                            </div>
-                                                        </div>
-                                                    {{-- End Location  --}}
+                                                    
 
                                                     {{-- Start Location  --}}
                                                         <div class="form-group row">
-                                                            <label class="col-3 h6 font-weight-bolder">Video Link:</label>
+                                                            <label class="col-3 h6 font-weight-bolder">Map Source:</label>
                                                             <div class="col-9 h6 font-weight-lighter">
-                                                              {{$value->youtube_video}}
+                                                              {{substr($value->map_src,0,100)}}...etc
                                                             </div>
                                                         </div>
+                                                        
+                                                        <div class="form-group row">
+                                                            <label class="col-3 h6 font-weight-bolder">Address Link:</label>
+                                                            <div class="col-9 h6 font-weight-lighter">
+                                                                  {{$value->address_link}}
+                                                            </div>
+                                                        </div>
+
                                                     {{-- End Location  --}}
 
                                                     {{-- Start Email  --}}
@@ -121,6 +122,8 @@ return $firstFive;
                                                                   {{$value->address_nl}}
                                                             </div>
                                                         </div>
+
+                                                        
                                                     {{-- End Email  --}}
                                                 </div>
                                             </div>

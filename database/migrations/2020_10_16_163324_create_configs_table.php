@@ -23,8 +23,8 @@ class CreateConfigsTable extends Migration
             $table->string('twitter');
             $table->string('google');
             $table->string('youtube');
-            $table->float('lat');
-            $table->float('lng');
+            $table->string('map_src',1000);
+            $table->string('address_link',1000);
             $table->string('open_day_from_en');
             $table->string('open_day_to_en');
             $table->string('open_day_from_nl');
@@ -39,7 +39,6 @@ class CreateConfigsTable extends Migration
             $table->string('second_special_day_nl');
             $table->string('second_special_day_note_en');
             $table->string('second_special_day_note_nl');
-            $table->string('youtube_video');
             $table->timestamps();
         });
     }

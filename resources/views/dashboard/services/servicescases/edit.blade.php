@@ -3,9 +3,9 @@
      <div class="card card-custom card-sticky" id="kt_page_sticky_card" style="align-item:center"> 
         <div class="card-header" style="">
 	        <div class="card-title">
-				<h3 class="card-label">Create 
+				<h3 class="card-label">edit 
 			    <i class="mr-2"></i>
-		        <small class="">new Cases to your website.</small></h3>
+		        <small class="">Your case </small></h3>
 			</div>									
             <div class="card-toolbar">
                 <a href="{{route('dashboard.services.servicecases.index')}}" class="btn btn-light-primary font-weight-bolder mr-2">
@@ -57,7 +57,7 @@
                                         <label class="col-3">Nederlands</label>
                                         <div class="col-9">
                                         <textarea class="form-control @error('short_story_nl') is-invalid @enderror"  cols="20" rows="10" name="short_story_nl" required validate>{{$items->short_story_nl}}</textarea>
-                                        <span class="form-text text-muted">Please remember that the "Title" should not be more than 2 or three words.</span>
+                                        {{-- <span class="form-text text-muted">Please remember that the "Title" should not be more than 2 or three words.</span> --}}
                                         </div>
                                     </div>
                                 {{-- End Short story --}}
@@ -79,7 +79,7 @@
                                         <label class="col-3">Nederlands</label>
                                         <div class="col-9">
                                         <textarea class="form-control @error('initial_problem_nl') is-invalid @enderror"  cols="20" rows="10" name="initial_problem_nl" required validate>{{$items->initial_problem_nl}}</textarea>
-                                            <span class="form-text text-muted"style="position: absolute;" >Please remember to seperate keywords by a space. </span>
+                                            {{-- <span class="form-text text-muted"style="position: absolute;" >Please remember to seperate keywords by a space. </span> --}}
                                         </div>
                                     </div>
                                 {{-- end Initial problem --}}
@@ -99,7 +99,7 @@
                                         <label class="col-3">Nederlands</label>
                                         <div class="col-9">
                                         <textarea class="form-control @error('what_we_have_done_nl') is-invalid @enderror"  cols="20" rows="10" name="what_we_have_done_nl" required validate>{{$items->what_we_have_done_nl}}</textarea>
-                                            <span class="form-text text-muted"style="position: absolute;" >Please remember to seperate keywords by a space. </span>
+                                            {{-- <span class="form-text text-muted"style="position: absolute;" >Please remember to seperate keywords by a space. </span> --}}
                                         </div>
                                     </div>
                                 {{-- end Initial problem --}}

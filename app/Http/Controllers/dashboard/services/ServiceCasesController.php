@@ -20,7 +20,7 @@ class ServiceCasesController extends Controller
     {
         $items = Service_cases::all();
         $page_title = 'Services Cases';
-        $page_description = 'Some description for the page';
+        $page_description = '';
         return view('dashboard.services.servicescases.index', compact('items', 'page_title', 'page_description'));
     }
     /**
@@ -33,7 +33,7 @@ class ServiceCasesController extends Controller
         $services = Services_page::all();
         $doctors = Doctors::all();
         $page_title = 'Services Cases';
-        $page_description = 'Some description for the page';
+        $page_description = '';
         return view('dashboard.services.servicescases.create', compact('page_title', 'page_description', 'services', 'doctors'));
     }
 
@@ -114,7 +114,7 @@ class ServiceCasesController extends Controller
     {
         $items = Service_cases::find($id);
         $page_title = 'Edit service Case';
-        $page_description = 'Some description for the page';
+        $page_description = '';
         return view('dashboard.services.servicescases.edit', compact('items', 'page_title', 'page_description'));
     }
 

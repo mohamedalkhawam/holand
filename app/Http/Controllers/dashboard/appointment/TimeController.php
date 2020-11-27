@@ -16,7 +16,7 @@ class TimeController extends Controller
     {
         $items = Time::all();
         $page_title = 'Why Us Screen';
-        $page_description = 'Some description for the page';
+        $page_description = '';
         return view('dashboard.appointment.time.index', compact('page_title', 'page_description', 'items'));
     }
 
@@ -29,7 +29,7 @@ class TimeController extends Controller
     {
        
         $page_title = 'Why Us Screen';
-        $page_description = 'Some description for the page';
+        $page_description = '';
         return view('dashboard.appointment.time.create', compact('page_title', 'page_description'));
     }
 
@@ -65,7 +65,7 @@ class TimeController extends Controller
     {
         $items = Time::find($id);
         $page_title = 'Why Us Screen';
-        $page_description = 'Some description for the page';
+        $page_description = '';
         return view('dashboard.appointment.time.edit', compact('page_title', 'page_description', 'items'));
     }
 

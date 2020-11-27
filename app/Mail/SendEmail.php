@@ -18,6 +18,7 @@ class SendEmail extends Mailable
      */
     public function __construct($data)
     {
+        dd($data);
         $this->data = $data;
     }
 
@@ -27,7 +28,7 @@ class SendEmail extends Mailable
      * @return $this
      */
     public function build()
-    {
-        return $this->from('mohamed.kh1994@gmail.com')->subject('New Customer Equiry')->view('mail.contuctMailTemplate')->with('data', $this->data);
+    {dd($data);
+        return $this->from($data->posEmail)->subject('New Customer Equiry')->view('mail.contuctMailTemplate')->with('data', $this->data);
     }
 }

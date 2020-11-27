@@ -18,7 +18,7 @@ class ServicesGalleryController extends Controller
     {
         $items = Services_Gallery::all();
         $page_title = 'Services Gallery';
-        $page_description = 'Some description for the page';
+        $page_description = '';
         return view('dashboard.services.servicesGallery.index', compact('page_title', 'page_description', 'items'));
     }
 
@@ -31,7 +31,7 @@ class ServicesGalleryController extends Controller
     {
         $items = Services_page::all();
         $page_title = 'Create';
-        $page_description = 'Some description for the page';
+        $page_description = '';
         return view('dashboard.services.servicesGallery.create', compact('page_title', 'page_description', 'items'));
     }
 

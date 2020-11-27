@@ -20,7 +20,7 @@ class ServicesPageController extends Controller
     {
         $items = Services_page::all();
         $page_title = 'Services';
-        $page_description = 'Some description for the page';
+        $page_description = '';
 
         return view('dashboard.services.index', compact('page_title', 'page_description', 'items'));
     }
@@ -33,7 +33,7 @@ class ServicesPageController extends Controller
     public function create()
     {
         $page_title = 'Create';
-        $page_description = 'Some description for the page';
+        $page_description = '';
         return view('dashboard.services.create', compact('page_title', 'page_description'));
     }
     /**

@@ -15,7 +15,7 @@ class PagesController extends Controller
     public function index()
     {
         $page_title = 'Dashboard';
-        $page_description = 'Some description for the page';
+        $page_description = '';
 
         return view('dashboard.dashboard', compact('page_title', 'page_description'));
     }

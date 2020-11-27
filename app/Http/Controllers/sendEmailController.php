@@ -4,13 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Contact_page;
+use App\Mail\SendEmail;
  use Mail;
+
+ 
 class sendEmailController extends Controller
 {
     function index (){
         return view('website.contact');
     }
     function saveContact(Request $request){
+       
         $contact=new Contact_page;
         $this->validate($request, [
             'posText'=>'required',
@@ -24,7 +28,17 @@ class sendEmailController extends Controller
         $contact->phone_number = $request->posTel;
         $contact->message = $request->posText;
         $contact->save();
-        Mail::send('website.contact',
+        $data =[
+                    'name' => $request->get('posName'),
+                    'email' => $request->get('posEmail'),
+                    'subject' => "no subject",
+                    'phone_number' => $request->get('posTel'),
+                    'user_message' => $request->get('posText'),
+        ];
+
+        Mail::to('mohamed.kh1994@live.com')->send(new SendEmail($data)); 
+
+        Mail::send('mail.contuctMailTemplate',
              array(
                  'name' => $request->get('posName'),
                  'email' => $request->get('posEmail'),
@@ -35,6 +49,7 @@ class sendEmailController extends Controller
                {
                   $message->from($request->posEmail);
                   $message->to('mohamed.kh1994@live.com');
+                  
                });
                
         return back()->with('success', 'Thank you for contact us!');
@@ -42,7 +57,7 @@ class sendEmailController extends Controller
     public function destroy($id)
     {
         Contact_page::destroy($id);
-        return redirect()->Route('dashboard.contact.index');
+        // return redirect()->Route('dashboard.contact.index');
     }
 
 

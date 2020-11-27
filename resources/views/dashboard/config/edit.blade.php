@@ -103,26 +103,21 @@
                                 {{-- End youtube --}}
 
                                 {{-- Start youtube Video--}}
-                                    <div class="form-group row">
-                                        <label class="col-3">Youtube Video</label>
-                                        <div class="col-9">
-                                        <input class="form-control @error('youtube_video') is-invalid @enderror" name="youtube_video" value="{{$items->youtube_video}}" id="" required validate/>
-                                        </div>
-                                    </div>
+                                    
                                 {{-- End youtube Video --}}
 
                                 {{-- Start Location--}}
                                     <h3 class="text-dark font-weight-bold mb-10">Location : </h3>
                                     <div class="form-group row">
-                                        <label class="col-3">Lat</label>
+                                        <label class="col-3">Map Source</label>
                                         <div class="col-9">
-                                        <input class="form-control @error('lat') is-invalid @enderror" name="lat" value="{{$items->lat}}" id="" required validate/>
+                                        <input class="form-control @error('map_src') is-invalid @enderror" name="map_src" value="{{$items->map_src}}" id="" required validate/>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-3">Lng</label>
+                                        <label class="col-3">Address Link</label>
                                         <div class="col-9">
-                                        <input class="form-control @error('lng') is-invalid @enderror" name="lng" value="{{$items->lng}}" id="" required validate/>
+                                        <input class="form-control @error('address_link') is-invalid @enderror" name="address_link" value="{{$items->address_link}}" id="" required validate/>
                                         </div>
                                     </div>
                                 {{-- End Location --}}

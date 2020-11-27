@@ -5,10 +5,10 @@
 	        <div class="card-title">
 				<h3 class="card-label">Create 
 			    <i class="mr-2"></i>
-		        <small class="">new Cases to your website.</small></h3>
-			</div>									
+		        <small class="">New slider to you home page.</small></h3>
+			</div>							
             <div class="card-toolbar">
-                <a href="{{route('dashboard.services.servicecases.index')}}" class="btn btn-light-primary font-weight-bolder mr-2">
+                <a href="{{route('dashboard.home.index')}}" class="btn btn-light-primary font-weight-bolder mr-2">
                     <i class="ki ki-long-arrow-back icon-xs"></i>Back</a>
                 <div class="btn-group">
                     <button type="button" type="submit" class="btn btn-primary font-weight-bolder" onclick="submitForm()">

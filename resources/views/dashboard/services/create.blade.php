@@ -66,7 +66,7 @@
                                         <label class="col-3">Nederlands</label>
                                         <div class="col-9">
                                             <input class="form-control @error('keywords_nl') is-invalid @enderror" type="text"  name="keywords_nl" required validate>
-                                            <span class="form-text text-muted"style="position: absolute;" >Please remember to seperate keywords by a space. </span>
+                                            <span class="form-text text-muted"style="position: absolute;" >Please remember to seperate keywords by a space; minimum keywords 4. </span>
                                             {{-- <textarea class="form-control @error('keywords_nl') is-invalid @enderror" type="text"  name="keywords_nl" required validate cols="10" rows="10"></textarea> --}}
                                         </div>
                                     </div>

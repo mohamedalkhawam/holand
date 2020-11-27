@@ -17,7 +17,7 @@ class ContactPageController extends Controller
     {
         $items = Contact_page::all();
         $page_title = 'Contact us';
-        $page_description = 'Some description for the page';
+        $page_description = '';
 
         return view('dashboard.contact.index', compact('page_title', 'page_description', 'items'));
     }

@@ -3,7 +3,7 @@
      <div class="card card-custom card-sticky" id="kt_page_sticky_card" style="align-item:center"> 
         <div class="card-header" style="">
 	        <div class="card-title">
-				<h3 class="card-label">Edit Slider
+				<h3 class="card-label">Edit Services Page Header
 			    <i class="mr-2"></i>
 		        <small class=""> you can replace the old value with the new value.</small></h3>
 			</div>									

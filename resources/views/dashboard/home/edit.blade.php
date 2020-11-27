@@ -31,7 +31,7 @@
                                     <div class="form-group row">
                                         <label class="col-3">English</label>
                                         <div class="col-9">
-                                        <input class="form-control @error('t type="text" value="{{$items->title_en}}" name="title_en" required validate>
+                                        <input class="form-control @error('title_nl') is-invalid @enderror " type="text" value="{{$items->title_en}}" name="title_en" required validate>
                                         {{-- <span class="form-text text-muted">Youitle_en') is-invalid @enderror" can replace the old value with the new value.</span> --}}
                                         </div>
                                     </div>

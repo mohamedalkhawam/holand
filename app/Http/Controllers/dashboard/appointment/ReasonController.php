@@ -16,7 +16,7 @@ class ReasonController extends Controller
     {
         $items = Reason::all();
         $page_title = 'Why Us Screen';
-        $page_description = 'Some description for the page';
+        $page_description = '';
         return view('dashboard.appointment.reason.index', compact('page_title', 'page_description', 'items'));
     }
 
@@ -28,7 +28,7 @@ class ReasonController extends Controller
     public function create()
     {
         $page_title = 'Why Us Screen';
-        $page_description = 'Some description for the page';
+        $page_description = '';
         return view('dashboard.appointment.reason.create', compact('page_title', 'page_description'));
     }
 
@@ -73,7 +73,7 @@ class ReasonController extends Controller
     {
         $items = Reason::find($id);
         $page_title = 'Why Us Screen';
-        $page_description = 'Some description for the page';
+        $page_description = '';
         return view('dashboard.appointment.reason.edit', compact('page_title', 'page_description', 'items'));
     }
 

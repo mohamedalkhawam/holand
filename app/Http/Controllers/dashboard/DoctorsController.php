@@ -18,7 +18,7 @@ class DoctorsController extends Controller
         $items = Doctors::all();
         $services=Services_page::all();
         $page_title = 'Doctors';
-        $page_description = 'Some description for the page';
+        $page_description = '';
         return view('dashboard.doctors.index', compact('page_title', 'page_description', 'items','services'));
     }
 
@@ -31,7 +31,7 @@ class DoctorsController extends Controller
     {
         $items=Services_page::all();
         $page_title = 'Doctors';
-        $page_description = 'Some description for the page';
+        $page_description = '';
         return view('dashboard.doctors.create', compact('page_title', 'page_description','items'));
     }
 
@@ -52,41 +52,57 @@ class DoctorsController extends Controller
             $items->imagePath = $fileName;
         }
 
-              $rules = [
-              'name' => 'required',
-            'description_en' => 'required',
-            'description_nl' => 'required',
-            'bio_en' => 'required',
-            'bio_nl' => 'required',
-            'education_en' => 'required',
-            'education_nl' => 'required',
-            'membership_en' => 'required',
-            'membership_nl' => 'required',
-            'languages' => 'required',
-            'services_id' => 'required',
-            'facebook' => 'required',
-            'twitter' => 'required',
-            'google' => 'required',
-            'imagePath' => 'required'
+        //       $rules = [
+        //       'name' => 'required',
+        //     'description_en' => 'required',
+        //     'description_nl' => 'required',
+        //     'bio_en' => 'required',
+        //     'bio_nl' => 'required',
+        //     'education_en' => 'required',
+        //     'education_nl' => 'required',
+        //     'membership_en' => 'required',
+        //     'membership_nl' => 'required',
+        //     'languages' => 'required',
+        //     'services_id' => 'required',
+        //     'facebook' => 'required',
+        //     'instagram' => 'required',
+        //     'imagePath' => 'required'
 
-        ];
-        $validated =$this->validate($request,$rules);
-        $items->name = $validated['name'];
-        $items->description_en = $validated['description_en'];
-        $items->description_nl = $validated['description_nl'];
-        $items->bio_en = $validated['bio_en'];
-        $items->bio_nl = $validated['bio_nl'];
-        $items->education_en = $validated['education_en'];
-        $items->education_nl = $validated['education_nl'];
-        $items->membership_en = $validated['membership_en'];
-        $items->membership_nl = $validated['membership_nl'];
-        $items->languages = $validated['languages'];
-        $items->services_id = $validated['services_id'];
-        $items->facebook = $validated['facebook'];
-        $items->twitter = $validated['twitter'];
-        $items->google = $validated['google'];
+        // ];
+        // $validated =$this->validate($request,$rules);
+        // if($validated > 0){
+        // $items->name = $validated['name'];
+        // $items->description_en = $validated['description_en'];
+        // $items->description_nl = $validated['description_nl'];
+        // $items->bio_en = $validated['bio_en'];
+        // $items->bio_nl = $validated['bio_nl'];
+        // $items->education_en = $validated['education_en'];
+        // $items->education_nl = $validated['education_nl'];
+        // $items->membership_en = $validated['membership_en'];
+        // $items->membership_nl = $validated['membership_nl'];
+        // $items->languages = $validated['languages'];
+        // $items->services_id = $validated['services_id'];
+        // $items->facebook = $validated['facebook'];
+        // $items->twitter = $validated['instagram'];
+
+
+
+        $items->name = $request->name;
+        $items->description_en = $request->description_en;
+        $items->description_nl = $request->description_nl;
+        $items->bio_en = $request->bio_en;
+        $items->bio_nl = $request->bio_nl;
+        $items->education_en = $request->education_en;
+        $items->education_nl = $request->education_nl;
+        $items->membership_en = $request->membership_en;
+        $items->membership_nl = $request->membership_nl;
+        $items->languages = $request->languages;
+        $items->services_id = $request->services_id;
+        $items->facebook = $request->facebook;
+        $items->instagram = $request->instagram;
         $items->save();
         return redirect()->route('dashboard.doctors.index');
+     
     }
 
     /**
@@ -111,7 +127,7 @@ class DoctorsController extends Controller
         $items = Doctors::find($id);
         $services=Services_page::all();
         $page_title = 'Doctors';
-        $page_description = 'Some description for the page';
+        $page_description = '';
         return view('dashboard.doctors.edit', compact('page_title', 'page_description', 'items','services'));
 
     }
@@ -134,46 +150,46 @@ class DoctorsController extends Controller
             $items->imagePath = $fileName;
         }
      
-        if (!empty($items->imagePath)){
-              $rules = [
-            'name' => 'required',
-            'description_en' => 'required',
-            'description_nl' => 'required',
-            'bio_en' => 'required',
-            'bio_nl' => 'required',
-            'education_en' => 'required',
-            'education_nl' => 'required',
-            'membership_en' => 'required',
-            'membership_nl' => 'required',
-            'languages' => 'required',
-            'services_id' => 'required',
-            'facebook' => 'required',
-            'twitter' => 'required',
-            'google' => 'required',
-            // 'imagePath' => 'required'
-        ];
-        }else{
+        // if (!empty($items->imagePath)){
+        //       $rules = [
+        //     'name' => 'required',
+        //     'description_en' => 'required',
+        //     'description_nl' => 'required',
+        //     'bio_en' => 'required',
+        //     'bio_nl' => 'required',
+        //     'education_en' => 'required',
+        //     'education_nl' => 'required',
+        //     'membership_en' => 'required',
+        //     'membership_nl' => 'required',
+        //     'languages' => 'required',
+        //     'services_id' => 'required',
+        //     'facebook' => 'required',
+        //     'twitter' => 'required',
+        //     'google' => 'required',
+        //     // 'imagePath' => 'required'
+        // ];
+        // }else{
 
        
-              $rules = [
-              'name' => 'required',
-            'description_en' => 'required',
-            'description_nl' => 'required',
-            'bio_en' => 'required',
-            'bio_nl' => 'required',
-            'education_en' => 'required',
-            'education_nl' => 'required',
-            'membership_en' => 'required',
-            'membership_nl' => 'required',
-            'languages' => 'required',
-            'services_id' => 'required',
-            'facebook' => 'required',
-            'twitter' => 'required',
-            'google' => 'required',
-            'imagePath' => 'required'
+        //       $rules = [
+        //       'name' => 'required',
+        //     'description_en' => 'required',
+        //     'description_nl' => 'required',
+        //     'bio_en' => 'required',
+        //     'bio_nl' => 'required',
+        //     'education_en' => 'required',
+        //     'education_nl' => 'required',
+        //     'membership_en' => 'required',
+        //     'membership_nl' => 'required',
+        //     'languages' => 'required',
+        //     'services_id' => 'required',
+        //     'facebook' => 'required',
+        //     'twitter' => 'required',
+        //     'google' => 'required',
+        //     'imagePath' => 'required'
 
-        ];
-        }
+        // ];
+        // }
     
         $validated =$this->validate($request,$rules);
         $items->name = $validated['name'];
@@ -188,8 +204,7 @@ class DoctorsController extends Controller
         $items->languages = $validated['languages'];
         $items->services_id = $validated['services_id'];
         $items->facebook = $validated['facebook'];
-        $items->twitter = $validated['twitter'];
-        $items->google = $validated['google'];
+        $items->instagram = $validated['instagram'];
         $items->save();
         return redirect()->route('dashboard.doctors.index');
     }

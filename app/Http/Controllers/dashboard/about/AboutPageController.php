@@ -17,7 +17,7 @@ class AboutPageController extends Controller
     {
         $items = About_page::all();
         $page_title = 'About Us';
-        $page_description = 'Some description for the page';
+        $page_description = '';
 
         return view('dashboard.about.index', compact('page_title', 'page_description', 'items'));
     }

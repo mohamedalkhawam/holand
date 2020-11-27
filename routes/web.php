@@ -141,14 +141,14 @@ Route::namespace('dashboard')->prefix('dashboard')->as('dashboard.')->middleware
     Route::resource('/galleryscreen', 'AboutGalleryScreenController');
     Route::resource('/whyus', 'AboutWhyUsController');
   });
-  Route::namespace('appointment')->prefix('appointment')->as('appointment.')->group(function () {
-    Route::resource('/', 'AppointmentPageController');
-    Route::resource('/reason', 'ReasonController');
-    Route::resource('/time', 'TimeController');
+  // Route::namespace('appointment')->prefix('appointment')->as('appointment.')->group(function () {
+  //   Route::resource('/', 'AppointmentPageController');
+  //   Route::resource('/reason', 'ReasonController');
+  //   Route::resource('/time', 'TimeController');
    
-  });
+  // });
 
-  Route::resource('/certificates','CertificatesController');
+  // Route::resource('/certificates','CertificatesController');
   Route::resource('/contact', 'ContactPageController');
   Route::resource('/doctors', 'DoctorsController');
   Route::resource('/config', 'ConfigController');

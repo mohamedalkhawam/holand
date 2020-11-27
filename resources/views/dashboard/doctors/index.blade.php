@@ -14,11 +14,11 @@ return $firstFive;
                                 <div class="card card-custom">
                                     <div class="card-header flex-wrap border-0 pt-6 pb-0">
                                         <div class="card-title">
-                                            <h3 class="card-label">Services Page Content
-                                            <div class="text-muted pt-2 font-size-sm">Datatable initialized from HTML table</div></h3>
+                                            <h3 class="card-label">Doctors
+                                            <div class="text-muted pt-2 font-size-sm"></div></h3>
                                         </div>
                                         <div class="d-flex align-items-center" >
-                                            <a href=" {{route('dashboard.doctors.create')}} "class="btn btn-primary" style="font-weight:600">Create Service</a>
+                                            <a href=" {{route('dashboard.doctors.create')}} "class="btn btn-primary" style="font-weight:600">Add member</a>
                                         </div>
                                     </div>
                                     <div class="card-body">
@@ -62,8 +62,7 @@ return $firstFive;
                                                     <th title="Field #3">Languages</th>
                                                     <th title="Field #3">Specialization </th>
                                                     <th title="Field #3">Facebook </th>
-                                                    <th title="Field #4">Twitter </th>
-                                                    <th title="Field #3">G+</th>
+                                                    <th title="Field #4">Instagram </th>
                                                     <th title="Field #4">Image</th>
                                                     <th title="Field #8">Action</th>
                                                     <th title="Field #9">Last Upadte </th>
@@ -91,10 +90,9 @@ return $firstFive;
                                                                         @endif
 
                                                                 </td>
-                                                                <td >{{cutString($value->twitter)}}</td>
-                                                                <td>{{cutString($value->google)}} </td>
+                                                                <td >{{cutString($value->instagram)}}</td>
+                                                                
                                                                 <td > @if($value->imagePath !="")<img style="width:55px; height:55px;" src="{{asset('/storage/doctors/'.$value->imagePath)}}" alt="" >@endif</td>
-
                                                                 <td>
                                                                     <a href=" {{route('dashboard.doctors.edit',$value->id)}} " >
                                                                         <i class="fas fa-edit" onMouseOut="this.style.color=''"  onMouseOver="this.style.color='#8950FC'"></i>

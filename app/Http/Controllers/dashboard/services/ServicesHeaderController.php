@@ -16,7 +16,7 @@ class ServicesHeaderController extends Controller
     {
         $items = Services_Header::all();
         $page_title = 'Services Header';
-        $page_description = 'Some description for the page';       
+        $page_description = '';       
         return view('dashboard.services.servicesHeader.index', compact('page_title', 'page_description', 'items'));
 
     }
@@ -29,7 +29,7 @@ class ServicesHeaderController extends Controller
     public function create()
     {
         $page_title = 'Services Header';
-        $page_description = 'Some description for the page';       
+        $page_description = '';       
         return view('dashboard.services.servicesHeader.create', compact('page_title', 'page_description'));
     }
 

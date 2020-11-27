@@ -16,7 +16,7 @@ class CertificatesController extends Controller
     {
         $items = Certificates::all();
         $page_title = 'Certificates';
-        $page_description = 'Some description for the page';
+        $page_description = '';
 
         return view('dashboard.certificates.index', compact('page_title', 'page_description', 'items'));
     }

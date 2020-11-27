@@ -43,27 +43,7 @@
                     </div>
                   @endforeach
                  @endif
-                    <!-- End slideshow item -->
-                    <!-- Start slideshow item -->
-                    {{-- <div class="item">
-                        <div class="row slideshow_heding">
-                            <div class="slideshow-image lozad" data-background-image="{{asset('website/img/slide2.jpg')}}" id="slide2"></div>
-                            <h4>Best Whitening<br />in Mountain View</h4>
-                            <div class="slideshow_info_block">Get your perfect smile with best specialists in service</div>
-                            <div class="popup"><a href="#step1" data-effect="mfp-zoom-in" class="step1 btn">Make an Appointment</a></div>
-                        </div>
-                    </div>
-                    <!-- End slideshow item -->
-                    <!-- Start slideshow item -->
-                    <div class="item">
-                        <div class="row slideshow_heding">
-                            <div class="slideshow-image lozad" data-background-image="{{asset('website/img/slide3.jpg')}}"id="slide3"></div>
-                            <h4>Happy Kids with<br />Healthy Theeth</h4>
-                            <div class="slideshow_info_block">We bring dental care for patients of all ages</div>
-                            <div class="popup"><a href="#step1" data-effect="mfp-zoom-in" class="step1 btn">Make an Appointment</a></div>
-                        </div>
-                    </div> --}}
-                    <!-- End slideshow item -->
+
                 </div> 
             </div>
         </div> 
@@ -81,7 +61,7 @@
                                 <!-- Service item start -->
                             @if($services)
                                 @foreach ($services as $value)                                  
-                                    <a href="/service_page.html" class="services_item">
+                                    <a href="{{route('servicePage',$value->id)}}"  class="services_item">
                                         <span class="services_item_title"> {{$value->$titleWithLanguage}} </span>
                                         <span class="services_item_desc">{{cutString($value->$keywordsWithLanguage,0,3)}} ...etc</span>
                                         <i class="dental_icon dentalic_cosmetic"></i>
@@ -99,17 +79,23 @@
             </div>
             <!-- Service end -->
             <!-- Video start -->
-             @if (isset($config))
-                @foreach ($config as $value)
-            <div class="row video">
-                <div class="container">
-                    <iframe height="535" style="border:0;" class="lozad" src="{{$value->youtube_video}}" data-src="{{$value->youtube_video}}"  allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                </div>
-            </div>
+             
             <!-- Video end -->
 
             <!-- Info Block start -->
-           
+           @if (isset($config))
+                @foreach ($config as $value)
+           @php 
+
+//
+//             <div class="row video">
+//                 <div class="container">
+//                     <iframe height="535" style="border:0;" class="lozad" src="{{$value->youtube_video}}" data-src="{{$value->youtube_video}}"  allow="autoplay; encrypted-media" allowfullscreen></iframe>
+//                 </div>
+//             </div>
+
+
+@endphp
                             
             <div class="row info_blok">
                 <div class="container">
@@ -180,7 +166,7 @@
                                 <div class="row contact_us_block">
                                     <div class="div_contact_us_title">@lang('main.phone')</div>
                                     <div class="row div_contact_us_block">
-                                        <div class="contact_us_phone">{{$value->phone}}</div>
+                                        <div class="contact_us_phone" style="font-family: system-ui;">{{$value->phone}}</div>
                                     </div>
                                 </div>
                                 <!-- Contact Us Block end -->
@@ -198,7 +184,7 @@
                                     <div class="row div_contact_us_address">
                                         <div class="div_contact_us_address_title">{{$value->address}}</div>
                                         <div class="div_contact_us_address_title_map">
-                                            <iframe class="lozad" src="https://maps.google.com/maps?q={{$value->lat}},{{$value->lng}}&hl=es&z=14&amp;output=embed" data-src="https://maps.google.com/maps?q={{$value->lat}},{{$value->lng}}&hl=es&z=14&amp;output=embed" height="95" style="border:0" allowfullscreen  ></iframe>
+                                        <iframe src="{{$value->map_src}}" height="95" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="true" ></iframe>
                                         </div>
                                     </div>
                                 </div>
@@ -291,25 +277,34 @@
             <!-- About end -->
 
             <!-- Certificates start -->
-            <div class="row certificates">
-                <div class="container row">
-                    <h4>@lang('main.certificates') & @lang('main.associations')</h4>
-                    <div class="navigation"></div>
-                </div>
-                <div class="owl_certificates owl-carousel owl-theme gallery">
+            @php 
+            
+            
+            
+            //  <div class="row certificates">
+            //     <div class="container row">
+            //         <h4>@lang('main.certificates') & @lang('main.associations')</h4>
+            //         <div class="navigation"></div>
+            //     </div>
+            //     <div class="owl_certificates owl-carousel owl-theme gallery">
                             
-                @if(app('certificates') !== '')
-                    @foreach (app('certificates') as $value)
-                        <div class="item">
-                            <a href="{{asset('/storage/certificates/'.$value->imagePath)}}">
-                                <img class="owl-lazy" src="{{asset('/storage/certificates/'.$value->imagePath)}} "  alt="DiDent" />
-                            </a>
-                        </div>
-                    @endforeach
-                @endif
+            //     @if(app('certificates') !== '')
+            //         @foreach (app('certificates') as $value)
+            //             <div class="item">
+            //                 <a href="{{asset('/storage/certificates/'.$value->imagePath)}}">
+            //                     <img class="owl-lazy" src="{{asset('/storage/certificates/'.$value->imagePath)}} "  alt="DiDent" />
+            //                 </a>
+            //             </div>
+            //         @endforeach
+            //     @endif
                   
-                        </div>
-            </div>
+            //             </div>
+            // </div>
+            
+            
+            
+            @endphp
+           
             <!-- Certificates end -->
 
             <!-- Start Dentists Tabs -->
@@ -324,15 +319,13 @@
                             <ul>
                             
                                 @foreach (app('doctors') as $value)
-                                   
                                         <li>
                                             <a href="#tab{{$value->id}}" style="text-transform: capitalize;">Dr. {{$value->name}}</a>
-                                        </li>
-                                   
+                                        </li>                     
                                 @endforeach
                                  </ul>
                         
-                            <a class="more">@lang('main.view_more')</a>
+                            <a href="" class="more">@lang('main.view_more')</a>
                         </div>
                         <!-- End Dentists Tabs Title -->
 
@@ -377,12 +370,16 @@
             <!-- End Testimonials -->
 
             <!-- Start Get Service -->
-            <div class="row get_service">
-                <div class="container">
-                    <h4>@lang('main.best_service')</h4>
-                    <div class="popup"><a href="#step1" data-effect="mfp-zoom-in" class="step1 btn">@lang('main.make_an_appointment')</a></div>
-                </div>
-            </div>
+        @php
+            //     <div class="row get_service">
+            //     <div class="container">
+            //         <h4>@lang('main.best_service')</h4>
+            //         <div class="popup"><a href="#step1" data-effect="mfp-zoom-in" class="step1 btn">@lang('main.make_an_appointment')</a></div>
+            //     </div>
+            // </div>
+        @endphp
+
+        
             <!-- End Get Service -->
         </main>
         <!--  Main end -->

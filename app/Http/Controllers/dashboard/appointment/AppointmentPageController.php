@@ -17,7 +17,7 @@ class AppointmentPageController extends Controller
     {
         $items = Appointment_page::all();
         $page_title = 'appointment';
-        $page_description = 'Some description for the page';
+        $page_description = '';
         return view('dashboard.appointment.index', compact('page_title', 'page_description', 'items'));
     }
 

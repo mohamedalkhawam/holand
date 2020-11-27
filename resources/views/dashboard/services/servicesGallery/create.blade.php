@@ -5,7 +5,7 @@
 	        <div class="card-title">
 				<h3 class="card-label">Add images to gallery
 			    <i class="mr-2"></i>
-		        <small class=""> you can replace the old value with the new value.</small></h3>
+		        <small class=""> Choose images that express the quality of your work</small></h3>
 			</div>									
             <div class="card-toolbar">
                 <a href="{{route('dashboard.services.gallery.index')}}" class="btn btn-light-primary font-weight-bolder mr-2">

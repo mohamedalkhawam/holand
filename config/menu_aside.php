@@ -4,13 +4,13 @@ return [
 
     'items' => [
         // Dashboard
-        [
-            'title' => 'Dashboard',
-            'root' => true,
-            'icon' => 'media/svg/icons/Design/Layers.svg', // or can be 'flaticon-home' or any flaticon-*
-            'page' => 'dashboard',
-            'new-tab' => false,
-        ],
+        // [
+        //     'title' => 'Dashboard',
+        //     'root' => true,
+        //     'icon' => 'media/svg/icons/Design/Layers.svg', // or can be 'flaticon-home' or any flaticon-*
+        //     'page' => 'dashboard',
+        //     'new-tab' => false,
+        // ],
         // Custom
         [
             'section' => 'Pages',
@@ -23,6 +23,7 @@ return [
             'page' => 'dashboard/home',
             'new-tab' => false,
         ],
+        
         // [
         //     'title' => 'Services',
         //     'root' => true,
@@ -100,28 +101,28 @@ return [
         ],
 
 
-         [
-            'title' => 'Appointment',
-            'root' => true,
-            'icon' => 'media/svg/icons/Home/Timer.svg', // or can be 'flaticon-home' or any flaticon-*
-            'new-tab' => false,
-            'bullet' => 'dot',
-            'submenu' => [
-                [
-                    'title' => 'Appointments',
-                    'page' => 'dashboard/appointment',
-                ],
-                [
-                    'title' => 'Reasons',
-                    'page' => 'dashboard/appointment/reason',
-                ],
-                // [
-                //     'title' => 'Open hours',
-                //     'page' => 'dashboard/appointment/time'
-                // ],
+        //  [
+        //     'title' => 'Appointment',
+        //     'root' => true,
+        //     'icon' => 'media/svg/icons/Home/Timer.svg', // or can be 'flaticon-home' or any flaticon-*
+        //     'new-tab' => false,
+        //     'bullet' => 'dot',
+        //     'submenu' => [
+        //         [
+        //             'title' => 'Appointments',
+        //             'page' => 'dashboard/appointment',
+        //         ],
+        //         [
+        //             'title' => 'ReEEEasons',
+        //             'page' => 'dashboard/appointment/reason',
+        //         ],
+        //         // [
+        //         //     'title' => 'Open hours',
+        //         //     'page' => 'dashboard/appointment/time'
+        //         // ],
               
-            ],
-        ],
+        //     ],
+        // ],
 
      
         [
@@ -138,6 +139,9 @@ return [
             'page' => 'dashboard/doctors',
             'new-tab' => false,
         ],
+         [
+            'section' => 'Settings',
+        ],
         [
             'title' => 'Config',
             'root' => true,
@@ -145,14 +149,14 @@ return [
             'page' => 'dashboard/config',
             'new-tab' => false,
         ],
-        [
-            'title' => 'Certificates',
-            'icon' => 'media/svg/icons/Layout/Layout-4-blocks.svg',
-            'bullet' => 'line',
-            'root' => true,
-            'new-tab' => false,
-            'page' => 'dashboard/certificates',
+        // [
+        //     'title' => 'Certificates',
+        //     'icon' => 'media/svg/icons/Layout/Layout-4-blocks.svg',
+        //     'bullet' => 'line',
+        //     'root' => true,
+        //     'new-tab' => false,
+        //     'page' => 'dashboard/certificates',
 
-        ],
+        // ],
     ],
 ];

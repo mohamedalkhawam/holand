@@ -17,7 +17,7 @@ class AboutHeaderController extends Controller
     {
         $items = About_Header::all();
         $page_title = 'Header';
-        $page_description = 'Some description for the page';
+        $page_description = '';
         return view('dashboard.about.header.index', compact('page_title', 'page_description', 'items'));
     }
 

@@ -16,20 +16,19 @@ class CreateDoctorsTable extends Migration
         Schema::create('doctors', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description_en');
-            $table->string('description_nl');
-            $table->string('bio_en');
-            $table->string('bio_nl');
-            $table->string('education_en');
-            $table->string('education_nl');
-            $table->string('membership_en');
-            $table->string('membership_nl');
-            $table->string('languages');
+            $table->string('description_en',2000)->nullable()->default('');
+            $table->string('description_nl',2000)->nullable()->default('');
+            $table->string('bio_en',2000)->nullable()->default('');
+            $table->string('bio_nl',2000)->nullable()->default('');
+            $table->string('education_en')->nullable()->default('');
+            $table->string('education_nl')->nullable()->default('');
+            $table->string('membership_en')->nullable()->default('');
+            $table->string('membership_nl')->nullable()->default('');
+            $table->string('languages')->nullable()->default('');
             $table->foreignId('services_id')->constrained('Services_page')->onDelete('set null');
-            $table->string('facebook');
-            $table->string('twitter');
-            $table->string('google');
-            $table->string('imagePath');
+            $table->string('facebook')->nullable()->default('');
+            $table->string('instagram')->nullable()->default('');
+            $table->string('imagePath')->nullable()->default('');
             $table->timestamps();
         });
     }
